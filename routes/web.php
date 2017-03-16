@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::resource('/department', 'DepartmentController');
+
+Route::resource('/position', 'PositionController');
