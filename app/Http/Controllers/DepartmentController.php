@@ -102,10 +102,10 @@ class DepartmentController extends Controller
         $department = Department::findOrFail($id);
         $result = $department->delete();
         if ($result){
-        return redirect('department')->with('success', 'Department deleted');
+            return redirect('department')->with('success', 'Department deleted');
         }
         else{
-        return back()->with('error','Failed to delete!');
+            return back()->with('error','Failed to delete!');
         }
     }
 }

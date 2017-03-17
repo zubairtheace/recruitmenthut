@@ -23,7 +23,6 @@
                       <button type="submit" class="btn btn-danger">
                           Delete
                       </button>
-                  </form>
                   {!! Form::close() !!}
                 </div>
             </div>

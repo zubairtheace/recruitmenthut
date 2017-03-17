@@ -11,7 +11,7 @@
                             'route' => ['department.update', $department->id],
                             'class' => 'form-horizontal',
                             'role' => 'form',
-                            'method' => 'put'
+                            'method' => 'PUT'
                             ]) !!}
 
                     @if (count($errors) > 0)
