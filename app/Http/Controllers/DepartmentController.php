@@ -17,8 +17,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-      $departments = Department::paginate(10);
-      return view('department.index', compact('departments'));
+        $departments = Department::paginate(10);
+        return view('department.index', compact('departments'));
     }
 
     /**
@@ -39,13 +39,13 @@ class DepartmentController extends Controller
      */
     public function store(DepartmentRequest $request)
     {
-      $result = Department::create($request->all());
-      if ($result){
-        return redirect('department')->with('success', 'Department Added');
-      }
-      else{
-        return back()->with('error','Failed to save!');
-      }
+        $result = Department::create($request->all());
+        if ($result){
+            return redirect('department')->with('success', 'Department Added');
+        }
+        else{
+            return back()->with('error','Failed to save!');
+        }
     }
 
     /**
@@ -84,10 +84,10 @@ class DepartmentController extends Controller
         $department = Department::findOrFail($id);
         $result = $department->update($request->all());
         if ($result){
-          return redirect('department')->with('success', 'Department Updated');
+            return redirect('department')->with('success', 'Department Updated');
         }
         else{
-          return back()->with('error','Failed to update!');
+            return back()->with('error','Failed to update!');
         }
     }
 

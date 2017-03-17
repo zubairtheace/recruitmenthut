@@ -102,10 +102,10 @@ class PositionController extends Controller
         $position = Position::findOrFail($id);
         $result = $position->delete();
         if ($result){
-          return redirect('position')->with('success', 'Position deleted');
+            return redirect('position')->with('success', 'Position deleted');
         }
         else{
-          return back()->with('error','Failed to delete!');
+            return back()->with('error','Failed to delete!');
         }
     }
 }

@@ -84,10 +84,10 @@ class InterviewTypeController extends Controller
         $interviewType = InterviewType::findOrFail($id);
         $result = $interviewType->update($request->all());
         if ($result){
-          return redirect('interview-type')->with('success', 'Interview Type Updated');
+            return redirect('interview-type')->with('success', 'Interview Type Updated');
         }
         else{
-          return back()->with('error','Failed to update!');
+            return back()->with('error','Failed to update!');
         }
     }
 

@@ -102,10 +102,10 @@ class VacancyController extends Controller
         $vacancy = Vacancy::findOrFail($id);
         $result = $vacancy->delete();
         if ($result){
-          return redirect('vacancy')->with('success', 'Vacancy deleted');
+            return redirect('vacancy')->with('success', 'Vacancy deleted');
         }
         else{
-          return back()->with('error','Failed to delete!');
+            return back()->with('error','Failed to delete!');
         }
     }
 }
