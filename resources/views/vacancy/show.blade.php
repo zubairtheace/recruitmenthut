@@ -9,17 +9,24 @@
                     <a href="{{ route('vacancy.edit', $vacancy->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
                 </div>
                 <div class="panel-body">
-                  <div>
-                    <p><b>Vacancy:</b> {{$vacancy->name}}</p>
-                  </div>
+                    <div>
+                        <p><b>Vacancy:</b> {{$vacancy->name}}</p>
+                    </div>
                 </div>
                 <div class="panel-footer">
-                  {!! Form::open(['route' => ['vacancy.destroy', $vacancy->id], 'method' => 'delete', 'class' => 'form-horizontal']) !!}
-                      <button type="submit" class="btn btn-danger">
-                          Delete
-                      </button>
-                  </form>
-                  {!! Form::close() !!}
+
+                    {!! Form::open([
+                        'route' => ['vacancy.destroy', $vacancy->id],
+                        'method' => 'delete',
+                        'class' => 'form-horizontal'
+                    ]) !!}
+
+                    <button type="submit" class="btn btn-danger">
+                        Delete
+                    </button>
+
+                    {!! Form::close() !!}
+
                 </div>
             </div>
         </div>
