@@ -24,3 +24,5 @@ Route::resource('/department', 'DepartmentController');
 Route::resource('/position', 'PositionController');
 
 Route::resource('/vacancy', 'VacancyController');
+
+Route::resource('/interview-type', 'InterviewTypeController');
