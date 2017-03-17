@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index');
 Route::resource('/department', 'DepartmentController');
 
 Route::resource('/position', 'PositionController');
+
+Route::resource('/vacancy', 'VacancyController');
