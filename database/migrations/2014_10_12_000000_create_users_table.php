@@ -24,14 +24,13 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->integer('phone_number');
             $table->integer('mobile_number');
-            $table->integer('other_number');
             $table->string('email')->unique();
             $table->text('cv');
             $table->text('certificates');
-            $table->float('overall_rating');
+            $table->float('overall_rating')->default('0');
             $table->string('password');
-            $table->integer('department_id')->unsigned();
-            $table->integer('position_id')->unsigned();
+            $table->integer('department_id')->unsigned()->nullable();
+            $table->integer('position_id')->unsigned()->nullable();
             $table->foreign('department_id')->references('id')->on('departments');
             $table->foreign('position_id')->references('id')->on('positions');
             $table->rememberToken();
