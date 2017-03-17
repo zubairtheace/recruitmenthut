@@ -15,7 +15,7 @@ class CreateInterviewTypesTable extends Migration
     {
         Schema::create('interview_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type');
+            $table->string('name');
             $table->timestamps();
         });
     }
