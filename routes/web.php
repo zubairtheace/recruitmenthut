@@ -19,6 +19,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/vacancies', 'HomeController@vacancies');
+
+Route::get('/candidates', 'HomeController@candidates');
+
+Route::get('/interviews', 'HomeController@interviews');
+
+Route::get('/management', 'HomeController@management');
+
 Route::resource('/department', 'DepartmentController');
 
 Route::resource('/position', 'PositionController');
