@@ -57,8 +57,6 @@ class RegisterController extends Controller
             'phone_number' => 'required|min:8|max:8',
             'mobile_number' => 'required|min:8|max:8',
             'email' => 'required|email|max:255|unique:users',
-            'cv' => 'required',
-            'certificates' => 'required',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -82,9 +80,7 @@ class RegisterController extends Controller
             'phone_number' => $data['phone_number'],
             'mobile_number' => $data['mobile_number'],
             'email' => $data['email'],
-            'cv' => $data['cv'],
-            'certificates' => $data['certificates'],
-            'password' => bcrypt($data['password']),
+            'password' => bcrypt($data['password'])
         ]);
     }
 }

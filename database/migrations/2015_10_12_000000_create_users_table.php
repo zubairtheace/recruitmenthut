@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->integer('user_type_id')->unsigned()->default('1');
             $table->string('nic');
             $table->string('gender');
             $table->date('dob');
@@ -25,14 +26,8 @@ class CreateUsersTable extends Migration
             $table->integer('phone_number');
             $table->integer('mobile_number');
             $table->string('email')->unique();
-            $table->text('cv');
-            $table->text('certificates');
-            $table->float('overall_rating')->default('0');
             $table->string('password');
-            $table->integer('department_id')->unsigned()->nullable();
-            $table->integer('position_id')->unsigned()->nullable();
-            $table->foreign('department_id')->references('id')->on('departments');
-            $table->foreign('position_id')->references('id')->on('positions');
+            $table->foreign('user_type_id')->references('id')->on('user_types');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -372,66 +372,7 @@
                         @endif
                     </div>
 
-                    <!-- cv -->
-                    <div class="form-group{{ $errors->has('cv') ? ' has-error' : '' }}">
-                        <div class="container-fluid">
-                            {!! Form::label(
-                                'cv',
-                                'Curriculum Vitae',
-                                [
-                                    'class' => 'col-md-4 control-label'
-                                ]
-                            ); !!}
-
-                            <div class="col-md-6">
-                                {!! Form::file(
-                                    'cv',
-                                    [
-                                        'class' => 'form-control'
-                                    ]
-                                ); !!}
-                            </div>
-                        </div>
-                        @if ($errors->has('cv'))
-                        <div class="container-fluid">
-                            <div class="col-md-8 col-md-offset-4">
-                                <span class="help-block">
-                                    <strong class="text-danger">{{ $errors->first('cv') }}</strong>
-                                </span>
-                            </div>
-                        </div>
-                        @endif
-                    </div>
-                    <!-- certificates -->
-                    <div class="form-group{{ $errors->has('certificates') ? ' has-error' : '' }}">
-                        <div class="container-fluid">
-                            {!! Form::label(
-                                'certificates',
-                                'Certificates',
-                                [
-                                    'class' => 'col-md-4 control-label'
-                                ]
-                            ); !!}
-
-                            <div class="col-md-6">
-                                {!! Form::file(
-                                    'certificates',
-                                    [
-                                        'class' => 'form-control'
-                                    ]
-                                ); !!}
-                            </div>
-                        </div>
-                        @if ($errors->has('certificates'))
-                        <div class="container-fluid">
-                            <div class="col-md-8 col-md-offset-4">
-                                <span class="help-block">
-                                    <strong class="text-danger">{{ $errors->first('certificates') }}</strong>
-                                </span>
-                            </div>
-                        </div>
-                        @endif
-                    </div>
+                    
 
                     <!--Password-->
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
