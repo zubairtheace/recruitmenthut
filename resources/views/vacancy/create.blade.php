@@ -46,41 +46,7 @@
                             </div>
                         </div>
                         @endif
-                    </div>
-                    <!-- department id -->
-
-                    <div class="form-group{{ $errors->has('department_id') ? ' has-error' : '' }}">
-                        <div class="container-fluid">
-                            {!! Form::label(
-                                'department_id',
-                                'Department',
-                                [
-                                    'class' => 'col-md-4 control-label'
-                                ]
-                            ); !!}
-
-                            <div class="col-md-6">
-                                {!! Form::select(
-                                    'department_id',
-                                    App\Department::pluck('name', 'id'),
-                                    null,
-                                    [
-                                        'placeholder' => 'Select department...',
-                                        'class' => 'form-control'
-                                    ]
-                                ); !!}
-                            </div>
-                        </div>
-                        @if ($errors->has('department_id'))
-                        <div class="container-fluid">
-                            <div class="col-md-8 col-md-offset-4">
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('department_id') }}</strong>
-                                </span>
-                            </div>
-                        </div>
-                        @endif
-                    </div>
+                    </div>                    
 
                     <!-- valid to -->
                     <div class="form-group{{ $errors->has('valid_to') ? ' has-error' : '' }}">

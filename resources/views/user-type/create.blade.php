@@ -5,22 +5,22 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Add New Position</div>
+                <div class="panel-heading">Add New User Type</div>
                 <div class="panel-body">
 
                     {!! Form::open([
-                      'route' => 'position.store',
-                      'class' => 'form-horizontal',
-                      'role' => 'form',
-                      'method' => 'POST',
-                      ]) !!}
+                        'route' => 'user-type.store',
+                        'class' => 'form-horizontal',
+                        'role' => 'form',
+                        'method' => 'POST',
+                    ]) !!}
 
-                    <!-- position name   -->
+                    <!-- user type name -->
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <div class="container-fluid">
                             {!! Form::label(
                                 'name',
-                                'Name',
+                                'User Type',
                                 [
                                     'class' => 'col-md-4 control-label'
                                 ]
@@ -46,10 +46,9 @@
                             </div>
                         </div>
                         @endif
-                    </div>                    
+                    </div>
 
-                    <!-- submit -->
-
+                    <!-- submit button -->
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             {!! Form::submit(
@@ -61,6 +60,7 @@
 
                         </div>
                     </div>
+
                     {!! Form::close() !!}
 
                 </div>

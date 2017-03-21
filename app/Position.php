@@ -9,11 +9,7 @@ class Position extends Model
     public $timestamps = false;
 
     protected $fillable = [
-      'name',
-      'department_id'
+      'name'
     ];
 
-    public function department(){
-        return $this->hasOne('App\Department', 'id');
-    }
 }

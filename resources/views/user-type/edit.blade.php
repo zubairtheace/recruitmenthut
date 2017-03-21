@@ -5,30 +5,30 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-            <div class="panel-heading">Add New Department</div>
+                <div class="panel-heading">Edit User Type</div>
                 <div class="panel-body">
-
                     {!! Form::open([
-                    'route' => 'department.store',
-                    'class' => 'form-horizontal',
-                    'role' => 'form',
-                    'method' => 'POST',
+                        'route' => ['user-type.update', $userType->id],
+                        'class' => 'form-horizontal',
+                        'role' => 'form',
+                        'method' => 'put'
                     ]) !!}
 
-                    <!-- department name -->
+                    <!-- user type name -->
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <div class="container-fluid">
                             {!! Form::label(
                                 'name',
-                                'Department',
+                                'User Type',
                                 [
                                     'class' => 'col-md-4 control-label'
                                 ]
                             ); !!}
+
                             <div class="col-md-6">
                                 {!! Form::text(
                                     'name',
-                                    old('name'),
+                                    $userType->name,
                                     [
                                         'class'=>'form-control',
                                         'required' => 'required'
@@ -56,9 +56,12 @@
                                     'class' => 'btn btn-primary'
                                 ]
                             ); !!}
+
                         </div>
                     </div>
+
                     {!! Form::close() !!}
+
                 </div>
             </div>
         </div>

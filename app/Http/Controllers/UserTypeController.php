@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use View;
-use App\Department;
-use App\Http\Requests\DepartmentRequest;
+use App\UserType;
+use App\Http\Requests\UserTypeRequest;
 
-class DepartmentController extends Controller
+class UserTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::paginate(10);
-        return view('department.index', compact('departments'));
+        $userTypes = UserType::paginate(10);
+        return view('user-type.index', compact('userTypes'));
     }
 
     /**
@@ -28,7 +28,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('department.create');
+        return view('user-type.create');
     }
 
     /**
@@ -37,11 +37,11 @@ class DepartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DepartmentRequest $request)
+    public function store(UserTypeRequest $request)
     {
-        $result = Department::create($request->all());
+        $result = UserType::create($request->all());
         if ($result){
-            return redirect('department')->with('success', 'Department Added');
+            return redirect('user-type')->with('success', 'User Type Added');
         }
         else{
             return back()->with('error','Failed to save!');
@@ -56,8 +56,8 @@ class DepartmentController extends Controller
      */
     public function show($id)
     {
-        $department = Department::findOrFail($id);
-        return view('department.show', compact('department'));
+        $userType = UserType::findOrFail($id);
+        return view('user-type.show', compact('userType'));
     }
 
     /**
@@ -68,8 +68,8 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        $department = Department::findOrFail($id);
-        return view('department.edit', compact('department'));
+        $userType = UserType::findOrFail($id);
+        return view('user-type.edit', compact('userType'));
     }
 
     /**
@@ -79,12 +79,12 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(DepartmentRequest $request, $id)
+    public function update(UserTypeRequest $request, $id)
     {
-        $department = Department::findOrFail($id);
-        $result = $department->update($request->all());
+        $userType = UserType::findOrFail($id);
+        $result = $userType->update($request->all());
         if ($result){
-            return redirect('department')->with('success', 'Department Updated');
+            return redirect('user-type')->with('success', 'User Type Updated');
         }
         else{
             return back()->with('error','Failed to update!');
@@ -99,10 +99,10 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        $department = Department::findOrFail($id);
-        $result = $department->delete();
+        $userType = UserType::findOrFail($id);
+        $result = $userType->delete();
         if ($result){
-            return redirect('department')->with('success', 'Department deleted');
+            return redirect('user-type')->with('success', 'User Type deleted');
         }
         else{
             return back()->with('error','Failed to delete!');

@@ -27,10 +27,10 @@ Route::get('/interviews', 'HomeController@interviews');
 
 Route::get('/management', 'HomeController@management');
 
-Route::resource('/department', 'DepartmentController');
-
 Route::resource('/position', 'PositionController');
 
 Route::resource('/vacancy', 'VacancyController');
 
 Route::resource('/interview-type', 'InterviewTypeController');
+
+Route::resource('/user-type', 'UserTypeController');

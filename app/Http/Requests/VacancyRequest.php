@@ -26,8 +26,7 @@ class VacancyRequest extends FormRequest
         return [
             'name' => 'required|min:2',
             'valid_to' => 'required',
-            'description' => 'required',
-            'department_id' => 'required'
+            'description' => 'required'
         ];
     }
 }

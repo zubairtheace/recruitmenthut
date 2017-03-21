@@ -11,11 +11,7 @@ class Vacancy extends Model
     protected $fillable = [
       'name',
       'valid_to',
-      'description',
-      'department_id'
+      'description'
     ];
 
-    public function department(){
-        return $this->hasOne('App\Department', 'id');
-    }
 }

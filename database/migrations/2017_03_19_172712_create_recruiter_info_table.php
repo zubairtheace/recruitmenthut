@@ -16,9 +16,7 @@ class CreateRecruiterInfoTable extends Migration
         Schema::create('recruiter_infos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('department_id')->unsigned();
             $table->integer('position_id')->unsigned();
-            $table->foreign('department_id')->references('id')->on('departments');
             $table->foreign('position_id')->references('id')->on('positions');
             $table->timestamps();
         });

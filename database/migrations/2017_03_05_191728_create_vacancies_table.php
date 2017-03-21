@@ -18,8 +18,6 @@ class CreateVacanciesTable extends Migration
             $table->string('name');
             $table->date('valid_to');
             $table->text('description');
-            $table->integer('department_id')->unsigned();
-            $table->foreign('department_id')->references('id')->on('departments');
             $table->timestamps();
         });
     }
