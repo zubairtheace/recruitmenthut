@@ -15,10 +15,10 @@ class CreateCandidateInfoTable extends Migration
     {
         Schema::create('candidate_infos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
             $table->text('cv');
             $table->text('certificates');
-            $table->float('overall_rating')->default('0');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
