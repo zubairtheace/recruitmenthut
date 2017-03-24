@@ -13,7 +13,7 @@ class ApplicationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class ApplicationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'candidate_id' => 'required',
+            'vacancy_id' => 'required',
+            'date_applied' => 'required',
+            'overall_rating' => 'required'
         ];
     }
 }

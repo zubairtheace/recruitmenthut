@@ -36,3 +36,5 @@ Route::resource('/interview-type', 'InterviewTypeController');
 Route::resource('/user-type', 'UserTypeController');
 
 Route::resource('/recruiter', 'RecruiterController');
+
+Route::resource('/application', 'ApplicationController');

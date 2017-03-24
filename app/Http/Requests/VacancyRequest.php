@@ -25,7 +25,7 @@ class VacancyRequest extends FormRequest
     {
         return [
             'name' => 'required|min:2',
-            'valid_to' => 'required',
+            'closing_date' => 'required',
             'description' => 'required'
         ];
     }

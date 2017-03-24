@@ -10,7 +10,7 @@ class Vacancy extends Model
 
     protected $fillable = [
       'name',
-      'valid_to',
+      'closing_date',
       'description'
     ];
 

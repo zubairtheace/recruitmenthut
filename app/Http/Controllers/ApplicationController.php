@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use View;
+use App\Application;
+use App\Http\Requests\ApplicationRequest;
 
 class ApplicationController extends Controller
 {
@@ -13,7 +17,8 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        //
+        $applications = Application::paginate(10);
+        return view('application.index', compact('applications'));
     }
 
     /**
@@ -23,7 +28,7 @@ class ApplicationController extends Controller
      */
     public function create()
     {
-        //
+        return view('application.create');
     }
 
     /**
@@ -32,9 +37,15 @@ class ApplicationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ApplicationRequest $request)
     {
-        //
+        $result = Application::create($request->all());
+        if ($result){
+            return redirect('application')->with('success', 'Application Added');
+        }
+        else{
+            return back()->with('error','Failed to save!');
+        }
     }
 
     /**
@@ -45,7 +56,8 @@ class ApplicationController extends Controller
      */
     public function show($id)
     {
-        //
+        $application = Application::findOrFail($id);
+        return view('application.show', compact('application'));
     }
 
     /**
@@ -56,7 +68,8 @@ class ApplicationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $application = Application::findOrFail($id);
+        return view('application.edit', compact('application'));
     }
 
     /**
@@ -66,9 +79,16 @@ class ApplicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ApplicationRequest $request, $id)
     {
-        //
+        $application = Application::findOrFail($id);
+        $result = $application->update($request->all());
+        if ($result){
+            return redirect('application')->with('success', 'Application Updated');
+        }
+        else{
+            return back()->with('error','Failed to update!');
+        }
     }
 
     /**
@@ -79,6 +99,13 @@ class ApplicationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $application = Application::findOrFail($id);
+        $result = $application->delete();
+        if ($result){
+            return redirect('application')->with('success', 'Application deleted');
+        }
+        else{
+            return back()->with('error','Failed to delete!');
+        }
     }
 }

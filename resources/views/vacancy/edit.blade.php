@@ -45,14 +45,14 @@
                                     </div>
                                 </div>
                                 @endif
-                            </div>                            
+                            </div>
 
-                            <!-- valid to -->
-                            <div class="form-group{{ $errors->has('valid_to') ? ' has-error' : '' }}">
+                            <!-- Closing Date -->
+                            <div class="form-group{{ $errors->has('closing_date') ? ' has-error' : '' }}">
                                 <div class="container-fluid">
                                     {!! Form::label(
-                                        'valid_to',
-                                        'Valid To',
+                                        'closing_date',
+                                        'Closing Date',
                                         [
                                             'class' => 'col-md-4 control-label'
                                         ]
@@ -60,19 +60,19 @@
 
                                     <div class="col-md-4">
                                         {!! Form::date(
-                                            'valid_to',
-                                            $vacancy->valid_to,
+                                            'closing_date',
+                                            $vacancy->closing_date,
                                             [
                                                 'class'=>'form-control',
                                             ]
                                         ); !!}
                                     </div>
                                 </div>
-                                @if ($errors->has('valid_to'))
+                                @if ($errors->has('closing_date'))
                                 <div class="container-fluid">
                                     <div class="col-md-8 col-md-offset-4">
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('valid_to') }}</strong>
+                                            <strong>{{ $errors->first('closing_date') }}</strong>
                                         </span>
                                     </div>
                                 </div>
