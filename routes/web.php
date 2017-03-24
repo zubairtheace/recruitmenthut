@@ -34,3 +34,5 @@ Route::resource('/vacancy', 'VacancyController');
 Route::resource('/interview-type', 'InterviewTypeController');
 
 Route::resource('/user-type', 'UserTypeController');
+
+Route::resource('/recruiter', 'RecruiterController');
