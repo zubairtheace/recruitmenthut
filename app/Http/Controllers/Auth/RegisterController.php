@@ -70,6 +70,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        dd($data);
         $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -84,7 +85,15 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password'])
         ]);
 
-        $user->candidateInfo = CandidateInfo::create([
+
+
+        // $cv = $cv->file('cv');
+        // $cv->move( public_path('/documents/cv'), $data['cv'] );
+        //
+        // $certificates = $certificates->file('certificates');
+        // $certificates->move( public_path('/documents/certificates'), $data['certificates'] );
+
+        $candidate = CandidateInfo::create([
            'user_id' => $user->id,
            'cv' => $data['cv'],
            'certificates' => $data['certificates'],

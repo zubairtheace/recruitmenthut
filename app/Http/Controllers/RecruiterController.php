@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Recruiter;
+use App\RecruiterInfo;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -25,8 +25,20 @@ class RecruiterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(array $data)
+    public function create()
     {
+        return view('recruiter.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $data)
+    {
+        dd($data);
         $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -41,23 +53,17 @@ class RecruiterController extends Controller
             'password' => bcrypt($data['password'])
         ]);
 
-        $user->recruiter = Recruiter::create([
+        $recruiterInfo = RecruiterInfo::create([
            'user_id' => $user->id,
            'position_id' => $data['position_id'],
        ]);
 
-       return $user;
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+       if ($user){
+           return redirect('recruiter')->with('success', 'Recruiter Added');
+       }
+       else{
+           return back()->with('error','Failed to save!');
+       }
     }
 
     /**

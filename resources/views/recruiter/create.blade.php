@@ -9,7 +9,7 @@
                 <div class="panel-body">
 
                     {!! Form::open([
-                      'route' => 'recruiter.create',
+                      'route' => 'recruiter.store',
                       'class' => 'form-horizontal',
                       'role' => 'form',
                       'method' => 'POST',
@@ -78,6 +78,40 @@
                               <div class="col-md-8 col-md-offset-4">
                                   <span class="help-block">
                                       <strong>{{ $errors->first('last_name') }}</strong>
+                                  </span>
+                              </div>
+                          </div>
+                          @endif
+                      </div>
+
+                      <!-- Position id   -->
+                      <div class="form-group{{ $errors->has('position_id') ? ' has-error' : '' }}">
+                          <div class="container-fluid">
+                              {!! Form::label(
+                                  'position_id',
+                                  'Position',
+                                  [
+                                      'class' => 'col-md-4 control-label'
+                                  ]
+                              ); !!}
+
+                              <div class="col-md-6">
+                                  {!! Form::select(
+                                      'position_id',
+                                      App\Position::pluck('name', 'id'),
+                                      null,
+                                      [
+                                          'placeholder' => 'Select Position...',
+                                          'class' => 'form-control'
+                                      ]
+                                  ); !!}
+                              </div>
+                          </div>
+                          @if ($errors->has('position_id'))
+                          <div class="container-fluid">
+                              <div class="col-md-8 col-md-offset-4">
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('position_id') }}</strong>
                                   </span>
                               </div>
                           </div>
@@ -370,73 +404,7 @@
                           @endif
                       </div>
 
-                      <!--CV-->
-                      <div class="form-group{{ $errors->has('cv') ? ' has-error' : '' }}">
-                          <div class="container-fluid">
-                              {!! Form::label(
-                                  'cv',
-                                  'CV',
-                                  [
-                                      'class' => 'col-md-4 control-label'
-                                  ]
-                              ); !!}
 
-                              <div class="col-md-6">
-                                  {!! Form::textarea(
-                                      'cv',
-                                      old('cv'),
-                                      [
-                                          'class'=>'form-control',
-                                          'required' => 'required',
-                                          'rows' => '3'
-                                      ]
-                                  ); !!}
-                              </div>
-                          </div>
-                          @if ($errors->has('cv'))
-                          <div class="container-fluid">
-                              <div class="col-md-8 col-md-offset-4">
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('cv') }}</strong>
-                                  </span>
-                              </div>
-                          </div>
-                          @endif
-                      </div>
-
-                      <!--certificates-->
-                      <div class="form-group{{ $errors->has('certificates') ? ' has-error' : '' }}">
-                          <div class="container-fluid">
-                              {!! Form::label(
-                                  'certificates',
-                                  'Certificates',
-                                  [
-                                      'class' => 'col-md-4 control-label'
-                                  ]
-                              ); !!}
-
-                              <div class="col-md-6">
-                                  {!! Form::textarea(
-                                      'certificates',
-                                      old('certificates'),
-                                      [
-                                          'class'=>'form-control',
-                                          'required' => 'required',
-                                          'rows' => '3'
-                                      ]
-                                  ); !!}
-                              </div>
-                          </div>
-                          @if ($errors->has('certificates'))
-                          <div class="container-fluid">
-                              <div class="col-md-8 col-md-offset-4">
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('certificates') }}</strong>
-                                  </span>
-                              </div>
-                          </div>
-                          @endif
-                      </div>
 
                       <!--Password-->
                       <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
@@ -493,39 +461,7 @@
                               </div>
                           </div>
                       </div>
-                      <!-- position -->
-                        <div class="form-group{{ $errors->has('position_id') ? ' has-error' : '' }}">
-                            <div class="container-fluid">
-                                {!! Form::label(
-                                    'position_id',
-                                    'Position',
-                                    [
-                                        'class' => 'col-md-4 control-label'
-                                    ]
-                                ); !!}
 
-                                <div class="col-md-6">
-                                {!! Form::select(
-                                    'position_id',
-                                    App\Position::pluck('name', 'id'),
-                                    null,
-                                    [
-                                        'placeholder' => 'Select Position...',
-                                        'class' => 'form-control'
-                                    ]
-                                ); !!}
-                                </div>
-                            </div>
-                            @if ($errors->has('position_id'))
-                            <div class="container-fluid">
-                                <div class="col-md-8 col-md-offset-4">
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('position_id') }}</strong>
-                                    </span>
-                                </div>
-                            </div>
-                            @endif
-                        </div>
 
                       <!-- submit button -->
 
