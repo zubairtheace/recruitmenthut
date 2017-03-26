@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\RecruiterInfo;
 use App\User;
+use App\RecruiterInfo;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -17,7 +18,9 @@ class RecruiterController extends Controller
      */
     public function index()
     {
-        //
+        //check to see if data entered ofr recruiter info is JSON
+        // dd(RecruiterInfo::all());
+        return view('recruiter.index');
     }
 
     /**
@@ -38,7 +41,7 @@ class RecruiterController extends Controller
      */
     public function store(Request $data)
     {
-        dd($data);
+        // dd($data);
         $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
