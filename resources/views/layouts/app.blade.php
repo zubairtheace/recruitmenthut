@@ -42,12 +42,19 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav nav-tabs">
                         <li><a href="/home">Home</a></li>
                         <li><a href="/vacancies">Vacancies</a></li>
                         <li><a href="/candidates">Candidates</a></li>
+                        <li><a href="/applications">Applications</a></li>
                         <li><a href="/interviews">Interviews</a></li>
-                        <li><a href="/management">Management</a></li>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Management<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Recruiters</a></li>
+                                <li><a href="#">Positions</a></li>
+                                <li><a href="#">Interview Types</a></li>
+                            </ul>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

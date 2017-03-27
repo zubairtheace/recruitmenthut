@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
@@ -22,6 +22,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/vacancies', 'HomeController@vacancies');
 
 Route::get('/candidates', 'HomeController@candidates');
+
+Route::get('/applications', 'HomeController@applications');
 
 Route::get('/interviews', 'HomeController@interviews');
 

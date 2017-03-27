@@ -36,6 +36,11 @@ class HomeController extends Controller
         return view('pages/candidates');
     }
 
+    public function applications()
+    {
+        return view('pages/applications');
+    }
+
     public function interviews()
     {
         return view('pages/interviews');
