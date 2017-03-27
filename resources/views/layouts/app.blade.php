@@ -50,9 +50,9 @@
                         <li><a href="/interviews">Interviews</a></li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Management<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Recruiters</a></li>
-                                <li><a href="#">Positions</a></li>
-                                <li><a href="#">Interview Types</a></li>
+                                <li><a href="recruiters">Recruiters</a></li>
+                                <li><a href="positions">Positions</a></li>
+                                <li><a href="interview-types">Interview Types</a></li>
                             </ul>
                         </li>
                     </ul>

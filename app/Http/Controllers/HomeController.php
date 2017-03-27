@@ -46,8 +46,18 @@ class HomeController extends Controller
         return view('pages/interviews');
     }
 
-    public function management()
+    public function recruiters()
     {
-        return view('pages/management');
+        return view('pages/recruiters');
+    }
+
+    public function positions()
+    {
+        return view('pages/positions');
+    }
+
+    public function interviewTypes()
+    {
+        return view('pages/interview-types');
     }
 }

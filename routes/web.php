@@ -27,7 +27,11 @@ Route::get('/applications', 'HomeController@applications');
 
 Route::get('/interviews', 'HomeController@interviews');
 
-Route::get('/management', 'HomeController@management');
+Route::get('/recruiters', 'HomeController@recruiters');
+
+Route::get('/positions', 'HomeController@positions');
+
+Route::get('/interview-types', 'HomeController@interviewTypes');
 
 Route::resource('/position', 'PositionController');
 
