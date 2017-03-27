@@ -4,36 +4,66 @@
 
 <h2>Git Configuration</h2>
 
-<p>Enter Git User Name</p><br>
-<code>git config --global user.name "Your Name"</code><br>
+<p>Enter Git User Name</p>
+<code>git config --global user.name "Your Name"</code>
+<br>
+<hr>
 
-<p>Enter Git Email address</p><br>
-<code>git config --global user.email "tofy.zubair@gmail.com"</code><br>
+<p>Enter Git Email address</p>
+<code>git config --global user.email "tofy.zubair@gmail.com"</code>
+<br>
+<hr>
 
-<p>Clone Git repository</p><br>
-<code>git clone https://zubairtheace@gitlab.com/theteam2017/recruitmenthut.git</code><br>
+<p>Clone Git repository</p>
+<code>git clone https://zubairtheace@gitlab.com/theteam2017/recruitmenthut.git</code>
+<br>
+<hr>
 
 
-<h2>Install Composer</h2>
+<h2>Install Required Softwares</h2>
 
-<p><a href="https://getcomposer.org/download/1.4.1/composer.phar">Download Composer Here</a></p><br>
+<p>Install Composer</p>
+<p><a href="https://getcomposer.org/download/1.4.1/composer.phar">Download Composer Here</a></p>
+<br>
+<hr>
 
-<h2>Install XAMPP</h2>
-<p><a href="https://www.apachefriends.org/xampp-files/7.1.1/xampp-win32-7.1.1-0-VC14-installer.exe">Download XAMPP Here</a></p><br>
-
+<p>Install XAMPP</p>
+<p><a href="https://www.apachefriends.org/xampp-files/7.1.1/xampp-win32-7.1.1-0-VC14-installer.exe">Download XAMPP Here</a></p>
+<br>
+<hr>
 
 
 <h2>Check for latest versions of Softwares</h2>
 
-<code>composer -v</code>
-<code>php -v</code>
+<p><code>composer -v</code></p>
+<br>
+<br>
+<p><code>php -v</code></p>
+<br>
+<hr>
 
-<h2>Add Vendor folder to Project</h2>
-<code>composer install</code>
+<h2>Add Missing packages to Project</h2>
+<p><code>composer install</code></p>
+<br>
+<hr>
 
---Creating a Laravel Project Via Composer Create-Project--
 
-composer create-project --prefer-dist laravel/laravel supercars
+<h2>Local Development Server</h2>
+<p>Default server</p>
+<p><code>php artisan serve</p></code>
+<br>
+<hr>
+
+<p>OR serve to an specific IP and PORT</p>
+<p><code>php artisan serve --host 192.168.100.6 --port 80</p></code>
+
+
+
+<h1>Creating a Laravel Project from scratch</h1>
+
+<h2>Creating a Laravel Project Via Composer Create-Project</h2>
+
+<p><code>composer create-project --prefer-dist laravel/laravel supercars</p></code>
 
 ___________________
 
