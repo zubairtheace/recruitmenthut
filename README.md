@@ -1,35 +1,35 @@
-##Recruitment Hut
+<h1>Recruitment Hut</h1>
 
 
 
-##Git Configuration
+<h2>Git Configuration</h2>
 
-<p>Enter Git User Name</p>
-<p>git config --global user.name "Tofy Zubair"</p>
+<p>Enter Git User Name</p><br>
+<code>git config --global user.name "Your Name"</code><br>
 
-<p>Enter Git Email address</p>
-<p>git config --global user.email "tofy.zubair@gmail.com"</p>
+<p>Enter Git Email address</p><br>
+<code>git config --global user.email "tofy.zubair@gmail.com"</code><br>
 
-<p>Clone Git repository</p>
-<p>git clone https://zubairtheace@gitlab.com/theteam2017/recruitmenthut.git</p>
-
-
-##Install Composer
-
-<p><a href="https://getcomposer.org/download/1.4.1/composer.phar">Download Composer Here</a></p>
-
-##Install XAMPP
-<p><a href="https://www.apachefriends.org/xampp-files/7.1.1/xampp-win32-7.1.1-0-VC14-installer.exe">Download XAMPP Here</a></p>
+<p>Clone Git repository</p><br>
+<code>git clone https://zubairtheace@gitlab.com/theteam2017/recruitmenthut.git</code><br>
 
 
+<h2>Install Composer</h2>
 
-##Check for latest versions of Softwares
+<p><a href="https://getcomposer.org/download/1.4.1/composer.phar">Download Composer Here</a></p><br>
 
-<p>composer -v</p>
-<p>php -v</p>
+<h2>Install XAMPP</h2>
+<p><a href="https://www.apachefriends.org/xampp-files/7.1.1/xampp-win32-7.1.1-0-VC14-installer.exe">Download XAMPP Here</a></p><br>
 
-##Add Vendor folder to Project
-<p>composer install<p>
+
+
+<h2>Check for latest versions of Softwares</h2>
+
+<code>composer -v</code>
+<code>php -v</code>
+
+<h2>Add Vendor folder to Project</h2>
+<code>composer install</code>
 
 --Creating a Laravel Project Via Composer Create-Project--
 
