@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><a href="/vacancy">Vacancies</a> <span class="fa fa-chevron-right"></span> {{$vacancy->name}}
+                <div class="panel-heading"><a href="/vacancy">Vacancies</a> <span class="fa fa-chevron-right"></span> {{ $vacancy->name }}
                     <a href="{{ route('vacancy.edit', $vacancy->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
                 </div>
                 <div class="panel-body">
@@ -14,19 +14,19 @@
                             <thead>
                                 <tr>
                                     <th>Job Title</th>
-                                    <th>{{$vacancy->name}}</th>
+                                    <th>{{ $vacancy->name }}</th>
                                 <tr>
                             </thead>
 
                             <tbody>
                                 <tr>
                                     <td>Description</td>
-                                    <td>{{$vacancy->description}}</td>
+                                    <td>{{ $vacancy->description }}</td>
                                 </tr>
 
                                 <tr>
                                     <td>Closing Date</td>
-                                    <td>{{$vacancy->closing_date}}</td>
+                                    <td>{{ $vacancy->closing_date }}</td>
                                 </tr>
                             </tbody>
                         </table>
