@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Custom fonts -->
+    <link href="{{ asset('custom/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -44,7 +46,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav nav-tabs">
                         <li><a href="/home">Home</a></li>
-                        <li><a href="/vacancies">Vacancies</a></li>
+                        <li><a href="/vacancy">Vacancies</a></li>
                         <li><a href="/candidates">Candidates</a></li>
                         <li><a href="/applications">Applications</a></li>
                         <li><a href="/interviews">Interviews</a></li>

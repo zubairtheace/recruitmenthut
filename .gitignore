@@ -1,6 +1,7 @@
 /node_modules
 /public/storage
-/public/documents
+/public/documents/cv
+/public/documents/certificates
 /public/hot
 /storage/*.key
 /vendor

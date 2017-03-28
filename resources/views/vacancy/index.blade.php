@@ -5,30 +5,38 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Vacancy
+                <div class="panel-heading">Vacancies
                     <a href="{{ route('vacancy.create') }}" class="btn btn-primary btn-sm pull-right">Add </a>
                 </div>
                 <div class="panel-body">
-                    <table class="table">
-                        @forelse($vacancies as $vacancy)
-                        <tr>
-                            <td>
-                                <p><b>Vacancy:</b> {{$vacancy->name}}</p>
-                                <div class="btn-toolbar pull-right">
-                                    <div class="btn-group">
-                                        <a href="{{ route('vacancy.show', $vacancy->id) }}" class="btn btn-primary btn-sm">View </a>
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Job Title</th>
+                                <th>Closing Date</th>
+                                <th><div class="pull-right">Actions</div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($vacancies as $vacancy)
+                            <tr>
+                                <td>{{ $vacancy->name }}</td>
+                                <td>{{ $vacancy->closing_date }}</td>
+                                <td>
+                                    <div class="pull-right">
+                                    <a href="{{ route('vacancy.show', $vacancy->id) }}"><span class="fa fa-eye"></span></a>
+                                    &nbsp;
+                                    &nbsp;
+                                    <a href="{{ route('vacancy.edit', $vacancy->id) }}"><span class="fa fa-pencil"></span></a>
                                     </div>
-                                    <div class="btn-group">
-                                        <a href="{{ route('vacancy.edit', $vacancy->id) }}" class="btn btn-primary btn-sm">Edit </a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td>No Vacancies </td>
-                        </tr>
-                        @endforelse
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td>No Vacancies </td>
+                            </tr>
+                            @endforelse
+                        </tbody>
                     </table>
                     <div>
                         {{ $vacancies->links() }}
