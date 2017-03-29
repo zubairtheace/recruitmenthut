@@ -33,7 +33,26 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <a href="{{ route('application.create') }}" class="btn btn-primary">Apply</a>
+                    <?php
+                        if (session('user_type') == 1){
+                            ?>
+                            My user type is 1
+                            <?php
+                        }
+                     ?>
+                    {!! Form::open([
+                        'route' => ['application.store'],
+                        'method' => 'POST',
+                        'class' => 'form-horizontal'
+                    ]) !!}
+                        <input name="candidate_id" type="hidden" value="{{ Auth::id() }}">
+                        <input name="vacancy_id" type="hidden" value="{{ $vacancy->id }}">
+                    <button type="submit" class="btn btn-primary">
+                        Apply
+                    </button>
+
+                    {!! Form::close() !!}
+                    <!-- <a href="{{ route('application.create') }}" class="btn btn-primary">Apply</a> -->
                     {!! Form::open([
                         'route' => ['vacancy.destroy', $vacancy->id],
                         'method' => 'delete',

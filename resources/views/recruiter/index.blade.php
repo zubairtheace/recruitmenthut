@@ -22,8 +22,8 @@
                             @forelse($recruiters as $recruiter)
                             <tr>
                                 <td>{{ $recruiter->first_name }} {{ $recruiter->last_name }}</td>
-                                <td>{{ $recruiter->user_type_id }}</td>
-                                <td>{{ $recruiter->position_id }}</td>
+                                <td>{{ $recruiter->user_type }}</td>
+                                <td>{{ $recruiter->position }}</td>
                                 <td>
                                     <div class="pull-right">
                                     <a href="{{ route('recruiter.show', $recruiter->id) }}"><span class="fa fa-eye"></span></a>
@@ -41,7 +41,6 @@
                         </tbody>
                     </table>
                     <div>
-                        {{ $recruiters->links() }}
                     </div>
                 </div>
             </div>

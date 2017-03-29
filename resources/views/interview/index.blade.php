@@ -39,7 +39,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td>No Interviews </td>
+                                <td colspan="6">No Interviews </td>
                             </tr>
                             @endforelse
                         </tbody>

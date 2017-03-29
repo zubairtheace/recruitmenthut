@@ -22,10 +22,13 @@
                         <tbody>
                             @forelse($applications as $application)
                             <tr>
-                                <td>{{ $application->candidate_id }}</td><!-- <td>Candidate first_name last_name</td> -->
-                                <td>{{ $application->vacancy_id }}</td><!-- <td>vacancy name</td> -->
+                                <td>{{ $application->candidate->first_name }} {{ $application->candidate->last_name }}</td>
+                                <td>{{ $application->vacancy->name }}</td>
                                 <td>{{ $application->date_applied }}</td>
-                                <td>30 March 2017</td><!-- <td>vacancy closing_date</td> -->
+                                <?php
+                                    $date = new DateTime($application->vacancy->closing_date);
+                                 ?>
+                                <td>{{ $date->format('d-m-Y') }}</td>
                                 <td>
                                     <div class="pull-right">
                                     <a href="{{ route('application.show', $application->id) }}"><span class="fa fa-eye"></span></a>

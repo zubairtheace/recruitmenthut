@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use DB;
 use App\RecruiterInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,7 +21,10 @@ class RecruiterController extends Controller
     {
         //check to see if data entered ofr recruiter info is JSON
         // dd(RecruiterInfo::all());
-        return view('recruiter.index');
+        // $recruiters = User::with('position')->paginate(10);
+        $recruiters = DB::select('select users.id AS id, users.first_name AS first_name, users.last_name AS last_name, user_types.name AS user_type, positions.name AS position from users,recruiter_infos,positions,user_types where users.id = recruiter_infos.user_id AND recruiter_infos.position_id = positions.id AND users.user_type_id = user_types.id');
+        // dd($recruiters);
+        return view('recruiter.index', compact('recruiters'));
     }
 
     /**
@@ -44,7 +48,7 @@ class RecruiterController extends Controller
         // dd($data);
         $user = User::create([
             'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],            
+            'last_name' => $data['last_name'],
             'user_type_id' => $data['user_type_id'],
             'nic' => $data['nic'],
             'gender' => $data['gender'],

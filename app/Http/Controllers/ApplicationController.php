@@ -37,11 +37,18 @@ class ApplicationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ApplicationRequest $request)
+    public function store(Request $request)
     {
-        $result = Application::create($request->all());
-        if ($result){
-            return redirect('application')->with('success', 'Application Added');
+
+        $application = Application::create([
+            'candidate_id' => $request['candidate_id'],
+            'vacancy_id' => $request['vacancy_id'],
+            'date_applied' => date("Y/m/d"),
+            'overall_rating' => '0'
+        ]);
+
+        if ($application){
+            return back()->with('success', 'You have Successfully applied for this vacancy.');
         }
         else{
             return back()->with('error','Failed to save!');
