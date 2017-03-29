@@ -44,7 +44,8 @@ class RecruiterController extends Controller
         // dd($data);
         $user = User::create([
             'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
+            'last_name' => $data['last_name'],            
+            'user_type_id' => $data['user_type_id'],
             'nic' => $data['nic'],
             'gender' => $data['gender'],
             'dob' => $data['dob'],
@@ -77,7 +78,8 @@ class RecruiterController extends Controller
      */
     public function show($id)
     {
-        //
+        $recruiter = Recruiter::findOrFail($id);
+        return view('recruiter.show', compact('recruiter'));
     }
 
     /**
@@ -88,7 +90,8 @@ class RecruiterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $recruiter = Recruiter::findOrFail($id);
+        return view('recruiter.edit', compact('recruiter'));
     }
 
     /**
@@ -100,7 +103,32 @@ class RecruiterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id)([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'user_type_id' => $data['user_type_id'],
+            'nic' => $data['nic'],
+            'gender' => $data['gender'],
+            'dob' => $data['dob'],
+            'marital_status' => $data['marital_status'],
+            'address' => $data['address'],
+            'phone_number' => $data['phone_number'],
+            'mobile_number' => $data['mobile_number'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password'])
+        ]);
+
+        $recruiterInfo = RecruiterInfo::findOrFail($id)([
+           'user_id' => $user->id,
+           'position_id' => $data['position_id'],
+       ]);
+
+       if ($user){
+           return redirect('recruiter')->with('success', 'Recruiter Updated');
+       }
+       else{
+           return back()->with('error','Failed to save!');
+       }
     }
 
     /**
@@ -111,6 +139,13 @@ class RecruiterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $recruiter = Recruiter::findOrFail($id);
+        $result = $recruiter->delete();
+        if ($result){
+            return redirect('recruiter')->with('success', 'Recruiter deleted');
+        }
+        else{
+            return back()->with('error','Failed to delete!');
+        }
     }
 }

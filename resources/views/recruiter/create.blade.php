@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Add New Position</div>
+                <div class="panel-heading">Add New Recruiter</div>
                 <div class="panel-body">
 
                     {!! Form::open([
@@ -78,6 +78,40 @@
                               <div class="col-md-8 col-md-offset-4">
                                   <span class="help-block">
                                       <strong>{{ $errors->first('last_name') }}</strong>
+                                  </span>
+                              </div>
+                          </div>
+                          @endif
+                      </div>
+
+                      <!-- User type id   -->
+                      <div class="form-group{{ $errors->has('user_type_id') ? ' has-error' : '' }}">
+                          <div class="container-fluid">
+                              {!! Form::label(
+                                  'user_type_id',
+                                  'User Type',
+                                  [
+                                      'class' => 'col-md-4 control-label'
+                                  ]
+                              ); !!}
+
+                              <div class="col-md-6">
+                                  {!! Form::select(
+                                      'user_type_id',
+                                      App\UserType::pluck('name', 'id'),
+                                      null,
+                                      [
+                                          'placeholder' => 'Select User Type...',
+                                          'class' => 'form-control'
+                                      ]
+                                  ); !!}
+                              </div>
+                          </div>
+                          @if ($errors->has('user_type_id'))
+                          <div class="container-fluid">
+                              <div class="col-md-8 col-md-offset-4">
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('user_type_id') }}</strong>
                                   </span>
                               </div>
                           </div>
@@ -468,7 +502,7 @@
                       <div class="form-group">
                           <div class="col-md-6 col-md-offset-4">
                               {!! Form::submit(
-                                  'Register',
+                                  'Save',
                                   [
                                       'class' => 'btn btn-primary'
                                   ]
