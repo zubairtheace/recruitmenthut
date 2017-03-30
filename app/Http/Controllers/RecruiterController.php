@@ -22,7 +22,30 @@ class RecruiterController extends Controller
         //check to see if data entered ofr recruiter info is JSON
         // dd(RecruiterInfo::all());
         // $recruiters = User::with('position')->paginate(10);
-        $recruiters = DB::select('select users.id AS id, users.first_name AS first_name, users.last_name AS last_name, user_types.name AS user_type, positions.name AS position from users,recruiter_infos,positions,user_types where users.id = recruiter_infos.user_id AND recruiter_infos.position_id = positions.id AND users.user_type_id = user_types.id');
+        $recruiters = DB::select
+        ('
+            SELECT
+            users.id AS id,
+            users.first_name AS first_name,
+            users.last_name AS last_name,
+            user_types.name AS user_type,
+            positions.name AS position
+
+            FROM
+            users,
+            recruiter_infos,
+            positions,
+            user_types
+
+            WHERE
+            users.id = recruiter_infos.user_id
+            AND
+            recruiter_infos.position_id = positions.id
+            AND
+            users.user_type_id = user_types.id
+            AND
+            (user_types.id = 3 OR user_types.id = 4)
+        ');
         // dd($recruiters);
         return view('recruiter.index', compact('recruiters'));
     }
@@ -82,7 +105,41 @@ class RecruiterController extends Controller
      */
     public function show($id)
     {
-        $recruiter = Recruiter::findOrFail($id);
+        $recruiter = collect( DB::select
+        ('
+            SELECT
+            users.id AS id,
+            users.first_name AS first_name,
+            users.last_name AS last_name,
+            users.nic AS nic,
+            users.gender AS gender,
+            users.dob AS dob,
+            users.marital_status AS marital_status,
+            users.address AS address,
+            users.phone_number AS phone_number,
+            users.mobile_number AS mobile_number,
+            users.email AS email,
+            user_types.name AS user_type,
+            positions.name AS position
+
+            FROM
+            users,
+            recruiter_infos,
+            positions,
+            user_types
+
+            WHERE
+            users.id = "'.$id.'"
+            AND
+            users.id = recruiter_infos.user_id
+            AND
+            recruiter_infos.position_id = positions.id
+            AND
+            users.user_type_id = user_types.id
+            AND
+            (user_types.id = 3 OR user_types.id = 4)
+        '))->first();
+        // dd($recruiter);
         return view('recruiter.show', compact('recruiter'));
     }
 
