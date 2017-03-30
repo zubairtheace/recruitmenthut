@@ -18,6 +18,12 @@ class CreateInterviewTypesTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+
+        // //5 or 6 types, or more
+        // $data1 = array("name"=>"Face to Face");
+        // $data2 = array("name"=>"Video Call");
+        // DB::table('interview_types')->insert(array($data1,$data2));
     }
 
     /**

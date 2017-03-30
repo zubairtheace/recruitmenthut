@@ -21,6 +21,20 @@ class CreateCandidateInfoTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
+
+        // //Fill for all users with user_type_id = 1 or 2
+        // $data1 = array(
+        //     "user_id"=>"6", //id should be relative to the table users with user_types = 1 or 2
+        //     "cv"=>"cv1.pdf", //create sample cv pdf with only names and data accurate, add other sample text, do this for all candidates and recruited candidates, which means cv1, cv2 etc.
+        //     "certificate"=>"certificate1.pdf" //create sample certificate pdf with only names and data accurate, add other sample text, do this for all candidates and recruited candidates, which means certificate1, certificate2 etc.
+        // );
+        //
+        // $data2 = array(
+        //     "user_id"=>"9", //id should be relative to the table users with user_types = 1 or 2
+        //     "cv"=>"cv12.pdf", //create sample cv pdf with only names and data accurate, add other sample text, do this for all candidates and recruited candidates, which means cv1, cv2 etc.
+        //     "certificate"=>"certificate12.pdf" //create sample certificate pdf with only names and data accurate, add other sample text, do this for all candidates and recruited candidates, which means certificate1, certificate2 etc.
+        // );
+        // DB::table('candidate_infos')->insert(array($data1,$data2));
     }
 
     /**

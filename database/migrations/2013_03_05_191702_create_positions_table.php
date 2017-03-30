@@ -19,6 +19,11 @@ class CreatePositionsTable extends Migration
             $table->timestamps();
         });
     }
+    // // Table positions (25 samples of positions in a web company)
+    // $data1 = array("name"=>"Technical Director");
+    // $data2 = array("name"=>"Managing Director");
+    // DB::table('user_types')->insert(array($data1,$data2));
+
 
     /**
      * Reverse the migrations.

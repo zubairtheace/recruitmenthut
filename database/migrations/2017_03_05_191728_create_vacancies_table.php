@@ -20,7 +20,24 @@ class CreateVacanciesTable extends Migration
             $table->text('description');
             $table->timestamps();
         });
+
+        // //15 sample vacancies
+        // $data1 = array(
+        //     "name"=>"Back end developper",
+        //     "closing_date"=>"2017-12-31", // format is yyyy-mm-dd
+        //     "description"=>"Short paragraph on job"
+        // );
+        //
+        // $data2 = array(
+        //     "name"=>"Front end developper",
+        //     "closing_date"=>"2017-11-31", // format is yyyy-mm-dd
+        //     "description"=>"Short paragraph on job"
+        // );
+        //
+        // DB::table('vacancies')->insert(array($data1,$data2));
     }
+
+
 
     /**
      * Reverse the migrations.

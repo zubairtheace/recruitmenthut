@@ -27,7 +27,7 @@
 <hr>
 
 <p>Install Composer</p>
-<p><a href="https://getcomposer.org/download/1.4.1/composer.phar">Download Composer Here</a></p>
+<p><a href="https://getcomposer.org/Composer-Setup.exe">Download Composer Here</a></p>
 <br>
 <p>Install XAMPP</p>
 <p><a href="https://www.apachefriends.org/xampp-files/7.1.1/xampp-win32-7.1.1-0-VC14-installer.exe">Download XAMPP Here</a></p>
