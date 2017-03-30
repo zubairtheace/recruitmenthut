@@ -36,10 +36,5 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
-        if (Auth::user()){
-            session(['user_type' => Auth::user()->user_type_id]);
-
-        }
-
     }
 }

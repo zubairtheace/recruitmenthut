@@ -5,8 +5,15 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><a href="/vacancy">Vacancies</a> <span class="fa fa-chevron-right"></span> {{ $vacancy->name }}
-                    <a href="{{ route('vacancy.edit', $vacancy->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
+                <div class="panel-heading">
+                    <a href="/vacancy">Vacancies</a> <span class="fa fa-chevron-right"></span> {{ $vacancy->name }}
+                    <?php
+                        if (Auth::user()->user_type_id == 4){
+                            ?>
+                                <a href="{{ route('vacancy.edit', $vacancy->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
+                            <?php
+                        }
+                     ?>
                 </div>
                 <div class="panel-body">
                     <div>
@@ -34,37 +41,34 @@
                 </div>
                 <div class="panel-footer">
                     <?php
-                        if (session('user_type') == 1){
+                        if (Auth::user()->user_type_id == 1){
                             ?>
-                            My user type is 1
+                                {!! Form::open([
+                                    'route' => ['application.store'],
+                                    'method' => 'POST',
+                                    'class' => 'form-horizontal'
+                                ]) !!}
+                                    <input name="candidate_id" type="hidden" value="{{ Auth::id() }}">
+                                    <input name="vacancy_id" type="hidden" value="{{ $vacancy->id }}">
+                                    <button type="submit" class="btn btn-primary">Apply</button>
+                                {!! Form::close() !!}
                             <?php
                         }
                      ?>
-                    {!! Form::open([
-                        'route' => ['application.store'],
-                        'method' => 'POST',
-                        'class' => 'form-horizontal'
-                    ]) !!}
-                        <input name="candidate_id" type="hidden" value="{{ Auth::id() }}">
-                        <input name="vacancy_id" type="hidden" value="{{ $vacancy->id }}">
-                    <button type="submit" class="btn btn-primary">
-                        Apply
-                    </button>
 
-                    {!! Form::close() !!}
-                    <!-- <a href="{{ route('application.create') }}" class="btn btn-primary">Apply</a> -->
-                    {!! Form::open([
-                        'route' => ['vacancy.destroy', $vacancy->id],
-                        'method' => 'delete',
-                        'class' => 'form-horizontal'
-                    ]) !!}
-
-                    <button type="submit" class="btn btn-danger">
-                        Delete
-                    </button>
-
-                    {!! Form::close() !!}
-
+                    <?php
+                        if (Auth::user()->user_type_id == 4){
+                            ?>
+                                {!! Form::open([
+                                    'route' => ['vacancy.destroy', $vacancy->id],
+                                    'method' => 'delete',
+                                    'class' => 'form-horizontal'
+                                ]) !!}
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                {!! Form::close() !!}
+                            <?php
+                        }
+                     ?>
                 </div>
             </div>
         </div>

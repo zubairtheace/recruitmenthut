@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use View;
+use DB;
 use App\Vacancy;
 use App\Http\Requests\VacancyRequest;
 
@@ -18,6 +19,22 @@ class VacancyController extends Controller
     public function index()
     {
         $vacancies = Vacancy::paginate(10);
+        // return view('vacancy.index', compact('vacancies'));
+
+        // $vacancies = DB::select
+        // ('
+        //     SELECT
+        //     vacancies.name AS name,
+        //     vacancies.closing_date AS closing_date
+        //
+        //     FROM
+        //     vacancies
+        //
+        //     WHERE
+        //     vacancies.closing_date >= CURDATE()
+        //
+        // ');
+        // dd($vacancies);
         return view('vacancy.index', compact('vacancies'));
     }
 
