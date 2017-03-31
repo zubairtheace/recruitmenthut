@@ -46,6 +46,21 @@ class InterviewController extends Controller
         else{
             return back()->with('error','Failed to save!');
         }
+        // $interview = Interview::create([
+        //     'application_id' => $request['application_id'],
+        //     'interviewer_id' => $request['interviewer_id'],
+        //     'interview_type_id' => $request['interview_type_id'],
+        //     'scheduled_on' => date("Y/m/d"),
+        //     'notes' => text,
+        //     'rating' => '0'
+        // ]);
+        //
+        // if ($interview){
+        //     return redirect('interview')->with('success', 'Interview Added');
+        // }
+        // else{
+        //     return back()->with('error','Failed to save!');
+        // }
     }
 
     /**

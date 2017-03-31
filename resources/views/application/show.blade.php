@@ -6,47 +6,51 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading"><a href="/application">Applications</a> <span class="fa fa-chevron-right"></span> Application # {{ $application->id }}
-                    <a href="{{ route('application.edit', $application->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
+                    <?php
+                        if (Auth::guest() != true){
+                            if (Auth::user()->user_type_id == 4){
+                                ?>
+                                    <a href="{{ route('application.edit', $application->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
+                                <?php
+                            }
+                        }
+                     ?>
                 </div>
                 <div class="panel-body">
                     <div>
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Application Number</th>
-                                    <th>{{ $application->id }}</th>
+                                    <th><div class="text-right">Application</th>
+                                    <th>#{{ $application->id }}</th>
                                 <tr>
                             </thead>
 
                             <tbody>
                                 <tr>
-                                    <td>Candidate Name</td>
-                                    <td>{{ $application->candidate_id }}</td>
-                                    <td><button class="btn btn-priamary btn-sm">View Candidate Details</button></td>
+                                    <td><div class="text-right"><strong>Candidate Name</strong></div></td>
+                                    <td>{{ $application->candidate->first_name }} {{ $application->candidate->last_name }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Job Title</td>
-                                    <td>{{ $application->vacancy_id }}</td>
-                                    <td><button class="btn btn-priamary btn-sm">View Job Details</button></td>
+                                    <td><div class="text-right"><strong>Job Title</strong></div></td>
+                                    <td><a href="{{ route('vacancy.show', $application->vacancy->id) }}">{{ $application->vacancy->name }}</a></td>
                                 </tr>
 
                                 <tr>
-                                    <td>Date of Application</td>
+                                    <td><div class="text-right"><strong>Date of Application</strong></div></td>
                                     <td>{{ $application->date_applied }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Vacancy Closing Date</td>
-                                    <td>30 March 2017</td>
+                                    <td><div class="text-right"><strong>Vacancy Closing Date</strong></div></td>
+                                    <td>{{ $application->vacancy->closing_date }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Overall Rating</td>
+                                    <td><div class="text-right"><strong>Overall Rating</strong></div></td>
                                     <td>{{ $application->overall_rating }}/10</td>
                                 </tr>
-
-
                             </tbody>
                         </table>
                     </div>

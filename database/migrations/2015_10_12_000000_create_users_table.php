@@ -44,13 +44,13 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2860480",//7 digits
             "mobile_number"=>"59455867",//8 digits
             "email"=>"tofy.zubair@gmail.com",// unique
-            "password"=>"123456"// set all password to 123456
+            "password"=>bcrypt("123456")// set all password to 123456
         );
 
         $data2 = array(
             "user_type_id"=>"1",//10 users within each types (candidate = 1, registered candidate = 2, interviewer = 3, HR = 4)
-            "first_name"=>"Zak",
-            "last_name"=>"William",
+            "first_name"=>"Candidate",
+            "last_name"=>"Example",
             "nic"=>"W1594632178563", // unique
             "gender"=>"male",//male or female
             "dob"=>"1990-12-04", // format is yyyy-mm-dd
@@ -58,8 +58,8 @@ class CreateUsersTable extends Migration
             "Address"=>"Port Louis",
             "phone_number"=>"2659462",//7 digits
             "mobile_number"=>"59856322",//8 digits
-            "email"=>"zak@william.com",// unique
-            "password"=>"123456"// set all password to 123456
+            "email"=>"candidate@example.com",// unique
+            "password"=>bcrypt("123456")// set all password to 123456
         );
 
         $data3 = array(
@@ -74,7 +74,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"8946200",//7 digits
             "mobile_number"=>"59687453",//8 digits
             "email"=>"adam@jonny.com",// unique
-            "password"=>"123456"// set all password to 123456
+            "password"=>bcrypt("123456")// set all password to 123456
         );
 
         $data4 = array(
@@ -89,7 +89,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2789321",//7 digits
             "mobile_number"=>"58654230",//8 digits
             "email"=>"cole@manny.com",// unique
-            "password"=>"123456"// set all password to 123456
+            "password"=>bcrypt("123456")// set all password to 123456
         );
 
         $data5 = array(
@@ -104,7 +104,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2441100",//7 digits
             "mobile_number"=>"56552200",//8 digits
             "email"=>"hubert@tuffy.com",// unique
-            "password"=>"123456"// set all password to 123456
+            "password"=>bcrypt("123456")// set all password to 123456
         );
 
         $data6 = array(
@@ -119,7 +119,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2225544",//7 digits
             "mobile_number"=>"59222254",//8 digits
             "email"=>"Jacky@Copain.com",// unique
-            "password"=>"123456"// set all password to 123456
+            "password"=>bcrypt("123456")// set all password to 123456
         );
 
         $data7 = array(
@@ -134,7 +134,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2222221",//7 digits
             "mobile_number"=>"59999998",//8 digits
             "email"=>"lara@kraff.com",// unique
-            "password"=>"123456"// set all password to 123456
+            "password"=>bcrypt("123456")// set all password to 123456
         );
 
         $data8 = array(
@@ -149,7 +149,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000002",//7 digits
             "mobile_number"=>"59555557",//8 digits
             "email"=>"haze@kibling.com",// unique
-            "password"=>"123456"// set all password to 123456
+            "password"=>bcrypt("123456")// set all password to 123456
         );
 
         $data9 = array(
@@ -164,7 +164,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2888888",//7 digits
             "mobile_number"=>"59111101",//8 digits
             "email"=>"lucy@koff.com",// unique
-            "password"=>"123456"// set all password to 123456
+            "password"=>bcrypt("123456")// set all password to 123456
         );
 
         $data10 = array(
@@ -179,7 +179,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2999963",//7 digits
             "mobile_number"=>"59546452",//8 digits
             "email"=>"ponny@tail.com",// unique
-            "password"=>"123456"// set all password to 123456
+            "password"=>bcrypt("123456")// set all password to 123456
         );
 
         $data11 = array(
@@ -194,7 +194,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2163691",
             "mobile_number"=>"59106629",
             "email"=>"heetun.tawfeeq1@gmail.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data12 = array(
@@ -209,7 +209,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"ivan@danny.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data13 = array(
@@ -224,13 +224,13 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2777774",
             "mobile_number"=>"59111114",
             "email"=>"pierre@rock.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data14 = array(
             "user_type_id"=>"2",
-            "first_name"=>"Jamie",
-            "last_name"=>"Jaff",
+            "first_name"=>"Registered Candidate",
+            "last_name"=>"Example",
             "nic"=>"J9998885556663",
             "gender"=>"male",
             "dob"=>"1999-11-30",
@@ -238,8 +238,8 @@ class CreateUsersTable extends Migration
             "Address"=>"Rose Hill",
             "phone_number"=>"2000003",
             "mobile_number"=>"59000001",
-            "email"=>"jamie@jaff.com",
-            "password"=>"123456"
+            "email"=>"registeredcandidate@example.com",
+            "password"=>bcrypt("123456")
         );
 
         $data15 = array(
@@ -254,7 +254,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2247960",
             "mobile_number"=>"59788777",
             "email"=>"paul@hitman.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data16 = array(
@@ -269,7 +269,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2222110",
             "mobile_number"=>"59265478",
             "email"=>"katie@larmas.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data17 = array(
@@ -284,7 +284,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000005",
             "mobile_number"=>"59450007",
             "email"=>"thea@queen.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data18 = array(
@@ -299,7 +299,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2860011",
             "mobile_number"=>"59457777",
             "email"=>"laurel@lance.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data19 = array(
@@ -314,7 +314,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"20022001",
             "mobile_number"=>"59001144",
             "email"=>"moira@steward.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data20 = array(
@@ -329,13 +329,13 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2860410",
             "mobile_number"=>"59455967",
             "email"=>"sara@ghul.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data21 = array(
             "user_type_id"=>"3",
-            "first_name"=>"Urvan",
-            "last_name"=>"Vanny",
+            "first_name"=>"Interviewer",
+            "last_name"=>"Example",
             "nic"=>"V1444774455212",
             "gender"=>"male",
             "dob"=>"2016-11-28",
@@ -343,8 +343,8 @@ class CreateUsersTable extends Migration
             "Address"=>"Cite Valleji",
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
-            "email"=>"urvan@vanny.com",
-            "password"=>"123456"
+            "email"=>"interviewer@example.com",
+            "password"=>bcrypt("123456")
         );
 
         $data22 = array(
@@ -359,7 +359,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"collen@velloo.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data23 = array(
@@ -374,7 +374,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"peaufine@lefils.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data24 = array(
@@ -389,7 +389,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"dev@auroy.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data25 = array(
@@ -404,7 +404,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"namin@lam.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data26 = array(
@@ -419,7 +419,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"veena@chillum.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data27 = array(
@@ -434,7 +434,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"shanna@khabh.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data28 = array(
@@ -449,7 +449,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"catrine@rob.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data29 = array(
@@ -464,7 +464,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"richa@corlin.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data30 = array(
@@ -479,7 +479,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"katherine@mirol.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data31 = array(
@@ -494,7 +494,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"ezio@audithore.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data32 = array(
@@ -509,7 +509,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"karim@kassam.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data33 = array(
@@ -524,13 +524,13 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"ken@sen.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data34 = array(
             "user_type_id"=>"4",
-            "first_name"=>"Nevin",
-            "last_name"=>"Lopes",
+            "first_name"=>"HR",
+            "last_name"=>"Example",
             "nic"=>"L6622007632140",
             "gender"=>"male",
             "dob"=>"2016-11-28",
@@ -538,8 +538,8 @@ class CreateUsersTable extends Migration
             "Address"=>"Cotton",
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
-            "email"=>"nevin@lopes.com",
-            "password"=>"123456"
+            "email"=>"hr@example.com",
+            "password"=>bcrypt("123456")
         );
 
         $data35 = array(
@@ -554,7 +554,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"pato@mirelli.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data36 = array(
@@ -569,7 +569,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"auro@chevi.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data37 = array(
@@ -584,7 +584,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"hemre@bot.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data38 = array(
@@ -599,7 +599,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"fabian@kol.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data39 = array(
@@ -614,7 +614,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"audrey@mikal.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
         $data40 = array(
@@ -629,7 +629,7 @@ class CreateUsersTable extends Migration
             "phone_number"=>"2000147",
             "mobile_number"=>"59335447",
             "email"=>"karene@lolly.com",
-            "password"=>"123456"
+            "password"=>bcrypt("123456")
         );
 
 

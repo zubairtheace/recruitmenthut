@@ -6,7 +6,15 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Applications
-                    <a href="{{ route('application.create') }}" class="btn btn-primary btn-sm pull-right">Add </a>
+                    <?php
+                        if (Auth::guest() != true){
+                            if (Auth::user()->user_type_id == 4){
+                                ?>
+                                    <a href="{{ route('application.create') }}" class="btn btn-primary btn-sm pull-right">Add </a>
+                                <?php
+                            }
+                        }
+                     ?>
                 </div>
                 <div class="panel-body">
                     <table class="table table-striped table-bordered table-hover">
@@ -24,17 +32,27 @@
                             <tr>
                                 <td>{{ $application->candidate->first_name }} {{ $application->candidate->last_name }}</td>
                                 <td>{{ $application->vacancy->name }}</td>
-                                <td>{{ $application->date_applied }}</td>
                                 <?php
-                                    $date = new DateTime($application->vacancy->closing_date);
+                                    $dateApplied = new DateTime($application->date_applied);
+                                    $closingDate = new DateTime($application->vacancy->closing_date);
                                  ?>
-                                <td>{{ $date->format('d-m-Y') }}</td>
+                                <td>{{ $dateApplied->format('d-m-Y') }}</td>
+                                <td>{{ $closingDate->format('d-m-Y') }}</td>
                                 <td>
                                     <div class="pull-right">
                                     <a href="{{ route('application.show', $application->id) }}"><span class="fa fa-eye"></span></a>
                                     &nbsp;
                                     &nbsp;
-                                    <a href="{{ route('application.edit', $application->id) }}"><span class="fa fa-pencil"></span></a>
+                                    <?php
+                                        if (Auth::guest() != true){
+                                            if (Auth::user()->user_type_id == 4){
+                                                ?>
+                                                    <a href="{{ route('application.edit', $application->id) }}"><span class="fa fa-pencil"></span></a>
+                                                <?php
+                                            }
+                                        }
+                                     ?>
+
                                     </div>
                                 </td>
                             </tr>

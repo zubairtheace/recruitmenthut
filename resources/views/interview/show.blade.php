@@ -5,49 +5,71 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><a href="/application">Interviews</a> <span class="fa fa-chevron-right"></span> Interview # {{ $interview->id }}
-                    <a href="{{ route('interview.edit', $interview->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
+                <div class="panel-heading"><a href="/interview">Interviews</a> <span class="fa fa-chevron-right"></span> Interview # {{ $interview->id }}
+                    <?php
+                        if (Auth::guest() != true){
+                            if (Auth::user()->user_type_id == 4){
+                                ?>
+                                    <a href="{{ route('interview.edit', $interview->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
+                                <?php
+                            }
+                        }
+                     ?>
                 </div>
                 <div class="panel-body">
                     <div>
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Interview Number</th>
-                                    <th>{{ $interview->id }}</th>
+                                    <th><div class="text-right">Interview</th>
+                                    <th>#{{ $interview->id }}</th>
                                 <tr>
                             </thead>
 
                             <tbody>
                                 <tr>
-                                    <td>Candidate Name</td>
-                                    <td>Paul Smith</td><!-- <td>candidate first_name last_name</td> -->
-                                    <td><button class="btn btn-priamary btn-sm">View Candidate Details</button></td>
+                                    <td><div class="text-right"><strong>Candidate Name</strong></div></td>
+                                    <td>{{ $interview->application->candidate->first_name }} {{ $interview->application->candidate->last_name }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Job Title</td>
-                                    <td>Human Resource Manager</td><!-- <td>vacancy name</td> -->
-                                    <td><button class="btn btn-priamary btn-sm">View Job Details</button></td>
+                                    <td><div class="text-right"><strong>Interviewer Name</strong></div></td>
+                                    <td>{{ $interview->interviewer->first_name }} {{ $interview->interviewer->last_name }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Interview Format</td>
-                                    <td>Video Call</td><!-- <td>interview_type name</td> -->
+                                    <td><div class="text-right"><strong>Job Title</strong></div></td>
+                                    <td><a href="{{ route('vacancy.show', $interview->application->vacancy->id) }}">{{ $interview->application->vacancy->name }}</a></td>
                                 </tr>
 
                                 <tr>
-                                    <td>Interview Date/Time</td>
-                                    <td>{{ $interview->scheduled_on }}</td>
+                                    <td><div class="text-right"><strong>Vacancy closing date</strong></div></td>
+                                    <?php
+                                        $closingDate = new DateTime($interview->application->vacancy->closing_date);
+                                     ?>
+                                    <td>{{ $closingDate->format('d-m-Y') }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Notes</td>
+                                    <td><div class="text-right"><strong>Interview Format</strong></div></td>
+                                    <td>{{ $interview->interview_type_id }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td><div class="text-right"><strong>Interview Date/Time</strong></div></td>
+                                    <?php
+                                        $scheduledOn = new DateTime($interview->scheduled_on);
+                                     ?>
+                                    <td>{{ $scheduledOn->format('d-m-Y') }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td><div class="text-right"><strong>Notes</strong></div></td>
                                     <td>{{ $interview->notes }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Overall Rating</td>
+                                    <td><div class="text-right"><strong>Notes</strong></div></td>
                                     <td>{{ $interview->rating }}/10</td>
                                 </tr>
 
