@@ -20,10 +20,12 @@ class CreateInterviewTypesTable extends Migration
         });
 
 
-        // //5 or 6 types, or more
-        // $data1 = array("name"=>"Face to Face");
-        // $data2 = array("name"=>"Video Call");
-        // DB::table('interview_types')->insert(array($data1,$data2));
+        $data1 = array("name"=>"Face to Face");
+        $data2 = array("name"=>"Video Call");
+        $data3 = array("name"=>"Phone Call");
+        $data4 = array("name"=>"Task Oriented");
+        $data5 = array("name"=>"Competency Based");
+        DB::table('interview_types')->insert(array($data1,$data2,$data3,$data4,$data5));
     }
 
     /**

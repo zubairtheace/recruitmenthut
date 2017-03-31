@@ -8,10 +8,12 @@
                 <div class="panel-heading">
                     <a href="/vacancy">Vacancies</a> <span class="fa fa-chevron-right"></span> {{ $vacancy->name }}
                     <?php
-                        if (Auth::user()->user_type_id == 4){
-                            ?>
-                                <a href="{{ route('vacancy.edit', $vacancy->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
-                            <?php
+                        if (Auth::guest() != true){
+                            if (Auth::user()->user_type_id == 4){
+                                ?>
+                                    <a href="{{ route('vacancy.edit', $vacancy->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
+                                <?php
+                            }
                         }
                      ?>
                 </div>
@@ -41,8 +43,16 @@
                 </div>
                 <div class="panel-footer">
                     <?php
-                        if (Auth::user()->user_type_id == 1){
+                        if (Auth::guest() != false){
                             ?>
+                                <a href="/login" class="btn btn-primary">Login to Apply </a>
+                            <?php
+                        }
+                     ?>
+                    <?php
+                        if (Auth::guest() != true){
+                            if (Auth::user()->user_type_id == 1){
+                                ?>
                                 {!! Form::open([
                                     'route' => ['application.store'],
                                     'method' => 'POST',
@@ -52,21 +62,23 @@
                                     <input name="vacancy_id" type="hidden" value="{{ $vacancy->id }}">
                                     <button type="submit" class="btn btn-primary">Apply</button>
                                 {!! Form::close() !!}
-                            <?php
+                                <?php
+                            }
                         }
                      ?>
-
                     <?php
-                        if (Auth::user()->user_type_id == 4){
-                            ?>
-                                {!! Form::open([
-                                    'route' => ['vacancy.destroy', $vacancy->id],
-                                    'method' => 'delete',
-                                    'class' => 'form-horizontal'
-                                ]) !!}
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                {!! Form::close() !!}
-                            <?php
+                        if (Auth::guest() != true){
+                            if (Auth::user()->user_type_id == 4){
+                                ?>
+                                    {!! Form::open([
+                                        'route' => ['vacancy.destroy', $vacancy->id],
+                                        'method' => 'delete',
+                                        'class' => 'form-horizontal'
+                                    ]) !!}
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    {!! Form::close() !!}
+                                <?php
+                            }
                         }
                      ?>
                 </div>
