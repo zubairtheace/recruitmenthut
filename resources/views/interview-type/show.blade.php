@@ -13,13 +13,14 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Interview Type</th>
+                                    <th><div class="text-right">Interview Type</th>
+                                    <th>#{{ $interviewType->id }}</th>
                                 <tr>
                             </thead>
 
                             <tbody>
                                 <tr>
-                                    <td>Name</td>
+                                    <td><div class="text-right"><strong>Name</strong></div></td>
                                     <td>{{ $interviewType->name }}</td>
                                 </tr>
                             </tbody>

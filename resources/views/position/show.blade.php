@@ -13,13 +13,14 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Position</th>
+                                    <th><div class="text-right">Position</th>
+                                    <th>#{{ $position->id }}</th>
                                 <tr>
                             </thead>
 
                             <tbody>
                                 <tr>
-                                    <td>Name</td>
+                                    <td><div class="text-right">Name</td>
                                     <td>{{ $position->name }}</td>
                                 </tr>
                             </tbody>

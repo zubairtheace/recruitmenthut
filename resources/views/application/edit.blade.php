@@ -32,7 +32,8 @@
                                     $application->candidate_id,
                                     [
                                         'placeholder' => 'Select Candidate...',
-                                        'class' => 'form-control'
+                                        'class' => 'form-control',
+                                        'disabled' => 'disabled'
                                     ]
                                 ); !!}
                             </div>

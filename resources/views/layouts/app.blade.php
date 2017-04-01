@@ -46,7 +46,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav nav-tabs">
                         <li><a href="/home">Home</a></li>
-                        <li><a href="/vacancy">Vacancies</a></li>                        
+                        <li><a href="/vacancy">Vacancies</a></li>
                         <?php
                             if (Auth::guest() != true){
                                 ?>
@@ -65,14 +65,14 @@
 
                                         else if (Auth::user()->user_type_id == 4){
                                             ?>
-                                                <li><a href="/candidates">Candidates</a></li>
+                                                <li><a href="/candidate">Candidates</a></li>
                                                 <li><a href="/application">Applications</a></li>
                                                 <li><a href="/interview">Interviews</a></li>
                                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Management<span class="caret"></span></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="recruiter">Recruiters</a></li>
-                                                        <li><a href="position">Positions</a></li>
-                                                        <li><a href="interview-type">Interview Types</a></li>
+                                                        <li><a href="/recruiter">Recruiters</a></li>
+                                                        <li><a href="/position">Positions</a></li>
+                                                        <li><a href="/interview-type">Interview Types</a></li>
                                                     </ul>
                                                 </li>
                                             <?php

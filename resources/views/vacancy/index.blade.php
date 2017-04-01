@@ -37,7 +37,10 @@
                             @forelse($vacancies as $vacancy)
                             <tr>
                                 <td><a href="{{ route('vacancy.show', $vacancy->id) }}"><div>{{ $vacancy->name }}</div></a></td>
-                                <td>{{ $vacancy->closing_date }}</td>
+                                <?php
+                                    $closingDate = new DateTime($vacancy->closing_date);
+                                ?>
+                                <td>{{ $closingDate->format('d-m-Y') }}</td>
                                 <?php
                                     if (Auth::guest() != true){
                                         if (Auth::user()->user_type_id == 4){

@@ -22,20 +22,23 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Job Title</th>
+                                    <th><div class="text-right">Job Title</th>
                                     <th>{{ $vacancy->name }}</th>
                                 <tr>
                             </thead>
 
                             <tbody>
                                 <tr>
-                                    <td>Description</td>
+                                    <td><div class="text-right"><strong>Description</strong></div></td>
                                     <td>{{ $vacancy->description }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Closing Date</td>
-                                    <td>{{ $vacancy->closing_date }}</td>
+                                    <td><div class="text-right"><strong>Closing Date</strong></div></td>
+                                    <?php
+                                        $closingDate = new DateTime($vacancy->closing_date);
+                                    ?>
+                                    <td>{{ $closingDate->format('d-m-Y') }}</td>
                                 </tr>
                             </tbody>
                         </table>

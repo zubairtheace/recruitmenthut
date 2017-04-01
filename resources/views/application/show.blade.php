@@ -29,7 +29,7 @@
                             <tbody>
                                 <tr>
                                     <td><div class="text-right"><strong>Candidate Name</strong></div></td>
-                                    <td>{{ $application->candidate->first_name }} {{ $application->candidate->last_name }}</td>
+                                    <td><a href="{{ route('candidate.show', $application->candidate->id) }}">{{ $application->candidate->first_name }} {{ $application->candidate->last_name }}</a></td>
                                 </tr>
 
                                 <tr>

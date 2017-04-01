@@ -69,7 +69,7 @@
                                 </tr>
 
                                 <tr>
-                                    <td><div class="text-right"><strong>Notes</strong></div></td>
+                                    <td><div class="text-right"><strong>Rating</strong></div></td>
                                     <td>{{ $interview->rating }}/10</td>
                                 </tr>
 
