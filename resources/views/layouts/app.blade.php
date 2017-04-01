@@ -14,6 +14,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Custom fonts -->
     <link href="{{ asset('custom/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- Main fonts -->
+    <link href="{{ asset('css/custom/main.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
