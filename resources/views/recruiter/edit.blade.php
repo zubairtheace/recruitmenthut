@@ -98,7 +98,7 @@
                                         {!! Form::select(
                                             'user_type_id',
                                             App\UserType::pluck('name', 'id'),
-                                            $recruiterInfo->user_type_id,
+                                            $user->user_type_id,
                                             [
                                                 'placeholder' => 'Select User Type...',
                                                 'class' => 'form-control'

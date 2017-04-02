@@ -151,8 +151,9 @@ class RecruiterController extends Controller
      */
     public function edit($id)
     {
-        $recruiter = Recruiter::findOrFail($id);
-        return view('recruiter.edit', compact('recruiter'));
+        $user = User::findOrFail($id);
+        $recruiterInfo = RecruiterInfo::where('user_id', '=', $id)->first();
+        return view('recruiter.edit', compact('user', 'recruiterInfo'));
     }
 
     /**
