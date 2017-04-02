@@ -163,29 +163,28 @@ class RecruiterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $data, $id)
     {
-        $user = User::findOrFail($id)([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'user_type_id' => $data['user_type_id'],
-            'nic' => $data['nic'],
-            'gender' => $data['gender'],
-            'dob' => $data['dob'],
-            'marital_status' => $data['marital_status'],
-            'address' => $data['address'],
-            'phone_number' => $data['phone_number'],
-            'mobile_number' => $data['mobile_number'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password'])
-        ]);
 
-        $recruiterInfo = RecruiterInfo::findOrFail($id)([
-           'user_id' => $user->id,
-           'position_id' => $data['position_id'],
-       ]);
+      $user = User::find($id);
+      $user->first_name = $data['first_name'];
+      $user->last_name = $data['last_name'];
+      $user->user_type_id = $data['user_type_id'];
+      $user->nic = $data['nic'];
+      $user->gender = $data['gender'];
+      $user->dob = $data['dob'];
+      $user->marital_status = $data['marital_status'];
+      $user->address = $data['address'];
+      $user->phone_number = $data['phone_number'];
+      $user->mobile_number = $data['mobile_number'];
+      $user->email = $data['email'];
+      $result = $user->save();
 
-       if ($user){
+      $info = RecruiterInfo::where('user_id', $id)->first();
+      $info->position_id = $data['position_id'];
+      $info->save();
+
+       if ($result){
            return redirect('recruiter')->with('success', 'Recruiter Updated');
        }
        else{
