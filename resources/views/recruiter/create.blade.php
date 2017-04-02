@@ -85,7 +85,51 @@
                       </div>
 
                       <!-- User type id   -->
+
                       <div class="form-group{{ $errors->has('user_type_id') ? ' has-error' : '' }}">
+                            <div class="container-fluid">
+                                <div class="col-md-4 control-label">
+                                    {!! Form::label(
+                                        'user_type_id',
+                                        'User Type'
+                                    ); !!}
+                                </div>
+                                <div class="col-md-3">
+                                    {!! Form::label(
+                                        '3',
+                                        'Interviewer'
+                                    ); !!}
+
+                                    {!! Form::radio(
+                                        'user_type_id',
+                                        '3',
+                                    true
+                                    ); !!}
+                                </div>
+                                <div class="col-md-2">
+                                    {!! Form::label(
+                                        '4',
+                                        'HR'
+                                    ); !!}
+
+                                    {!! Form::radio(
+                                        'user_type_id',
+                                        '4'
+                                    ); !!}
+                                </div>
+                            </div>
+                            @if ($errors->has('user_type_id'))
+                            <div class="container-fluid">
+                                <div class="col-md-8 col-md-offset-4">
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('user_type_id') }}</strong>
+                                    </span>
+                                </div>
+                            </div>
+                            @endif
+                        </div>
+
+                      <!-- <div class="form-group{{ $errors->has('user_type_id') ? ' has-error' : '' }}">
                           <div class="container-fluid">
                               {!! Form::label(
                                   'user_type_id',
@@ -116,7 +160,7 @@
                               </div>
                           </div>
                           @endif
-                      </div>
+                      </div> -->
 
                       <!-- Position id   -->
                       <div class="form-group{{ $errors->has('position_id') ? ' has-error' : '' }}">

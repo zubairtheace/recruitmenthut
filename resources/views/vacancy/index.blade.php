@@ -16,6 +16,11 @@
                         }
                      ?>
                 </div>
+                <div class="panel-body text-center">
+                    <form>
+                        <input type="text" name="search" placeholder="Search..">
+                    </form>
+                </div>
                 <div class="panel-body">
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
