@@ -39,20 +39,26 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-
-        $application = Application::create([
-            'candidate_id' => $request['candidate_id'],
-            'vacancy_id' => $request['vacancy_id'],
-            'date_applied' => date("Y/m/d"),
-            'overall_rating' => '0'
-        ]);
-
-        if ($application){
-            return back()->with('success', 'You have Successfully applied for this vacancy.');
+        if (Application::where('candidate_id',$request['candidate_id'])->where('vacancy_id', $request['vacancy_id'])->count() == 0){
+            $application = Application::create([
+                'candidate_id' => $request['candidate_id'],
+                'vacancy_id' => $request['vacancy_id'],
+                'date_applied' => date("Y/m/d"),
+                'overall_rating' => '0'
+            ]);
+            if ($application){
+                return back()->with('success', 'You have Successfully applied for this vacancy.');
+            }
+            else{
+                return back()->with('error','Failed to save!');
+            }
         }
         else{
-            return back()->with('error','Failed to save!');
+            return back()->with('error','You have already applied for this job!');
         }
+
+
+
     }
 
     /**

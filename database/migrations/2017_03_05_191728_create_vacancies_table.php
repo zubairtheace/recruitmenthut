@@ -19,6 +19,7 @@ class CreateVacanciesTable extends Migration
             $table->date('closing_date');
             $table->text('description');
             $table->timestamps();
+            $table->softDeletes();
             //$table->string('status')->nullable()->default('visible');
         });
 

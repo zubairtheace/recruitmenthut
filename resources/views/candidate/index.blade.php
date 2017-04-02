@@ -8,7 +8,7 @@
                 <div class="panel-heading">Candidates
                     <!-- <a href="{{ route('candidate.create') }}" class="btn btn-primary btn-sm pull-right">Add </a> -->
                 </div>
-                <div class="panel-body text-center">
+                <div class="search panel-body text-center">
                     <form>
                         <input type="text" name="search" placeholder="Search..">
                     </form>

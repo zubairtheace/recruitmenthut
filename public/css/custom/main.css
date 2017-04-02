@@ -1,4 +1,4 @@
-nav.navbar-default {
+/*nav.navbar-default {
     background-color: #1E3A51;
 }
 
@@ -32,10 +32,10 @@ nav.navbar-default {
 
 body {
     background-color: #C8E0DB;
-}
+}*/
 
 
-input[type=text] {
+.search input[type=text] {
     width: 130px;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -50,6 +50,7 @@ input[type=text] {
     transition: width 0.4s ease-in-out;
 }
 
-input[type=text]:focus {
+
+.search input[type=text]:focus {
     width: 100%;
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use DB;
+// use Illuminate\Pagination\Paginator;
+
 use App\RecruiterInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -46,6 +48,7 @@ class RecruiterController extends Controller
             AND
             (user_types.id = 3 OR user_types.id = 4)
         ');
+        // $pagination = Paginator::make($recruiters, count($recruiters), 10);
         // dd($recruiters);
         return view('recruiter.index', compact('recruiters'));
     }
@@ -200,8 +203,9 @@ class RecruiterController extends Controller
      */
     public function destroy($id)
     {
-        $recruiter = Recruiter::findOrFail($id);
+        $recruiter = User::findOrFail($id);
         $result = $recruiter->delete();
+        $info = RecruiterInfo::where('user_id', $id)->first()->delete();
         if ($result){
             return redirect('recruiter')->with('success', 'Recruiter deleted');
         }

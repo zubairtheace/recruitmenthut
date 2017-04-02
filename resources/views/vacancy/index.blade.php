@@ -16,7 +16,7 @@
                         }
                      ?>
                 </div>
-                <div class="panel-body text-center">
+                <div class="search panel-body text-center">
                     <form>
                         <input type="text" name="search" placeholder="Search..">
                     </form>
