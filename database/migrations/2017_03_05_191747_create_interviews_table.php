@@ -119,8 +119,8 @@ class CreateInterviewsTable extends Migration
         );
 
         $data11 = array(
-            "application_id"=>"12", //id should be between id's in applicatoin table
-            "interviewer_id"=>"40", //id should be relative to the table users with user_types = 3 or 4
+            "application_id"=>"2", //id should be between id's in applicatoin table
+            "interviewer_id"=>"22", //id should be relative to the table users with user_types = 3 or 4
             "interview_type_id"=>"2", // id should be between id's in interview_types table
             "scheduled_on"=>"2017-02-20", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
             "notes"=>"Certificates are good.",
@@ -128,8 +128,8 @@ class CreateInterviewsTable extends Migration
         );
 
         $data12 = array(
-            "application_id"=>"12", //id should be between id's in applicatoin table
-            "interviewer_id"=>"40", //id should be relative to the table users with user_types = 3 or 4
+            "application_id"=>"1", //id should be between id's in applicatoin table
+            "interviewer_id"=>"20", //id should be relative to the table users with user_types = 3 or 4
             "interview_type_id"=>"4", // id should be between id's in interview_types table
             "scheduled_on"=>"2017-03-20", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
             "notes"=>"Skills is okay but can do much better.",
@@ -137,8 +137,8 @@ class CreateInterviewsTable extends Migration
         );
 
         $data13 = array(
-            "application_id"=>"9", //id should be between id's in applicatoin table
-            "interviewer_id"=>"27", //id should be relative to the table users with user_types = 3 or 4
+            "application_id"=>"1", //id should be between id's in applicatoin table
+            "interviewer_id"=>"20", //id should be relative to the table users with user_types = 3 or 4
             "interview_type_id"=>"1", // id should be between id's in interview_types table
             "scheduled_on"=>"2016-11-20", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
             "notes"=>"Too underconfident.",
@@ -146,8 +146,8 @@ class CreateInterviewsTable extends Migration
         );
 
         $data14 = array(
-            "application_id"=>"15", //id should be between id's in applicatoin table
-            "interviewer_id"=>"29", //id should be relative to the table users with user_types = 3 or 4
+            "application_id"=>"2", //id should be between id's in applicatoin table
+            "interviewer_id"=>"22", //id should be relative to the table users with user_types = 3 or 4
             "interview_type_id"=>"1", // id should be between id's in interview_types table
             "scheduled_on"=>"2017-03-25", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
             "notes"=>"Candidate has good education background but communication skills is not good enough.",
@@ -155,8 +155,8 @@ class CreateInterviewsTable extends Migration
         );
 
         $data15 = array(
-            "application_id"=>"15", //id should be between id's in applicatoin table
-            "interviewer_id"=>"29", //id should be relative to the table users with user_types = 3 or 4
+            "application_id"=>"2", //id should be between id's in applicatoin table
+            "interviewer_id"=>"22", //id should be relative to the table users with user_types = 3 or 4
             "interview_type_id"=>"1", // id should be between id's in interview_types table
             "scheduled_on"=>"2017-03-31", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
             "notes"=>"Candidate was communicating better than on first interview.",
