@@ -25,6 +25,7 @@ class CreateInterviewsTable extends Migration
             $table->foreign('interviewer_id')->references('id')->on('users');
             $table->foreign('interview_type_id')->references('id')->on('interview_types');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         //15 samples of interviews with some pointed towards the same application

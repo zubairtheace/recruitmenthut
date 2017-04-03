@@ -20,6 +20,7 @@ class CreateCandidateInfoTable extends Migration
             $table->text('certificates');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         //Fill for all users with user_type_id = 1 or 2

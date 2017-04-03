@@ -34,7 +34,7 @@
                                 <td>{{ $interview->application->candidate->first_name }} {{ $interview->application->candidate->last_name }}</td>
                                 <td>{{ $interview->interviewer->first_name }} {{ $interview->interviewer->last_name }}</td><!-- <td>Candidate first_name last_name</td> -->
                                 <td>{{ $interview->application->vacancy->name }}</td><!-- <td>Interviewer first_name last_name</td> -->
-                                <td>{{ $interview->interview_type_id }}</td><!-- <td>Vacancy name</td> -->
+                                <td>{{ $interview->interviewType->name }}</td><!-- <td>Vacancy name</td> -->
                                 <?php
                                     $scheduledOn = new DateTime($interview->scheduled_on);
                                  ?>

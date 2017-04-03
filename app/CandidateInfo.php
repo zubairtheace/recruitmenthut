@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CandidateInfo extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'user_id',
         'cv',
@@ -18,4 +21,5 @@ class CandidateInfo extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+    protected $dates = ['deleted_at'];
 }

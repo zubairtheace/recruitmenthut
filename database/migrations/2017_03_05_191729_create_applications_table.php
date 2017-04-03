@@ -22,6 +22,7 @@ class CreateApplicationsTable extends Migration
             $table->foreign('vacancy_id')->references('id')->on('vacancies');
             $table->foreign('candidate_id')->references('id')->on('users');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         $data1 = array(
