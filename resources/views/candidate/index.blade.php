@@ -41,7 +41,7 @@
                         </tbody>
                     </table>
                     <div>
-
+                        {{ $candidates->links() }}
                     </div>
                 </div>
             </div>
