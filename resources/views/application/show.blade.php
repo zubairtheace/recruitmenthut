@@ -47,29 +47,45 @@
                                     <td>{{ $application->vacancy->closing_date }}</td>
                                 </tr>
 
-                                <tr>
-                                    <td><div class="text-right"><strong>Overall Rating</strong></div></td>
-                                    <td>{{ $application->overall_rating }}/10</td>
-                                </tr>
+                                <?php
+                                    if (Auth::guest() != true){
+                                        if (Auth::user()->user_type_id == 3 || Auth::user()->user_type_id == 4){
+                                            ?>
+                                                <tr>
+                                                    <td><div class="text-right"><strong>Overall Rating</strong></div></td>
+                                                    <td>{{ $application->overall_rating }}/10</td>
+                                                </tr>
+                                            <?php
+                                        }
+                                    }
+                                 ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div class="panel-footer">
+                <?php
+                    if (Auth::guest() != true){
+                        if (Auth::user()->user_type_id == 4){
+                            ?>
+                                <div class="panel-footer">
 
-                    {!! Form::open([
-                        'route' => ['application.destroy', $application->id],
-                        'method' => 'delete',
-                        'class' => 'form-horizontal'
-                    ]) !!}
+                                    {!! Form::open([
+                                        'route' => ['application.destroy', $application->id],
+                                        'method' => 'delete',
+                                        'class' => 'form-horizontal'
+                                    ]) !!}
 
-                    <button type="submit" class="btn btn-danger">
-                        Delete
-                    </button>
+                                    <button type="submit" class="btn btn-danger">
+                                        Delete
+                                    </button>
 
-                    {!! Form::close() !!}
+                                    {!! Form::close() !!}
 
-                </div>
+                                </div>
+                            <?php
+                        }
+                    }
+                 ?>
             </div>
         </div>
     </div>

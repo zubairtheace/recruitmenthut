@@ -10,7 +10,7 @@
                         if (Auth::guest() != true){
                             if (Auth::user()->user_type_id == 4){
                                 ?>
-                                    <a href="{{ route('application.create') }}" class="btn btn-primary btn-sm pull-right">Add </a>
+                                    <!-- <a href="{{ route('application.create') }}" class="btn btn-primary btn-sm pull-right">Add </a> -->
                                 <?php
                             }
                         }
@@ -20,7 +20,15 @@
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>Candidate ID</th>
+                                <?php
+                                    if (Auth::guest() != true){
+                                        if (Auth::user()->user_type_id == 4){
+                                            ?>
+                                                <th>Candidate Name</th>
+                                            <?php
+                                        }
+                                    }
+                                 ?>
                                 <th>Job ID</th>
                                 <th>Date Applied</th>
                                 <th>Closing</th>
@@ -30,7 +38,15 @@
                         <tbody>
                             @forelse($applications as $application)
                             <tr>
-                                <td>{{ $application->candidate->first_name }} {{ $application->candidate->last_name }}</td>
+                                <?php
+                                    if (Auth::guest() != true){
+                                        if (Auth::user()->user_type_id == 4){
+                                            ?>
+                                                <td>{{ $application->candidate->first_name }} {{ $application->candidate->last_name }}</td>
+                                            <?php
+                                        }
+                                    }
+                                 ?>
                                 <td>{{ $application->vacancy->name }}</td>
                                 <?php
                                     $dateApplied = new DateTime($application->date_applied);

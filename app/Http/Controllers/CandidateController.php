@@ -31,6 +31,8 @@ class CandidateController extends Controller
             user_types
 
             WHERE
+            users.deleted_at IS NULL
+            AND
             users.user_type_id = user_types.id
             AND
             (user_types.id = 1)
@@ -107,7 +109,9 @@ class CandidateController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $candidateInfo = CandidateInfo::where('user_id', '=', $id)->first();
+        return view('candidate.edit', compact('user', 'candidateInfo'));
     }
 
     /**
@@ -117,9 +121,33 @@ class CandidateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $data, $id)
     {
-        //
+        $user = User::find($id);
+        $user->first_name = $data['first_name'];
+        $user->last_name = $data['last_name'];
+        $user->user_type_id = 1;
+        $user->nic = $data['nic'];
+        $user->gender = $data['gender'];
+        $user->dob = $data['dob'];
+        $user->marital_status = $data['marital_status'];
+        $user->address = $data['address'];
+        $user->phone_number = $data['phone_number'];
+        $user->mobile_number = $data['mobile_number'];
+        $user->email = $data['email'];
+        $result = $user->save();
+
+        $info = CandidateInfo::where('user_id', $id)->first();
+        $info->cv = 'cv.pdf';
+        $info->certificates = 'certificates.pdf';
+        $info->save();
+
+        if ($result){
+            return redirect('candidate')->with('success', 'Candidate Updated');
+        }
+        else{
+            return back()->with('error','Failed to save!');
+        }
     }
 
     /**
@@ -130,6 +158,14 @@ class CandidateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $candidate = User::findOrFail($id);
+        $result = $candidate->delete();
+        $info = CandidateInfo::where('user_id', $id)->first()->delete();
+        if ($result){
+            return redirect('candidate')->with('success', 'Candidate deleted');
+        }
+        else{
+            return back()->with('error','Failed to delete!');
+        }
     }
 }

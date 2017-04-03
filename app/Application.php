@@ -19,11 +19,11 @@ class Application extends Model
     ];
 
     public function candidate(){
-        return $this->hasOne('App\User', 'id');
+        return $this->hasOne('App\User', 'id', 'candidate_id');
     }
 
     public function vacancy(){
-        return $this->hasOne('App\Vacancy', 'id');
+        return $this->hasOne('App\Vacancy', 'id', 'vacancy_id');
     }
     protected $dates = ['deleted_at'];
 }
