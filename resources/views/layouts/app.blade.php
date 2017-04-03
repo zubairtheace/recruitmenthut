@@ -46,7 +46,7 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav nav-tabs">
+                    <ul class="nav navbar-nav">
                         <li><a href="/home">Home</a></li>
                         <li><a href="/vacancy">Vacancies</a></li>
                         <?php

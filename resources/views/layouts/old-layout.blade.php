@@ -12,6 +12,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Custom fonts -->
+    <link href="{{ asset('custom/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- Main fonts -->
+    <link href="{{ asset('css/custom/main.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -42,8 +46,49 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
+                    <ul class="nav navbar-nav nav-tabs">
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/vacancy">Vacancies</a></li>
+                        <?php
+                            if (Auth::guest() != true){
+                                ?>
+                                    <?php
+                                        if (Auth::user()->user_type_id == 1){
+                                            ?>
+                                                <li><a href="/application">Applications</a></li>
+                                            <?php
+                                        }
+
+                                        else if (Auth::user()->user_type_id == 3){
+                                            ?>
+                                                <li><a href="/interview">Interviews</a></li>
+                                            <?php
+                                        }
+
+                                        else if (Auth::user()->user_type_id == 4){
+                                            ?>
+                                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Candidates<span class="caret"></span></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="/candidate">New Candidates</a></li>
+                                                        <li><a href="/recruited-candidate">Recruited Candidates</a></li>
+                                                    </ul>
+                                                </li>
+
+                                                <li><a href="/application">Applications</a></li>
+                                                <li><a href="/interview">Interviews</a></li>
+                                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Management<span class="caret"></span></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="/recruiter">Recruiters</a></li>
+                                                        <li><a href="/position">Positions</a></li>
+                                                        <li><a href="/interview-type">Interview Types</a></li>
+                                                    </ul>
+                                                </li>
+                                            <?php
+                                        }
+                                     ?>
+                                <?php
+                            }
+                         ?>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -55,7 +100,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->first_name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
@@ -78,9 +123,9 @@
             </div>
         </nav>
 
-        @if (session('info')) <div class="alert alert-success"> {{ session('info') }} </div> @endif
+        @if (session('info')) <div class="alert alert-info"> {{ session('info') }} </div> @endif
         @if (session('success')) <div class="alert alert-success"> {{ session('success') }} </div> @endif
-        @if (session('error')) <div class="alert alert-success"> {{ session('error') }} </div> @endif
+        @if (session('error')) <div class="alert alert-danger"> {{ session('error') }} </div> @endif
 
         @yield('content')
     </div>
