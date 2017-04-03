@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Vacancy extends Model
 {
-     use SoftDeletes;
+    use SoftDeletes;
 
     public $timestamps = false;
 

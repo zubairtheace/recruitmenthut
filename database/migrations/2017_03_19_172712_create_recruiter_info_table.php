@@ -20,6 +20,7 @@ class CreateRecruiterInfoTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('position_id')->references('id')->on('positions');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         $data1 = array(

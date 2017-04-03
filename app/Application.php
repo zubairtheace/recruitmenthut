@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Application extends Model
 {
+    use SoftDeletes;
+
     public $timestamps = false;
 
     protected $fillable = [
@@ -22,4 +25,5 @@ class Application extends Model
     public function vacancy(){
         return $this->hasOne('App\Vacancy', 'id');
     }
+    protected $dates = ['deleted_at'];
 }

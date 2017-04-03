@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Interview extends Model
 {
+    use SoftDeletes;
+
     public $timestamps = false;
 
     protected $fillable = [
@@ -26,8 +29,9 @@ class Interview extends Model
     }
 
     public function interviewType(){
-        return $this->hasOne('App\interviewType', 'id');
+        return $this->hasOne('App\InterviewType', 'id', 'interview_type_id');
     }
 
+    protected $dates = ['deleted_at'];
 
 }
