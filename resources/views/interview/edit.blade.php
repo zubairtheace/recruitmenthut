@@ -128,7 +128,7 @@
                           ); !!}
 
                           <div class="col-md-4">
-                              {!! Form::date(
+                              {!! Form::datetimelocal(
                                   'scheduled_on',
                                   $interview->scheduled_on,
                                   [

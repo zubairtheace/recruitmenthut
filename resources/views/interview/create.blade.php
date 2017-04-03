@@ -128,8 +128,8 @@
                                   ]
                               ); !!}
 
-                              <div class="col-md-4">
-                                  {!! Form::date(
+                              <div class="col-md-5">
+                                  {!! Form::datetimelocal(
                                       'scheduled_on',
                                       old('scheduled_on'),
                                       [

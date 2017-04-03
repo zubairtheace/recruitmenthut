@@ -38,7 +38,7 @@
                                 <?php
                                     $scheduledOn = new DateTime($interview->scheduled_on);
                                  ?>
-                                <td>{{ $scheduledOn->format('d-m-Y') }}</td>
+                                <td>{{ $scheduledOn->format('d-m-y') }}</td>
                                 <td>
                                     <div class="pull-right">
                                     <a href="{{ route('interview.show', $interview->id) }}"><span class="fa fa-eye"></span></a>

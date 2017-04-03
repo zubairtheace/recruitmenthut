@@ -15,7 +15,7 @@ class ApplicationController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */    
+     */
 
     public function index()
     {
@@ -45,7 +45,7 @@ class ApplicationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ApplicationRequest $request)
     {
         if (Application::where('candidate_id',$request['candidate_id'])->where('vacancy_id', $request['vacancy_id'])->count() == 0){
             $application = Application::create([

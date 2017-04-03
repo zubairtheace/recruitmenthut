@@ -60,7 +60,7 @@
                                     <?php
                                         $scheduledOn = new DateTime($interview->scheduled_on);
                                      ?>
-                                    <td>{{ $scheduledOn->format('d-m-Y') }}</td>
+                                    <td>{{ $scheduledOn->format('g:ia \o\n l jS F Y') }}</td>
                                 </tr>
 
                                 <tr>

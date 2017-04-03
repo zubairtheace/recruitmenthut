@@ -18,7 +18,7 @@ class CreateInterviewsTable extends Migration
             $table->integer('application_id')->unsigned();
             $table->integer('interviewer_id')->unsigned();
             $table->integer('interview_type_id')->unsigned();
-            $table->date('scheduled_on');
+            $table->datetime('scheduled_on');
             $table->text('notes')->nullable();
             $table->float('rating')->nullable();
             $table->foreign('application_id')->references('id')->on('applications');

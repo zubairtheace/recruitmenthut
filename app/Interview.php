@@ -21,7 +21,7 @@ class Interview extends Model
     ];
 
     public function application(){
-        return $this->hasOne('App\Application', 'id');
+        return $this->hasOne('App\Application', 'id', 'application_id');
     }
 
     public function interviewer(){
