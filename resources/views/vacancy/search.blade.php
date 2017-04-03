@@ -5,26 +5,12 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Vacancies
-                    <?php
-                        if (Auth::guest() != true){
-                            if (Auth::user()->user_type_id == 4){
-                                ?>
-                                    <a href="{{ route('vacancy.create') }}" class="btn btn-primary btn-sm pull-right">Add </a>
-                                <?php
-                            }
-                        }
-                     ?>
+                <div class="panel-heading"> Search Vacancies
+
+                    <a href="{{ route('vacancy.index') }}" class="btn btn-primary btn-sm pull-right"> Back to vacancy page </a>
                 </div>
-                <div class="search panel-body text-center">
-                    {!! Form::open([
-                            'url' => 'vacancy/search',
-                            'class' => 'form-horizontal',
-                            'role' => 'form',
-                            'method' => 'POST'
-                            ]) !!}
-                        <input type="text" name="search" placeholder="Search Job Titles...">
-                    {!! Form::close() !!}
+                <div class="panel-body text-center">
+                    <h3>Search results for <b>"{!! $searchTerm !!}"</b></h3>
                 </div>
                 <div class="panel-body">
                     <table class="table table-striped table-bordered table-hover">
@@ -67,7 +53,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td>No Vacancies </td>
+                                <td colspan="2">No Vacancies </td>
                             </tr>
                             @endforelse
                         </tbody>

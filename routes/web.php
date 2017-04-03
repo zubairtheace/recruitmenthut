@@ -36,6 +36,8 @@ Route::get('/interview-types', 'HomeController@interviewTypes');
 Route::resource('/position', 'PositionController');
 
 Route::resource('/vacancy', 'VacancyController');
+//Route::get('/vacancy/search', 'VacancyController@search');
+Route::post('/vacancy/search', 'VacancyController@search');
 
 Route::resource('/candidate', 'CandidateController');
 

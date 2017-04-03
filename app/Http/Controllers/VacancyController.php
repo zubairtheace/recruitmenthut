@@ -24,6 +24,21 @@ class VacancyController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $searchTerm = $request->search;
+        $vacancies = Vacancy::whereDate('closing_date', '>=', date('Y-m-d'))
+            ->where('name', 'like', '%' . $request->search . '%')
+            ->paginate(10);
+
+        return view('vacancy.search', compact('vacancies', 'searchTerm'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
