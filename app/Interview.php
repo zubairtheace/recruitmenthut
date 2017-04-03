@@ -22,7 +22,7 @@ class Interview extends Model
     }
 
     public function interviewer(){
-        return $this->hasOne('App\User', 'id');
+        return $this->hasOne('App\User', 'id', 'interviewer_id');
     }
 
     public function interviewType(){
