@@ -15,19 +15,18 @@ class ApplicationController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
-    public function candidateIndex()
-    {
-        $applications = Application::where('candidate_id', '=', Auth::id())->paginate(10);
-        return view('application.index', compact('applications'));
-        // $applications = Application::paginate(10);
-        // return view('application.index', compact('applications'));
-    }
+     */    
 
     public function index()
     {
-        $applications = Application::paginate(10);
-        return view('application.index', compact('applications'));
+        if (Auth::user()->user_type_id == 1){
+            $applications = Application::where('candidate_id', '=', Auth::id())->paginate(10);
+            return view('application.index', compact('applications'));
+        }
+        else{
+            $applications = Application::paginate(10);
+            return view('application.index', compact('applications'));
+        }
     }
 
     /**

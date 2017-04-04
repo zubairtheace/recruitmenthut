@@ -49,7 +49,26 @@
 
                                 <?php
                                     if (Auth::guest() != true){
-                                        if (Auth::user()->user_type_id == 3 || Auth::user()->user_type_id == 4){
+                                        if (Auth::user()->user_type_id == 4){
+                                            ?>
+                                                <tr>
+                                                    <td><div class="text-right"><strong>Interviews</strong></div></td>
+                                                    <td>
+                                                        <a href="#">3 Interviews</a>
+                                                        &nbsp;
+                                                        &nbsp;
+                                                        <a href="#" class="btn btn-primary btn-sm ">Add Interview </a>
+
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                        }
+                                    }
+                                 ?>
+
+                                <?php
+                                    if (Auth::guest() != true){
+                                        if (Auth::user()->user_type_id == 4){
                                             ?>
                                                 <tr>
                                                     <td><div class="text-right"><strong>Overall Rating</strong></div></td>

@@ -19,22 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/vacancies', 'HomeController@vacancies');
-
-Route::get('/candidates', 'HomeController@candidates');
-
-Route::get('/applications', 'HomeController@applications');
-
-Route::get('/interviews', 'HomeController@interviews');
-
-Route::get('/recruiters', 'HomeController@recruiters');
-
-Route::get('/positions', 'HomeController@positions');
-
-Route::get('application/candidate-index', 'ApplicationController@candidateIndex');
-
-Route::get('/interview-types', 'HomeController@interviewTypes');
-
 Route::resource('/position', 'PositionController');
 
 Route::resource('/vacancy', 'VacancyController');

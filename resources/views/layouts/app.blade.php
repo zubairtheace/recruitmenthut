@@ -55,7 +55,7 @@
                                     <?php
                                         if (Auth::user()->user_type_id == 1){
                                             ?>
-                                                <li><a href="/application/candidate-index">Applications</a></li>
+                                                <li><a href="/application">Applications</a></li>
                                             <?php
                                         }
 
