@@ -25,6 +25,8 @@ Route::resource('/vacancy', 'VacancyController');
 //Route::get('/vacancy/search', 'VacancyController@search');
 Route::post('/vacancy/search', 'VacancyController@search');
 
+Route::post('/candidate/search', 'CandidateController@search');
+
 Route::resource('/candidate', 'CandidateController');
 
 Route::get('/recruited-candidate', 'CandidateController@recruitedCandidate');

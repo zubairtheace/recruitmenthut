@@ -26,7 +26,7 @@
                         <input type="text" name="search" placeholder="Search Job Titles...">
                     {!! Form::close() !!}
                 </div>
-                <div class="panel-body">
+                <div class="panel-body table-responsive">
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>

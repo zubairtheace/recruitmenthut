@@ -8,7 +8,7 @@
                 <div class="panel-heading">User Type
                     <a href="{{ route('user-type.create') }}" class="btn btn-primary btn-sm pull-right">Add </a>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body table-responsive">
                     <table class="table">
                         @forelse($userTypes as $userType)
                         <tr>

@@ -5,22 +5,14 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Candidates
-                    <!-- <a href="{{ route('candidate.create') }}" class="btn btn-primary btn-sm pull-right">Add </a> -->
+                <div class="panel-heading"> Search Candidates
+
+                    <a href="{{ route('candidate.index') }}" class="btn btn-primary btn-sm pull-right"> Back to Candidates page </a>
                 </div>
-                <div class="search panel-body text-center">
-                    <form>
-                        {!! Form::open([
-                                'url' => 'candidate/search',
-                                'class' => 'form-horizontal',
-                                'role' => 'form',
-                                'method' => 'POST'
-                                ]) !!}
-                            <input type="text" name="search" placeholder="Search Candidates...">
-                        {!! Form::close() !!}
-                    </form>
+                <div class="panel-body text-center">
+                    <h3>Search results for <b>"{!! $searchTerm !!}"</b></h3>
                 </div>
-                <div class="panel-body table-responsive">
+                <div class="panel-body">
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
@@ -47,7 +39,7 @@
                             @endforelse
                         </tbody>
                     </table>
-                    <div>
+                    <div class="pull-right">
                         {{ $candidates->links() }}
                     </div>
                 </div>

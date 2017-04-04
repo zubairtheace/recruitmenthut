@@ -8,7 +8,7 @@
                 <div class="panel-heading">Recruiters
                     <a href="{{ route('recruiter.create') }}" class="btn btn-primary btn-sm pull-right">Add </a>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body table-responsive">
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
