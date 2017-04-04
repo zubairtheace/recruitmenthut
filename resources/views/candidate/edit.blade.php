@@ -82,6 +82,8 @@
                                 </div>
                                 @endif
                             </div>
+                            <!-- User Type ID -->
+                            <input name="user_type_id" type="hidden" value = '1' >
 
                             <!--National Identity card Number-->
                             <div class="form-group{{ $errors->has('nic') ? ' has-error' : '' }}">

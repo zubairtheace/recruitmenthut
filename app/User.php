@@ -45,5 +45,9 @@ class User extends Authenticatable
     public function position(){
         $this->hasOne('App\Position', 'id');
     }
+
+    public function userType(){
+        $this->hasOne('App\UserType', 'id');
+    }
     protected $dates = ['deleted_at'];
 }

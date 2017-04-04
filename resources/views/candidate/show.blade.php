@@ -5,35 +5,50 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><a href="/candidate">Candidates</a> <span class="fa fa-chevron-right"></span> {{ $candidate->first_name }} {{ $candidate->last_name }}
-                    <a href="{{ route('candidate.edit', $candidate->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
-                </div>
+                <?php
+                    if ($candidate->user_type == 1){
+                        ?>
+                            <div class="panel-heading"><a href="/candidate">Candidates</a> <span class="fa fa-chevron-right"></span> {{ $candidate->first_name }} {{ $candidate->last_name }}
+                                <a href="{{ route('candidate.edit', $candidate->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
+                            </div>
+                        <?php
+                    }
+                    else{
+                        ?>
+                            <div class="panel-heading"><a href="/recruited-candidate">Recruited Candidates</a> <span class="fa fa-chevron-right"></span> {{ $candidate->first_name }} {{ $candidate->last_name }}
+                                <a href="{{ route('candidate.edit', $candidate->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
+                            </div>
+                        <?php
+                    }
+                 ?>
                 <div class="panel-body">
                     <?php
                         if (Auth::guest() != true){
-                            if (Auth::user()->user_type_id == 4){
-                                ?>
-                                {!! Form::open([
-                                    'route' => ['candidate.update', $candidate->id],
-                                    'method' => 'PUT',
-                                    'class' => 'form-horizontal'
-                                ]) !!}
-                                    <input name="first_name" type="hidden" value="{{ $candidate->first_name }}">
-                                    <input name="last_name" type="hidden" value="{{ $candidate->last_name }}">
-                                    <input name="user_type_id" type="hidden" value= '2' >
-                                    <input name="nic" type="hidden" value="{{ $candidate->nic }}">
-                                    <input name="gender" type="hidden" value="{{ $candidate->gender }}">
-                                    <input name="dob" type="hidden" value="{{ $candidate->dob }}">
-                                    <input name="marital_status" type="hidden" value="{{ $candidate->marital_status }}">
-                                    <input name="address" type="hidden" value="{{ $candidate->address }}">
-                                    <input name="phone_number" type="hidden" value="{{ $candidate->phone_number }}">
-                                    <input name="mobile_number" type="hidden" value="{{ $candidate->mobile_number }}">
-                                    <input name="email" type="hidden" value="{{ $candidate->email }}">
-                                    <div>
-                                        <button type="submit" class="btn btn-primary">Recruit</button>
-                                    </div>
-                                {!! Form::close() !!}
-                                <?php
+                            if (Auth::user()->user_type_id == 4 ){
+                                if ($candidate->user_type == 1){
+                                    ?>
+                                    {!! Form::open([
+                                        'route' => ['candidate.update', $candidate->id],
+                                        'method' => 'PUT',
+                                        'class' => 'form-horizontal'
+                                    ]) !!}
+                                        <input name="first_name" type="hidden" value="{{ $candidate->first_name }}">
+                                        <input name="last_name" type="hidden" value="{{ $candidate->last_name }}">
+                                        <input name="user_type_id" type="hidden" value = '2' >
+                                        <input name="nic" type="hidden" value="{{ $candidate->nic }}">
+                                        <input name="gender" type="hidden" value="{{ $candidate->gender }}">
+                                        <input name="dob" type="hidden" value="{{ $candidate->dob }}">
+                                        <input name="marital_status" type="hidden" value="{{ $candidate->marital_status }}">
+                                        <input name="address" type="hidden" value="{{ $candidate->address }}">
+                                        <input name="phone_number" type="hidden" value="{{ $candidate->phone_number }}">
+                                        <input name="mobile_number" type="hidden" value="{{ $candidate->mobile_number }}">
+                                        <input name="email" type="hidden" value="{{ $candidate->email }}">
+                                        <div>
+                                            <button type="submit" class="btn btn-primary">Recruit</button>
+                                        </div>
+                                    {!! Form::close() !!}
+                                    <?php
+                                }
                             }
                         }
                      ?>

@@ -62,7 +62,7 @@ class CandidateController extends Controller
             (user_types.id = 2)
         ');
         // dd($candidates);
-        return view('candidate.recruited-candidate', compact('candidates'));
+        return view('candidate.index', compact('candidates'));
     }
 
     /**
@@ -108,7 +108,7 @@ class CandidateController extends Controller
             users.phone_number AS phone_number,
             users.mobile_number AS mobile_number,
             users.email AS email,
-            user_types.name AS user_type
+            user_types.id AS user_type
 
             FROM
             users,
@@ -119,7 +119,7 @@ class CandidateController extends Controller
             AND
             users.user_type_id = user_types.id
             AND
-            (user_types.id = 1)
+            (user_types.id = 1 OR user_types.id = 2)
         '))->first();
         // dd($candidate);
         return view('candidate.show', compact('candidate'));
@@ -150,7 +150,7 @@ class CandidateController extends Controller
         $user = User::find($id);
         $user->first_name = $data['first_name'];
         $user->last_name = $data['last_name'];
-        $user->user_type_id = 1;
+        $user->user_type_id = $data['user_type_id'];
         $user->nic = $data['nic'];
         $user->gender = $data['gender'];
         $user->dob = $data['dob'];
