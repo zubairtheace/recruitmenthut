@@ -100,7 +100,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->first_name }} <span class="caret"></span>
+                                    {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}  <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
@@ -115,6 +115,28 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                    <?php
+                                        if (Auth::guest() != true){
+                                            if (Auth::user()->user_type_id == 1 || Auth::user()->user_type_id == 2){
+                                                ?>
+                                                    <li><a href="{{ route('candidate.show', Auth::user()->id) }}">View Profile</a></li>
+                                                    <li><a href="{{ route('candidate.edit', Auth::user()->id) }}">Edit Profile Profile</a></li>
+                                                <?php
+                                            }
+                                        }
+                                     ?>
+
+                                    <?php
+                                        if (Auth::guest() != true){
+                                            if (Auth::user()->user_type_id == 3 || Auth::user()->user_type_id == 4){
+                                                ?>
+                                                    <li><a href="{{ route('recruiter.show', Auth::user()->id) }}">View Profile</a></li>
+                                                    <li><a href="{{ route('recruiter.edit', Auth::user()->id) }}">Edit Profile Profile</a></li>
+                                                <?php
+                                            }
+                                        }
+                                     ?>
+
                                 </ul>
                             </li>
                         @endif

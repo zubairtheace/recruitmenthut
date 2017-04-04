@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Auth;
 
 class RecruiterController extends Controller
 {
@@ -212,11 +213,21 @@ class RecruiterController extends Controller
       $info->position_id = $data['position_id'];
       $info->save();
 
-       if ($result){
-           return redirect('recruiter')->with('success', 'Recruiter Updated');
+       if (Auth::user()->user_type_id == 4){
+           if ($result){
+               return redirect('recruiter')->with('success', 'Recruiter Updated');
+           }
+           else{
+               return back()->with('error','Failed to save!');
+           }
        }
-       else{
-           return back()->with('error','Failed to save!');
+      if (Auth::user()->user_type_id == 3){
+           if ($result){
+               return redirect()->route('recruiter.show', Auth::user()->id)->with('success', 'Interviewer Updated');
+           }
+           else{
+               return back()->with('error','Failed to update profile!');
+           }
        }
     }
 

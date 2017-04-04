@@ -3,19 +3,29 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1 custom-padding">
             <div class="panel panel-default">
                 <?php
-                    if ($candidate->user_type == 1){
-                        ?>
-                            <div class="panel-heading"><a href="/candidate">Candidates</a> <span class="fa fa-chevron-right"></span> {{ $candidate->first_name }} {{ $candidate->last_name }}
-                                <a href="{{ route('candidate.edit', $candidate->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
-                            </div>
-                        <?php
+                    if (Auth::user()->user_type_id == 4)
+                    {
+                        if ($candidate->user_type == 1){
+                            ?>
+                                <div class="panel-heading"><a href="/candidate">Candidates</a> <span class="fa fa-chevron-right"></span> {{ $candidate->first_name }} {{ $candidate->last_name }}
+                                    <a href="{{ route('candidate.edit', $candidate->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
+                                </div>
+                            <?php
+                        }
+                        else{
+                            ?>
+                                <div class="panel-heading"><a href="/recruited-candidate">Recruited Candidates</a> <span class="fa fa-chevron-right"></span> {{ $candidate->first_name }} {{ $candidate->last_name }}
+                                    <a href="{{ route('candidate.edit', $candidate->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
+                                </div>
+                            <?php
+                        }
                     }
                     else{
                         ?>
-                            <div class="panel-heading"><a href="/recruited-candidate">Recruited Candidates</a> <span class="fa fa-chevron-right"></span> {{ $candidate->first_name }} {{ $candidate->last_name }}
+                            <div class="panel-heading">My Profile
                                 <a href="{{ route('candidate.edit', $candidate->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
                             </div>
                         <?php
@@ -126,21 +136,23 @@
                         </table>
                     </div>
                 </div>
-                <div class="panel-footer">
-
-                    {!! Form::open([
-                        'route' => ['candidate.destroy', $candidate->id],
-                        'method' => 'delete',
-                        'class' => 'form-horizontal'
-                    ]) !!}
-
-                        <button type="submit" class="btn btn-danger">
-                            Delete
-                        </button>
-
-                    {!! Form::close() !!}
-
-                </div>
+                <?php
+                    if (Auth::guest() != true){
+                        if (Auth::user()->user_type_id == 4){
+                            ?>
+                                <div class="panel-footer">
+                                    {!! Form::open([
+                                        'route' => ['candidate.destroy', $candidate->id],
+                                        'method' => 'delete',
+                                        'class' => 'form-horizontal'
+                                    ]) !!}
+                                        <button type="submit" class="btn btn-danger">Delete</button>                
+                                    {!! Form::close() !!}
+                                </div>
+                            <?php
+                        }
+                    }
+                 ?>
             </div>
         </div>
     </div>

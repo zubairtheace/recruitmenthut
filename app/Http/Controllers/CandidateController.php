@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Auth;
 
 class CandidateController extends Controller
 {
@@ -158,12 +159,23 @@ class CandidateController extends Controller
         $info->certificates = 'certificates.pdf';
         $info->save();
 
-        if ($result){
-            return redirect('candidate')->with('success', 'Candidate Updated');
+        if (Auth::user()->user_type_id == 4){
+            if ($result){
+                return redirect('candidate')->with('success', 'Candidate Updated');
+            }
+            else{
+                return back()->with('error','Failed to save!');
+            }
         }
         else{
-            return back()->with('error','Failed to save!');
+            if ($result){
+                return redirect()->route('candidate.show', Auth::user()->id)->with('success', 'Candidate Updated');
+            }
+            else{
+                return back()->with('error','Failed to update profile!');
+            }
         }
+
     }
 
     /**

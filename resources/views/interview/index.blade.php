@@ -3,14 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1 custom-padding">
             <div class="panel panel-default">
                 <div class="panel-heading">Interviews
                     <?php
                         if (Auth::guest() != true){
                             if (Auth::user()->user_type_id == 4){
                                 ?>
-                                    <a href="{{ route('interview.create') }}" class="btn btn-primary btn-sm pull-right">Add </a>
+                                    <!-- <a href="{{ route('interview.create') }}" class="btn btn-primary btn-sm pull-right">Add </a> -->
                                 <?php
                             }
                         }

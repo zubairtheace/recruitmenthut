@@ -34,6 +34,10 @@ body {
     background-color: #C8E0DB;
 }*/
 
+.custom-padding {
+    padding-top:30px;
+}
+
 .navbar-default .navbar-nav .open .dropdown-menu>li>a {
     color: #CFE8E2;
 }

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1 custom-padding">
             <div class="panel panel-default">
                 <div class="panel-heading">Edit Recruiter</div>
                 <div class="panel-body">
@@ -84,7 +84,58 @@
                             </div>
 
                             <!-- User type id   -->
-                            <div class="form-group{{ $errors->has('user_type_id') ? ' has-error' : '' }}">
+                            <?php
+                                if (Auth::guest() != true){
+                                    if (Auth::user()->user_type_id != 3){
+                                        ?>
+                                            <div class="form-group{{ $errors->has('user_type_id') ? ' has-error' : '' }}">
+                                                  <div class="container-fluid">
+                                                      <div class="col-md-4 control-label">
+                                                          {!! Form::label(
+                                                              'user_type_id',
+                                                              'User Type'
+                                                          ); !!}
+                                                      </div>
+                                                      <div class="col-md-3">
+                                                          {!! Form::label(
+                                                              '3',
+                                                              'Interviewer'
+                                                          ); !!}
+
+                                                          {!! Form::radio(
+                                                              'user_type_id',
+                                                              '3'
+                                                          ); !!}
+                                                      </div>
+                                                      <div class="col-md-2">
+                                                          {!! Form::label(
+                                                              '4',
+                                                              'HR'
+                                                          ); !!}
+
+                                                          {!! Form::radio(
+                                                              'user_type_id',
+                                                              '4',
+                                                              true
+                                                          ); !!}
+                                                      </div>
+                                                  </div>
+                                                  @if ($errors->has('user_type_id'))
+                                                  <div class="container-fluid">
+                                                      <div class="col-md-8 col-md-offset-4">
+                                                          <span class="help-block">
+                                                              <strong>{{ $errors->first('user_type_id') }}</strong>
+                                                          </span>
+                                                      </div>
+                                                  </div>
+                                                  @endif
+                                              </div>
+                                        <?php
+                                    }
+                                }
+                             ?>
+
+                            <!-- <div class="form-group{{ $errors->has('user_type_id') ? ' has-error' : '' }}">
                                 <div class="container-fluid">
                                     {!! Form::label(
                                         'user_type_id',
@@ -115,41 +166,128 @@
                                     </div>
                                 </div>
                                 @endif
-                            </div>
+                            </div> -->
 
-                            <!-- Position id   -->
-                            <div class="form-group{{ $errors->has('position_id') ? ' has-error' : '' }}">
-                                <div class="container-fluid">
-                                    {!! Form::label(
-                                        'position_id',
-                                        'Position',
-                                        [
-                                            'class' => 'col-md-4 control-label'
-                                        ]
-                                    ); !!}
+                            <?php
+                                if (Auth::guest() != true){
+                                    if (Auth::user()->user_type_id == 3){
+                                        ?>
+                                            <!-- User type id   -->
+                                            <div class="form-group{{ $errors->has('user_type_id') ? ' has-error' : '' }}">
+                                                <div class="container-fluid">
+                                                    {!! Form::label(
+                                                        'user_type_id',
+                                                        'User Type',
+                                                        [
+                                                            'class' => 'col-md-4 control-label'
+                                                        ]
+                                                    ); !!}
 
-                                    <div class="col-md-6">
-                                        {!! Form::select(
-                                            'position_id',
-                                            App\Position::pluck('name', 'id'),
-                                            $recruiterInfo->position_id,
-                                            [
-                                                'placeholder' => 'Select Position...',
-                                                'class' => 'form-control'
-                                            ]
-                                        ); !!}
-                                    </div>
-                                </div>
-                                @if ($errors->has('position_id'))
-                                <div class="container-fluid">
-                                    <div class="col-md-8 col-md-offset-4">
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('position_id') }}</strong>
-                                        </span>
-                                    </div>
-                                </div>
-                                @endif
-                            </div>
+                                                    <div class="col-md-6">
+                                                        {!! Form::select(
+                                                            'user_type_id',
+                                                            App\UserType::pluck('name', 'id'),
+                                                            $user->user_type_id,
+                                                            [
+                                                                'placeholder' => 'Select User Type...',
+                                                                'class' => 'form-control'
+                                                            ]
+                                                        ); !!}
+                                                    </div>
+                                                </div>
+                                                @if ($errors->has('user_type_id'))
+                                                <div class="container-fluid">
+                                                    <div class="col-md-8 col-md-offset-4">
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('user_type_id') }}</strong>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                @endif
+                                                <!-- <input name="user_type_id" type="hidden" value="{{ $user->user_type_id }}"> -->
+                                            </div>
+                                            <!-- Position id   -->
+                                            <div class="form-group{{ $errors->has('position_id') ? ' has-error' : '' }}">
+                                                <div class="container-fluid">
+                                                    {!! Form::label(
+                                                        'position_id',
+                                                        'Position',
+                                                        [
+                                                            'class' => 'col-md-4 control-label'
+                                                        ]
+                                                    ); !!}
+
+                                                    <div class="col-md-6">
+                                                        {!! Form::select(
+                                                            'position_id',
+                                                            App\Position::pluck('name', 'id'),
+                                                            $recruiterInfo->position_id,
+                                                            [
+                                                                'placeholder' => 'Select Position...',
+                                                                'class' => 'form-control'
+                                                            ]
+                                                        ); !!}
+                                                    </div>
+                                                </div>
+                                                @if ($errors->has('position_id'))
+                                                <div class="container-fluid">
+                                                    <div class="col-md-8 col-md-offset-4">
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('position_id') }}</strong>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                @endif
+                                                <!-- <input name="position_id" type="hidden" value="{{ $user->position_id }}"> -->
+                                            </div>
+                                        <?php
+                                    }
+                                }
+                             ?>
+
+                            <?php
+                                if (Auth::guest() != true){
+                                    if (Auth::user()->user_type_id == 4){
+                                        ?>
+                                            <!-- Position id   -->
+                                            <div class="form-group{{ $errors->has('position_id') ? ' has-error' : '' }}">
+                                                <div class="container-fluid">
+                                                    {!! Form::label(
+                                                        'position_id',
+                                                        'Position',
+                                                        [
+                                                            'class' => 'col-md-4 control-label'
+                                                        ]
+                                                    ); !!}
+
+                                                    <div class="col-md-6">
+                                                        {!! Form::select(
+                                                            'position_id',
+                                                            App\Position::pluck('name', 'id'),
+                                                            $recruiterInfo->position_id,
+                                                            [
+                                                                'placeholder' => 'Select Position...',
+                                                                'class' => 'form-control'
+                                                            ]
+                                                        ); !!}
+                                                    </div>
+                                                </div>
+                                                @if ($errors->has('position_id'))
+                                                <div class="container-fluid">
+                                                    <div class="col-md-8 col-md-offset-4">
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('position_id') }}</strong>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                @endif
+                                            </div>
+                                        <?php
+                                    }
+                                }
+                             ?>
+
+
 
                             <!--National Identity card Number-->
                             <div class="form-group{{ $errors->has('nic') ? ' has-error' : '' }}">
