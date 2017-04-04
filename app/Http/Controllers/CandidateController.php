@@ -41,6 +41,30 @@ class CandidateController extends Controller
         return view('candidate.index', compact('candidates'));
     }
 
+    public function recruitedCandidate()
+    {
+        $candidates = DB::select
+        ('
+            SELECT
+            users.id AS id,
+            users.first_name AS first_name,
+            users.last_name AS last_name
+
+            FROM
+            users,
+            user_types
+
+            WHERE
+            users.deleted_at IS NULL
+            AND
+            users.user_type_id = user_types.id
+            AND
+            (user_types.id = 2)
+        ');
+        // dd($candidates);
+        return view('candidate.recruited-candidate', compact('candidates'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

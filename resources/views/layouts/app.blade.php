@@ -67,7 +67,13 @@
 
                                         else if (Auth::user()->user_type_id == 4){
                                             ?>
-                                                <li><a href="/candidate">Candidates</a></li>
+                                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Candidates<span class="caret"></span></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="/candidate">New Candidates</a></li>
+                                                        <li><a href="/recruited-candidate">Recruited Candidates</a></li>
+                                                    </ul>
+                                                </li>
+
                                                 <li><a href="/application">Applications</a></li>
                                                 <li><a href="/interview">Interviews</a></li>
                                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Management<span class="caret"></span></a>

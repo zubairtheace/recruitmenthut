@@ -9,12 +9,42 @@
                     <a href="{{ route('candidate.edit', $candidate->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
                 </div>
                 <div class="panel-body">
+                    <?php
+                        if (Auth::guest() != true){
+                            if (Auth::user()->user_type_id == 4){
+                                ?>
+                                {!! Form::open([
+                                    'route' => ['candidate.update', $candidate->id],
+                                    'method' => 'PUT',
+                                    'class' => 'form-horizontal'
+                                ]) !!}
+                                    <input name="first_name" type="hidden" value="{{ $candidate->first_name }}">
+                                    <input name="last_name" type="hidden" value="{{ $candidate->last_name }}">
+                                    <input name="user_type_id" type="hidden" value= '2' >
+                                    <input name="nic" type="hidden" value="{{ $candidate->nic }}">
+                                    <input name="gender" type="hidden" value="{{ $candidate->gender }}">
+                                    <input name="dob" type="hidden" value="{{ $candidate->dob }}">
+                                    <input name="marital_status" type="hidden" value="{{ $candidate->marital_status }}">
+                                    <input name="address" type="hidden" value="{{ $candidate->address }}">
+                                    <input name="phone_number" type="hidden" value="{{ $candidate->phone_number }}">
+                                    <input name="mobile_number" type="hidden" value="{{ $candidate->mobile_number }}">
+                                    <input name="email" type="hidden" value="{{ $candidate->email }}">
+                                    <div>
+                                        <button type="submit" class="btn btn-primary">Recruit</button>
+                                    </div>
+                                {!! Form::close() !!}
+                                <?php
+                            }
+                        }
+                     ?>
+                 </div>
+                <div class="panel-body">
                     <div>
                         <table class="table table-striped table-responsive">
                             <thead>
                                 <tr>
                                     <th><div class="text-right">Candidate</th>
-                                    <th>{{ $candidate->user_type }}</th>
+                                    <th>#{{ $candidate->id }}</th>
                                 <tr>
                             </thead>
                             <tbody>

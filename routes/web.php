@@ -27,6 +27,8 @@ Route::post('/vacancy/search', 'VacancyController@search');
 
 Route::resource('/candidate', 'CandidateController');
 
+Route::resource('/recruited-candidate', 'CandidateController@recruitedCandidate');
+
 Route::resource('/interview-type', 'InterviewTypeController');
 
 Route::resource('/user-type', 'UserTypeController');
