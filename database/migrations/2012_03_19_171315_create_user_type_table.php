@@ -17,6 +17,7 @@ class CreateUserTypeTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         $data1 = array("name"=>"Candidate"); //id=1

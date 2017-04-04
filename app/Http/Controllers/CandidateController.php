@@ -19,24 +19,32 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        $candidates = DB::select
-        ('
-            SELECT
-            users.id AS id,
-            users.first_name AS first_name,
-            users.last_name AS last_name
+        $candidates = User::
+        join('user_types', 'users.user_type_id', '=', 'user_types.id')
+            ->where('user_types.id', 1)
+            ->paginate(5, array('users.id AS id',
+                'users.first_name AS first_name',
+                'users.last_name AS last_name'))
+        ;
 
-            FROM
-            users,
-            user_types
-
-            WHERE
-            users.deleted_at IS NULL
-            AND
-            users.user_type_id = user_types.id
-            AND
-            (user_types.id = 1)
-        ');
+//        $candidates = DB::select
+//        ('
+//            SELECT
+//            users.id AS id,
+//            users.first_name AS first_name,
+//            users.last_name AS last_name
+//
+//            FROM
+//            users,
+//            user_types
+//
+//            WHERE
+//            users.deleted_at IS NULL
+//            AND
+//            users.user_type_id = user_types.id
+//            AND
+//            (user_types.id = 1)
+//        ');
         // dd($candidates);
         return view('candidate.index', compact('candidates'));
     }
