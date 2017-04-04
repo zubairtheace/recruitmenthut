@@ -85,7 +85,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password'])
         ]);
-        
+
         $cv = $data['cv'];
         $input['cvname'] = time().rand(0,100).'.'.$cv->getClientOriginalExtension();
         $cvDestinationPath = public_path('/documents/cv/'.$user->id.'/');

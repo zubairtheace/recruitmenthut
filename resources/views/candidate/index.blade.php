@@ -9,16 +9,14 @@
                     <!-- <a href="{{ route('candidate.create') }}" class="btn btn-primary btn-sm pull-right">Add </a> -->
                 </div>
                 <div class="search panel-body text-center">
-                    <form>
-                        {!! Form::open([
-                                'url' => 'candidate/search',
-                                'class' => 'form-horizontal',
-                                'role' => 'form',
-                                'method' => 'POST'
-                                ]) !!}
-                            <input type="text" name="search" placeholder="Search Candidates...">
-                        {!! Form::close() !!}
-                    </form>
+                    {!! Form::open([
+                            'url' => 'candidate/search',
+                            'class' => 'form-horizontal',
+                            'role' => 'form',
+                            'method' => 'POST'
+                            ]) !!}
+                        <input type="text" name="search" placeholder="Search Candidates...">
+                    {!! Form::close() !!}
                 </div>
                 <div class="panel-body table-responsive">
                     <table class="table table-striped table-bordered table-hover">

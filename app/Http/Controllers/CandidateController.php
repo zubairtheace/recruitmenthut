@@ -36,13 +36,14 @@ class CandidateController extends Controller
         $candidates = User::
         join('user_types', 'users.user_type_id', '=', 'user_types.id')
             ->where('user_types.id', 1)
-            ->where('first_name', 'like', '%' . $request->search . '%')
+            ->where('first_name', 'like', '%' . $searchTerm . '%')
+            ->orWhere('last_name', 'like', '%' . $searchTerm . '%')
             ->paginate(5, array('users.id AS id',
                 'users.first_name AS first_name',
                 'users.last_name AS last_name'))
         ;
 
-        return view('candidate.search', compact('Candidates', 'searchTerm'));
+        return view('candidate.search', compact('candidates', 'searchTerm'));
     }
 
     public function recruitedCandidate()
