@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use View;
 use App\Application;
 use App\Http\Requests\ApplicationRequest;
+use Auth;
 
 class ApplicationController extends Controller
 {
@@ -15,6 +16,14 @@ class ApplicationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function candidateIndex()
+    {
+        $applications = Application::where('candidate_id', '=', Auth::id())->paginate(10);
+        return view('application.index', compact('applications'));
+        // $applications = Application::paginate(10);
+        // return view('application.index', compact('applications'));
+    }
+
     public function index()
     {
         $applications = Application::paginate(10);
@@ -56,9 +65,6 @@ class ApplicationController extends Controller
         else{
             return back()->with('error','You have already applied for this job!');
         }
-
-
-
     }
 
     /**

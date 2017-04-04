@@ -40,6 +40,8 @@ class RecruiterController extends Controller
             user_types
 
             WHERE
+            users.deleted_at IS NULL
+            AND
             users.id = recruiter_infos.user_id
             AND
             recruiter_infos.position_id = positions.id
