@@ -14,8 +14,16 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Custom fonts -->
     <link href="{{ asset('custom/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <!-- Main fonts -->
+    <!-- Custom css -->
     <link href="{{ asset('css/custom/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom/responsive.css') }}" rel="stylesheet">
+
+    <!-- Extras css -->
+    <link href="{{ asset('css/custom/extras/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom/extras/lightbox.css') }}" rel="stylesheet">
+
+    <!-- jQuery Load -->
+    <link href="{{ asset('js/custom/jquery-min.js') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -26,6 +34,7 @@
 </head>
 <body>
     <div id="app">
+        <section id="back-to-top">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -144,6 +153,7 @@
                 </div>
             </div>
         </nav>
+    </section>
 
         @if (session('info')) <div class="alert alert-info"> {{ session('info') }} </div> @endif
         @if (session('success')) <div class="alert alert-success"> {{ session('success') }} </div> @endif
@@ -151,8 +161,26 @@
 
         @yield('content')
     </div>
+    <!-- Conatct Section End-->
+
+
+    <div id="copyright">
+    <div class="container">
+    <!-- <div class="col-md-10"><p>© Recruitment Hut 2017 All right reserved. Design & Developed by The Team</p></div> -->
+    <div class="col-md-2-offset-10">
+        <span class="to-top pull-right"><a href="#back-to-top"><i class="fa fa-angle-up fa-2x"></i></a></span>
+        </div>
+    </div>
+    </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <!-- Smooth Scroll -->
+    <script src="{{ asset('js/custom/smooth-scroll.js') }}"></script>
+    <script src="{{ asset('js/custom/lightbox.min.js') }}"></script>
+
+    <!-- All JS plugin Triggers -->
+    <script src="{{ asset('js/custom/main.js') }}"></script>
 </body>
 </html>
