@@ -21,9 +21,28 @@ class RecruiterController extends Controller
      */
     public function index()
     {
-        //check to see if data entered ofr recruiter info is JSON
-        // dd(RecruiterInfo::all());
-        // $recruiters = User::with('position')->paginate(10);
+        $recruiters = User::
+            join('recruiter_infos', 'users.id', '=', 'recruiter_infos.user_id')
+            ->join('positions', 'recruiter_infos.position_id', '=', 'positions.id')
+            ->join('user_types', 'users.user_type_id', '=', 'user_types.id')
+            ->whereIn('user_types.id', [3, 4])
+            ->paginate(10, array('users.id AS id',
+                'users.first_name AS first_name',
+                'users.last_name AS last_name',
+                'user_types.name AS user_type',
+                'positions.name AS position'))
+        ;
+
+//            ->get([
+//                'users.id AS id',
+//                'users.first_name AS first_name',
+//                'users.last_name AS last_name',
+//                'user_types.name AS user_type',
+//                'positions.name AS position'
+//            ])
+//            ->toArray()
+
+    /*
         $recruiters = DB::select
         ('
             SELECT
@@ -40,9 +59,13 @@ class RecruiterController extends Controller
             user_types
 
             WHERE
+<<<<<<< HEAD
             users.deleted_at IS NULL
             AND
             users.id = recruiter_infos.user_id
+=======
+                users.id = recruiter_infos.user_id
+>>>>>>> 523cedac4a76e595d0514ed31d796a8d44f471da
             AND
             recruiter_infos.position_id = positions.id
             AND
@@ -50,8 +73,8 @@ class RecruiterController extends Controller
             AND
             (user_types.id = 3 OR user_types.id = 4)
         ');
-        // $pagination = Paginator::make($recruiters, count($recruiters), 10);
-        // dd($recruiters);
+    */
+
         return view('recruiter.index', compact('recruiters'));
     }
 
