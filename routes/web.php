@@ -40,3 +40,5 @@ Route::resource('/recruiter', 'RecruiterController');
 Route::resource('/application', 'ApplicationController');
 
 Route::resource('/interview', 'InterviewController');
+
+Route::get('/interview/create/{id?}', 'InterviewController@create');

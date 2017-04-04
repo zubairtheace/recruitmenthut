@@ -63,6 +63,8 @@
                                 ]) !!}
                                     <input name="candidate_id" type="hidden" value="{{ Auth::id() }}">
                                     <input name="vacancy_id" type="hidden" value="{{ $vacancy->id }}">
+                                    <input name="date_applied" type="hidden" value="{{ date("Y/m/d") }}">
+                                    <input name="overall_rating" type="hidden" value="0">
                                     <button type="submit" class="btn btn-primary">Apply</button>
                                 {!! Form::close() !!}
                                 <?php

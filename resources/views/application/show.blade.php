@@ -55,9 +55,8 @@
                                                     <td><div class="text-right"><strong>Interviews</strong></div></td>
                                                     <td>
                                                         <a href="#">3 Interviews</a>
-                                                        &nbsp;
-                                                        &nbsp;
-                                                        <a href="#" class="btn btn-primary btn-sm ">Add Interview </a>
+
+                                                        <a href="/interview/create/{{$application->id}}" class="btn btn-primary btn-sm ">Add Interview </a>
 
                                                     </td>
                                                 </tr>
