@@ -29,7 +29,7 @@ class Interview extends Model
     }
 
     public function interviewType(){
-        return $this->hasOne('App\InterviewType', 'id', 'interview_type_id');
+        return $this->hasOne('App\interviewType', 'id', 'interview_type_id');
     }
 
     protected $dates = ['deleted_at'];

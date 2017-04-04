@@ -23,7 +23,7 @@ class RecruiterInfo extends Model
     }
 
     public function position(){
-        return $this->hasOne('App\Position', 'id', 'position_id');
+        return $this->hasOne('App\Position', 'id');
     }
     protected $dates = ['deleted_at'];
 }
