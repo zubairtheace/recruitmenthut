@@ -85,18 +85,21 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password'])
         ]);
-
-        // TODO make each name ogiginal
+        
         $cv = $data['cv'];
-        $cv->move( public_path('/documents/cv'), $data['cv']->getClientOriginalName() );
+        $input['cvname'] = time().rand(0,100).'.'.$cv->getClientOriginalExtension();
+        $cvDestinationPath = public_path('/documents/cv/'.$user->id.'/');
+        $cv->move( $cvDestinationPath, $input['cvname'] );
 
         $certificates = $data['certificates'];
-        $certificates->move( public_path('/documents/certificates'), $data['certificates']->getClientOriginalName() );
+        $input['certificatename'] = time().rand(0,100).'.'.$certificates->getClientOriginalExtension();
+        $certDestinationPath = public_path('/documents/certificate/'.$user->id.'/');
+        $certificates->move( $certDestinationPath, $input['certificatename'] );
 
         $candidate = CandidateInfo::create([
            'user_id' => $user->id,
-           'cv' => $data['cv']->getClientOriginalName(),
-           'certificates' => $data['certificates']->getClientOriginalName(),
+           'cv' => $input['cvname'],
+           'certificates' => $input['certificatename'],
        ]);
 
        return $user;
