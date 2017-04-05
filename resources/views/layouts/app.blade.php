@@ -10,6 +10,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{{{ asset('custom/images/icon.ico') }}}">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Custom fonts -->
