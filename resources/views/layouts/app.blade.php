@@ -132,7 +132,7 @@
                                             if (Auth::user()->user_type_id == 1 || Auth::user()->user_type_id == 2){
                                                 ?>
                                                     <li><a href="{{ route('candidate.show', Auth::user()->id) }}">View Profile</a></li>
-                                                    <li><a href="{{ route('candidate.edit', Auth::user()->id) }}">Edit Profile Profile</a></li>
+                                                    <li><a href="{{ route('candidate.edit', Auth::user()->id) }}">Edit Profile</a></li>
                                                 <?php
                                             }
                                         }
