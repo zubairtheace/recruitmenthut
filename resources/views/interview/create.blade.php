@@ -16,7 +16,7 @@
                       ]) !!}
 
                         <!-- Application id   -->
-                        <div class="form-group{{ $errors->has('application_id') ? ' has-error' : '' }}">
+                        <!-- <div class="form-group{{ $errors->has('application_id') ? ' has-error' : '' }}">
                             <div class="container-fluid">
                                 {!! Form::label(
                                     'application_id',
@@ -47,7 +47,8 @@
                                 </div>
                             </div>
                             @endif
-                        </div>
+                        </div> -->
+                        <input name="application_id" type="hidden" value="{{ $application_id }}">
 
                         <!-- Interviewer id   -->
                         <div class="form-group{{ $errors->has('interviewer_id') ? ' has-error' : '' }}">

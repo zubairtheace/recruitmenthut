@@ -75,6 +75,7 @@ class ApplicationController extends Controller
     public function show($id)
     {
         $application = Application::findOrFail($id);
+        // $overallRating = DB::table
         return view('application.show', compact('application'));
     }
 

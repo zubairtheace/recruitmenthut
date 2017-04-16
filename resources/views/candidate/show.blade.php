@@ -125,7 +125,7 @@
 
                                 <tr>
                                     <td><div class="text-right"><strong>CV</strong></div></td>
-                                    <td><a href="#">CV.pdf</a></td>
+                                    <td><a href="/documents/cv/{{ $candidate->cv }}">{{ $candidate->cv }}</a></td>
                                 </tr>
 
                                 <tr>
@@ -146,7 +146,7 @@
                                         'method' => 'delete',
                                         'class' => 'form-horizontal'
                                     ]) !!}
-                                        <button type="submit" class="btn btn-danger">Delete</button>                
+                                        <button type="submit" class="btn btn-danger">Delete</button>
                                     {!! Form::close() !!}
                                 </div>
                             <?php

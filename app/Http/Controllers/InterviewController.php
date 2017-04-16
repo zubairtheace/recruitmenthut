@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Request;
 use View;
 use App\Interview;
 use App\Http\Requests\InterviewRequest;
@@ -28,7 +28,8 @@ class InterviewController extends Controller
      */
     public function create()
     {
-        return view('interview.create');
+        $application_id = Request::segment(3);
+        return view('interview.create', compact('application_id'));
     }
 
     /**

@@ -12,7 +12,7 @@
                 <img class="col-md-6 col-sm-6 col-xs-12 animated fadeInLeft" src="custom/images/macbook.png" alt="Recruitment Hut">
 
                 <div class="col-md-6 col-sm-6 col-xs-12 animated fadeInRight delay-0-5">
-                    <p>Recruitment Hut is an applicant tracking system (ATS) designed for small to midsized businesses that prides itself as being “the simplest recruiting software in the world for growing companies.” </p>
+                    <h3>Recruitment Hut is an applicant tracking system (ATS) designed for small to midsized businesses that prides itself as being “the simplest recruiting software in the world for growing companies.” </h3>
                     <p><a href="/vacancy" class="btn btn-common btn-lg">Try for Free</a></p>
                 </div>
 
