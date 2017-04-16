@@ -27,7 +27,9 @@
                                 ); !!}
 
                                 <div class="col-md-6">
-                                    {!! Form::select(
+
+                                    @if (request()->segment(3) == null )
+                                        {!! Form::select(
                                         'application_id',
                                         App\Application::pluck('candidate_id', 'id'),
                                         null,
@@ -36,6 +38,19 @@
                                             'class' => 'form-control'
                                         ]
                                     ); !!}
+                                    @else
+                                        {!! Form::select(
+                                        'application_id',
+                                        App\Application::pluck('candidate_id', 'id'),
+                                        request()->segment(3),
+                                        [
+                                            'placeholder' => 'Select Application...',
+                                            'class' => 'form-control',
+                                        ]
+                                    ); !!}
+                                    @endif
+
+
                                 </div>
                             </div>
                             @if ($errors->has('application_id'))
@@ -64,7 +79,7 @@
                                 <div class="col-md-6">
                                     {!! Form::select(
                                         'interviewer_id',
-                                        App\User::select(DB::raw("CONCAT(first_name,' ',last_name) AS name"),'id')->pluck('name', 'id'),
+                                        App\User::select(DB::raw("CONCAT(first_name,' ',last_name) AS name"),'id')->whereNotIn('user_type_id', [1,2])->pluck('name', 'id'),
                                         null,
                                         [
                                             'placeholder' => 'Select Interviewer...',

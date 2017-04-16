@@ -29,4 +29,15 @@ class VacancyRequest extends FormRequest
             'description' => 'required'
         ];
     }
+
+    // public function messages()
+    // {
+    //     return [
+    //         'name.required' => 'Please provide a Name',
+    //         'name.min' => 'Please provide a Name longer tha 2 Characters',
+    //         'closing_date.required' => 'Please provide an Closing date',
+    //         'description.required' => 'Please provide a Description'
+    //     ];
+    // }
+
 }

@@ -19,7 +19,6 @@ class VacancyController extends Controller
     public function index()
     {
         $vacancies = Vacancy::whereDate('closing_date', '>=', date('Y-m-d'))->paginate(10);
-        
         return view('vacancy.index', compact('vacancies'));
     }
 

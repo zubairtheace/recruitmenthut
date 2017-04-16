@@ -10,6 +10,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{{{ asset('custom/images/icon.ico') }}}">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Custom fonts -->
@@ -129,7 +132,7 @@
                                             if (Auth::user()->user_type_id == 1 || Auth::user()->user_type_id == 2){
                                                 ?>
                                                     <li><a href="{{ route('candidate.show', Auth::user()->id) }}">View Profile</a></li>
-                                                    <li><a href="{{ route('candidate.edit', Auth::user()->id) }}">Edit Profile Profile</a></li>
+                                                    <li><a href="{{ route('candidate.edit', Auth::user()->id) }}">Edit Profile</a></li>
                                                 <?php
                                             }
                                         }
