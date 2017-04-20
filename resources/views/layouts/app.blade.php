@@ -24,9 +24,10 @@
     <!-- Extras css -->
     <link href="{{ asset('css/custom/extras/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom/extras/lightbox.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
 
     <!-- jQuery Load -->
-    <link href="{{ asset('js/custom/jquery-min.js') }}" rel="stylesheet">
+    <script src="{{ asset('js/custom/jquery-min.js') }}" ></script>
 
     <!-- Scripts -->
     <script>
@@ -178,6 +179,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+
+    <script src="{{ asset('js/custom/moment.min.js') }}" ></script>
+    <script src="{{ asset('js/custom/bootstrap-datetimepicker.min.js') }}" ></script>
 
     <!-- Smooth Scroll -->
     <script src="{{ asset('js/custom/smooth-scroll.js') }}"></script>
