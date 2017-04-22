@@ -140,7 +140,7 @@
                             <script type="text/javascript">
                                 $(function () {
                                     $('#datetimepicker1').datetimepicker({
-                                      format: 'YYYY/MM/DD HH:mm:ss',
+                                      format: 'YYYY/MM/DD HH:mm',
                                       sideBySide: true
                                     });
                                 });

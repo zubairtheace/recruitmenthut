@@ -41,6 +41,7 @@ class InterviewController extends Controller
     public function store(InterviewRequest $request)
     {
         $result = Interview::create($request->all());
+        $request['scheduled_on'] = date('Y-m-d H:i', strtotime(str_replace('-', '/', $request['scheduled_on'])));
         if ($result){
             return redirect('interview')->with('success', 'Interview Added');
         }
@@ -98,9 +99,7 @@ class InterviewController extends Controller
     public function update(InterviewRequest $request, $id)
     {
         $interview = Interview::findOrFail($id);
-        // dd($request);
-        $request['scheduled_on'] = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $request['scheduled_on'])));
-        // dd($request['scheduled_on']);
+        $request['scheduled_on'] = date('Y-m-d H:i', strtotime(str_replace('-', '/', $request['scheduled_on'])));
         $result = $interview->update($request->all());
         if ($result){
             return redirect('interview')->with('success', 'Interview Updated');

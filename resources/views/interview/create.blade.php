@@ -145,14 +145,27 @@
                               ); !!}
 
                               <div class="col-md-5">
-                                  {!! Form::datetimelocal(
-                                      'scheduled_on',
-                                      old('scheduled_on'),
-                                      [
-                                          'class'=>'form-control',
-                                      ]
-                                  ); !!}
-                              </div>
+                              {!! Form::text(
+                                  'scheduled_on',
+                                  old('scheduled_on'),
+                                  [
+                                      'class'=>'form-control',
+                                      'id'=>'datetimepicker1'
+                                  ]
+                              ); !!}
+
+                            <script type="text/javascript">
+                                $(function () {
+                                    $('#datetimepicker1').datetimepicker({
+                                      format: 'YYYY/MM/DD HH:mm',
+                                      sideBySide: true
+                                    });
+                                });
+                            </script>
+
+                          </div>
+
+
                           </div>
                           @if ($errors->has('scheduled_on'))
                           <div class="container-fluid">
