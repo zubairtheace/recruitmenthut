@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Request;
 use View;
 use App\Interview;
 use App\Http\Requests\InterviewRequest;
@@ -28,7 +28,8 @@ class InterviewController extends Controller
      */
     public function create()
     {
-        return view('interview.create');
+        $application_id = Request::segment(3);
+        return view('interview.create', compact('application_id'));
     }
 
     /**
@@ -40,6 +41,7 @@ class InterviewController extends Controller
     public function store(InterviewRequest $request)
     {
         $result = Interview::create($request->all());
+        $request['scheduled_on'] = date('Y-m-d H:i', strtotime(str_replace('-', '/', $request['scheduled_on'])));
         if ($result){
             return redirect('interview')->with('success', 'Interview Added');
         }
@@ -97,6 +99,7 @@ class InterviewController extends Controller
     public function update(InterviewRequest $request, $id)
     {
         $interview = Interview::findOrFail($id);
+        $request['scheduled_on'] = date('Y-m-d H:i', strtotime(str_replace('-', '/', $request['scheduled_on'])));
         $result = $interview->update($request->all());
         if ($result){
             return redirect('interview')->with('success', 'Interview Updated');

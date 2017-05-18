@@ -102,16 +102,21 @@ class CandidateController extends Controller
             users.phone_number AS phone_number,
             users.mobile_number AS mobile_number,
             users.email AS email,
+            candidate_infos.cv AS cv,
+            candidate_infos.certificates AS certificates,
             user_types.id AS user_type
 
             FROM
             users,
-            user_types
+            user_types,
+            candidate_infos
 
             WHERE
             users.id = "'.$id.'"
             AND
             users.user_type_id = user_types.id
+            AND
+            candidate_infos.user_id = "'.$id.'"
             AND
             (user_types.id = 1 OR user_types.id = 2)
         '))->first();

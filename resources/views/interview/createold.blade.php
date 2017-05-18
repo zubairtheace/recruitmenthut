@@ -16,7 +16,7 @@
                       ]) !!}
 
                         <!-- Application id   -->
-                        <div class="form-group{{ $errors->has('application_id') ? ' has-error' : '' }}">
+                        <!-- <div class="form-group{{ $errors->has('application_id') ? ' has-error' : '' }}">
                             <div class="container-fluid">
                                 {!! Form::label(
                                     'application_id',
@@ -62,10 +62,15 @@
                                 </div>
                             </div>
                             @endif
+<<<<<<< HEAD
                         </div>
                         <div>
                             Applicant name: {{ $application->candidate->first_name }}
                         </div>
+=======
+                        </div> -->
+                        <input name="application_id" type="hidden" value="{{ $application_id }}">
+>>>>>>> d5711b916c04e1f8ba7ad7cd0a46fb12aae24da0
 
                         <!-- Interviewer id   -->
                         <div class="form-group{{ $errors->has('interviewer_id') ? ' has-error' : '' }}">
@@ -147,14 +152,27 @@
                               ); !!}
 
                               <div class="col-md-5">
-                                  {!! Form::datetimelocal(
-                                      'scheduled_on',
-                                      old('scheduled_on'),
-                                      [
-                                          'class'=>'form-control',
-                                      ]
-                                  ); !!}
-                              </div>
+                              {!! Form::text(
+                                  'scheduled_on',
+                                  old('scheduled_on'),
+                                  [
+                                      'class'=>'form-control',
+                                      'id'=>'datetimepicker1'
+                                  ]
+                              ); !!}
+
+                            <script type="text/javascript">
+                                $(function () {
+                                    $('#datetimepicker1').datetimepicker({
+                                      format: 'YYYY/MM/DD HH:mm',
+                                      sideBySide: true
+                                    });
+                                });
+                            </script>
+
+                          </div>
+
+
                           </div>
                           @if ($errors->has('scheduled_on'))
                           <div class="container-fluid">
