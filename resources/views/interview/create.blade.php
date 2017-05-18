@@ -63,6 +63,9 @@
                             </div>
                             @endif
                         </div>
+                        <div>
+                            Applicant name: {{ $application->candidate->first_name }}
+                        </div>
 
                         <!-- Interviewer id   -->
                         <div class="form-group{{ $errors->has('interviewer_id') ? ' has-error' : '' }}">
