@@ -127,7 +127,7 @@
                                             'Gender'
                                         ); !!}
                                     </div>
-                                    <div class="col-md-2">
+                                    <!-- <div class="col-md-2">
                                         {!! Form::label(
                                             'male',
                                             'Male'
@@ -149,7 +149,66 @@
                                             'gender',
                                             'female'
                                         ); !!}
-                                    </div>
+                                    </div> -->
+                                    <?php
+                                    if (($user->gender)=='male'){
+                                    ?>
+                                        <div class="col-md-2">
+                                            {!! Form::label(
+                                                'male',
+                                                'Male'
+                                            ); !!}
+
+                                            {!! Form::radio(
+                                                'gender',
+                                                'male',
+                                                true
+                                            ); !!}
+                                        </div>
+                                        <div class="col-md-2">
+                                            {!! Form::label(
+                                                'female',
+                                                'Female'
+                                            ); !!}
+
+                                            {!! Form::radio(
+                                                'gender',
+                                                'female'
+                                            ); !!}
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
+
+                                    <?php
+                                        if (($user->gender)=='female'){
+                                            ?>
+                                                <div class="col-md-2">
+                                                    {!! Form::label(
+                                                        'male',
+                                                        'Male'
+                                                    ); !!}
+
+                                                    {!! Form::radio(
+                                                        'gender',
+                                                        'male'
+                                                    ); !!}
+                                                </div>
+                                                <div class="col-md-2">
+                                                    {!! Form::label(
+                                                        'female',
+                                                        'Female'
+                                                    ); !!}
+
+                                                    {!! Form::radio(
+                                                        'gender',
+                                                        'female',
+                                                        true
+                                                    ); !!}
+                                                </div>
+                                            <?php
+                                        }
+                                    ?>
                                 </div>
                                 @if ($errors->has('gender'))
                                 <div class="container-fluid">
@@ -203,7 +262,66 @@
                                             'Marital Status'
                                         ); !!}
                                     </div>
-                                    <div class="col-md-2">
+                                    <?php
+                                        if (($user->marital_status)=='single'){
+                                    ?>
+                                        <div class="col-md-2">
+                                            {!! Form::label(
+                                                'single',
+                                                'Single'
+                                            ); !!}
+
+                                            {!! Form::radio(
+                                                'marital_status',
+                                                'single',
+                                                true
+                                            ); !!}
+                                        </div>
+                                        <div class="col-md-2">
+                                            {!! Form::label(
+                                                'married',
+                                                'Married'
+                                            ); !!}
+
+                                            {!! Form::radio(
+                                                'marital_status',
+                                                'married'
+                                            ); !!}
+                                        </div>
+                                    <?php
+                                        }
+                                    ?>
+
+                                    <?php
+                                        if (($user->marital_status)=='married'){
+                                    ?>
+                                        <div class="col-md-2">
+                                            {!! Form::label(
+                                                'single',
+                                                'Single'
+                                            ); !!}
+
+                                            {!! Form::radio(
+                                                'marital_status',
+                                                'single'
+                                            ); !!}
+                                        </div>
+                                        <div class="col-md-2">
+                                            {!! Form::label(
+                                                'married',
+                                                'Married'
+                                            ); !!}
+
+                                            {!! Form::radio(
+                                                'marital_status',
+                                                'married',
+                                                true
+                                            ); !!}
+                                        </div>
+                                    <?php
+                                        }
+                                    ?>
+                                    <!-- <div class="col-md-2">
                                         {!! Form::label(
                                             'single',
                                             'Single'
@@ -225,7 +343,7 @@
                                             'marital_status',
                                             'married'
                                         ); !!}
-                                    </div>
+                                    </div> -->
                                 </div>
                                 @if ($errors->has('marital_status'))
                                 <div class="container-fluid">
