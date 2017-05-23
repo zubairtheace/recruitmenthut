@@ -71,7 +71,8 @@
                                             ?>
                                                 <tr>
                                                     <td><div class="text-right"><strong>Overall Rating</strong></div></td>
-                                                    <td>{{ $application->overall_rating }}/10</td>
+                                                    <?php $avg = DB::table('interviews')->where('application_id', $application->id)->avg('rating'); ?>
+                                                    <td>{{ round($avg,2) }}/10</td>
                                                 </tr>
                                             <?php
                                         }
