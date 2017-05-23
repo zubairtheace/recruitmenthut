@@ -17,7 +17,7 @@ class InterviewController extends Controller
      */
     public function index()
     {
-        $interviews = Interview::paginate(10);
+        $interviews = Interview::orderBy('scheduled_on', 'desc')->paginate(10);
         return view('interview.index', compact('interviews'));
     }
 
