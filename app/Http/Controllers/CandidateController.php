@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Auth;
+use Mail;
 
 class CandidateController extends Controller
 {
@@ -136,6 +137,32 @@ class CandidateController extends Controller
         $user = User::findOrFail($id);
         $candidateInfo = CandidateInfo::where('user_id', '=', $id)->first();
         return view('candidate.edit', compact('user', 'candidateInfo'));
+    }
+
+    /**
+     * Send the email
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function email($id)
+    {
+        $user = User::findOrFail($id);
+        $candidateInfo = CandidateInfo::where('user_id', '=', $id)->first();
+
+
+        $title = "Congratulation!"; // can also appen car name here
+        $name = Auth::user()->first_name.' '.Auth::user()->last_name; //or "RecruiterHub"
+        $email = 'umar.mw@gmail.com'; //'tofy.zubair@gmail.com'; // on prod use this->  $user->email;
+
+        Mail::send('email.recruited', ['title' => $title, 'content' => $user], function ($message) use ( $email, $name, $title)
+        {
+            $message->from('support@recruiterhub.io', 'RecruiterHub Team');
+            $message->to($email, $name);
+            $message->subject($title);
+        });
+
+        return back()->with('success','Email Sent!');
     }
 
     /**
