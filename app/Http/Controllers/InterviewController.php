@@ -7,6 +7,7 @@ use Request;
 use View;
 use App\Interview;
 use App\Http\Requests\InterviewRequest;
+use Mail;
 
 class InterviewController extends Controller
 {
@@ -43,6 +44,9 @@ class InterviewController extends Controller
         $result = Interview::create($request->all());
         $request['scheduled_on'] = date('Y-m-d H:i', strtotime(str_replace('-', '/', $request['scheduled_on'])));
         if ($result){
+
+            //send mail to candidate and interviewer
+            $this->emailNotification($result->id, $result->application_id, $result->interviewer_id, $result->scheduled_on);
             return redirect('interview')->with('success', 'Interview Added');
         }
         else{
@@ -63,6 +67,39 @@ class InterviewController extends Controller
         // else{
         //     return back()->with('error','Failed to save!');
         // }
+    }
+    public function emailNotification($id, $apl_id, $intv_id, $scheduled_on)
+    {
+      //prepare the email
+      $candidate = User::findOrFail($apl_id);
+      $interviewer = User::findOrFail($intv_id);
+
+      $title = "Interview - Notification"; // can also appen car name here
+      $name = "RecruiterHub";
+
+      $candidateName = $candidate->first_name." ".$candidate->last_name;
+      $interviewerName = $interviewer->first_name." ".$interviewer->last_name;
+
+      $candidateEmail = $candidate->email;
+      $interviewerEmail = $interviewer->email;
+
+      //send email to candidate
+      Mail::send('email.notifycandidate', ['title' => $title, 'content' => $scheduled_on], function ($message) use ( $email, $name, $title)
+      {
+          $message->from('support@recruiterhub.io', 'RecruiterHub Team');
+          $message->to($candidateEmail, $candidateName);
+          $message->subject($title);
+      });
+
+      //send email to interviewer
+      Mail::send('email.notifyinterviewer', ['title' => $title, 'content' => $scheduled_on], function ($message) use ( $email, $name, $title)
+      {
+          $message->from('support@recruiterhub.io', 'RecruiterHub Team');
+          $message->to($interviewerEmail, $interviewerName);
+          $message->subject($title);
+      });
+
+      return true;
     }
 
     /**
