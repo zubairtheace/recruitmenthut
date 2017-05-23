@@ -15,62 +15,10 @@
                       'method' => 'POST',
                       ]) !!}
 
+                        <h2>Appfication for <b> {{ App\User::find($application_id)->first_name }} {{ App\User::find($application_id)->last_name }} </b></h2>
                         <!-- Application id   -->
-                        <!-- <div class="form-group{{ $errors->has('application_id') ? ' has-error' : '' }}">
-                            <div class="container-fluid">
-                                {!! Form::label(
-                                    'application_id',
-                                    'Application',
-                                    [
-                                        'class' => 'col-md-4 control-label'
-                                    ]
-                                ); !!}
-
-                                <div class="col-md-6">
-
-                                    @if (request()->segment(3) == null )
-                                        {!! Form::select(
-                                        'application_id',
-                                        App\Application::pluck('candidate_id', 'id'),
-                                        null,
-                                        [
-                                            'placeholder' => 'Select Application...',
-                                            'class' => 'form-control'
-                                        ]
-                                    ); !!}
-                                    @else
-                                        {!! Form::select(
-                                        'application_id',
-                                        App\Application::pluck('candidate_id', 'id'),
-                                        request()->segment(3),
-                                        [
-                                            'placeholder' => 'Select Application...',
-                                            'class' => 'form-control',
-                                        ]
-                                    ); !!}
-                                    @endif
-
-
-                                </div>
-                            </div>
-                            @if ($errors->has('application_id'))
-                            <div class="container-fluid">
-                                <div class="col-md-8 col-md-offset-4">
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('application_id') }}</strong>
-                                    </span>
-                                </div>
-                            </div>
-                            @endif
-<<<<<<< HEAD
-                        </div>
-                        <div>
-                            Applicant name: {{ $application->candidate->first_name }}
-                        </div>
-=======
-                        </div> -->
                         <input name="application_id" type="hidden" value="{{ $application_id }}">
->>>>>>> d5711b916c04e1f8ba7ad7cd0a46fb12aae24da0
+
 
                         <!-- Interviewer id   -->
                         <div class="form-group{{ $errors->has('interviewer_id') ? ' has-error' : '' }}">
