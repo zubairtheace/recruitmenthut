@@ -28,8 +28,8 @@ class InterviewRequest extends FormRequest
             'interviewer_id' => 'required',
             'interview_type_id' => 'required',
             'scheduled_on' => 'required',
-            'notes' => 'required',
-            'rating' => 'required'
+            // 'notes' => 'required',
+            // 'rating' => 'required'
         ];
     }
 }

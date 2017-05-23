@@ -134,7 +134,7 @@
                         </div>
 
                         <!--Notes-->
-                        <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }} {{ (Request::segment(2) == 'create')?'hide':'show' }}">
                             <div class="container-fluid">
                                 {!! Form::label(
                                     'notes',
@@ -150,7 +150,6 @@
                                         old('notes'),
                                         [
                                             'class'=>'form-control',
-                                            'required' => 'required',
                                             'rows' => '5'
                                         ]
                                     ); !!}
@@ -168,7 +167,7 @@
                         </div>
 
                         <!--Rating-->
-                        <div class="form-group{{ $errors->has('rating') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('rating') ? ' has-error' : '' }} {{ (Request::segment(2) == 'create')?'hide':'show' }}">
                             <div class="container-fluid">
                                 {!! Form::label(
                                     'rating',
@@ -182,7 +181,7 @@
                                     <div class="input-group">
                                         {!! Form::number(
                                             'rating',
-                                            old('rating'),
+                                            (null !==old('rating'))?old('rating'):'0',
                                             [
                                                 'class'=>'form-control',
                                                 'step'=>'1',
@@ -205,6 +204,7 @@
                             </div>
                             @endif
                         </div>
+
 
                         <!-- submit -->
 
