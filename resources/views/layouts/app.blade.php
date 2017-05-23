@@ -186,7 +186,7 @@
 
     <!-- Smooth Scroll -->
     <script src="{{ asset('js/custom/smooth-scroll.js') }}"></script>
-    <script src="{{ asset('js/custom/lightbox.min.js') }}"></script>
+    <!-- <script src="{{ asset('js/custom/lightbox.min.js') }}"></script> -->
 
     <!-- All JS plugin Triggers -->
     <script src="{{ asset('js/custom/main.js') }}"></script>
