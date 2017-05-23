@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if ((Auth::user()) && (Auth::user()->user_type_id == 2))
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="alert alert-success" style="margin-top: 22px">
+            You are already hired!
+          </div>
+        </div>
+    </div>
+</div>
+@endif
 <!-- Hero Area Section -->
 <section id="hero-area">
     <div class="container">
