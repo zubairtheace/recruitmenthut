@@ -27,15 +27,17 @@ class CandidateController extends Controller
                 'users.first_name AS first_name',
                 'users.last_name AS last_name'))
         ;
-        return view('candidate.index', compact('candidates'));
+        $type = 1;
+        return view('candidate.index', compact('candidates', 'type'));
     }
 
     public function search(Request $request)
     {
         $searchTerm = $request->search;
+        $candidateType = $request->type;
         $candidates = User::
         join('user_types', 'users.user_type_id', '=', 'user_types.id')
-            ->where('user_types.id', 1)
+            ->where('user_types.id', $candidateType)
             ->where('first_name', 'like', '%' . $searchTerm . '%')
             ->orWhere('last_name', 'like', '%' . $searchTerm . '%')
             ->paginate(5, array('users.id AS id',
@@ -55,9 +57,8 @@ class CandidateController extends Controller
                 'users.first_name AS first_name',
                 'users.last_name AS last_name'))
         ;
-
-
-        return view('candidate.index', compact('candidates'));
+        $type = 2;
+        return view('candidate.index', compact('candidates', 'type'));
     }
     /**
      * Show the form for creating a new resource.

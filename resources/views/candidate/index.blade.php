@@ -16,6 +16,7 @@
                             'method' => 'POST'
                             ]) !!}
                         <input type="text" name="search" placeholder="Search Candidates...">
+                        <input type="hidden" name="type" value="{{ $type }}">
                     {!! Form::close() !!}
                 </div>
                 <div class="panel-body table-responsive">
