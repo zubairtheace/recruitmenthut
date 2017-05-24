@@ -8,6 +8,7 @@ use View;
 use App\Interview;
 use App\Http\Requests\InterviewRequest;
 use Mail;
+use App\User;
 
 class InterviewController extends Controller
 {
@@ -68,11 +69,11 @@ class InterviewController extends Controller
         //     return back()->with('error','Failed to save!');
         // }
     }
-    public function emailNotification($id, $apl_id, $intv_id, $scheduled_on)
+    public function emailNotification($id, $aplId, $intvId, $scheduledOn)
     {
       //prepare the email
-      $candidate = User::findOrFail($apl_id);
-      $interviewer = User::findOrFail($intv_id);
+      $candidate = User::findOrFail($aplId);
+      $interviewer = User::findOrFail($intvId);
 
       $title = "Interview - Notification"; // can also appen car name here
       $name = "RecruiterHub";
@@ -84,7 +85,7 @@ class InterviewController extends Controller
       $interviewerEmail = $interviewer->email;
 
       //send email to candidate
-      Mail::send('email.notifycandidate', ['title' => $title, 'content' => $scheduled_on], function ($message) use ( $email, $name, $title)
+      Mail::send('email.notifycandidate', ['title' => $title, 'scheduledOn' => $scheduledOn, 'candidateName' => $candidateName, 'interviewerName' => $interviewerName], function ($message) use ( $candidateEmail, $candidateName, $title)
       {
           $message->from('support@recruiterhub.io', 'RecruiterHub Team');
           $message->to($candidateEmail, $candidateName);
@@ -92,7 +93,7 @@ class InterviewController extends Controller
       });
 
       //send email to interviewer
-      Mail::send('email.notifyinterviewer', ['title' => $title, 'content' => $scheduled_on], function ($message) use ( $email, $name, $title)
+      Mail::send('email.notifyinterviewer', ['title' => $title, 'scheduledOn' => $scheduledOn, 'candidateName' => $candidateName, 'interviewerName' => $interviewerName], function ($message) use ( $interviewerEmail, $interviewerName, $title)
       {
           $message->from('support@recruiterhub.io', 'RecruiterHub Team');
           $message->to($interviewerEmail, $interviewerName);
