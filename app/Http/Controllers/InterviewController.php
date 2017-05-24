@@ -86,8 +86,8 @@ class InterviewController extends Controller
 
       //for debugging
       if(env('APP_ENV') == "local"){
-        $candidateEmail = 'umar.mw@gmail.com';
-        $interviewerEmail = 'umar.mw@gmail.com';
+        $candidateEmail = 'tofy.zubair@gmail.com';
+        $interviewerEmail = 'tofy.zubair@gmail.com';
       } else {
         $candidateEmail = $candidate->email;
         $interviewerEmail = $interviewer->email;

@@ -21,7 +21,7 @@ class CandidateController extends Controller
         $candidates = User::
         join('user_types', 'users.user_type_id', '=', 'user_types.id')
             ->where('user_types.id', 1)
-            ->paginate(5, array('users.id AS id',
+            ->paginate(10, array('users.id AS id',
                 'users.first_name AS first_name',
                 'users.last_name AS last_name'))
         ;
@@ -53,7 +53,7 @@ class CandidateController extends Controller
         $candidates = User::
         join('user_types', 'users.user_type_id', '=', 'user_types.id')
             ->where('user_types.id', 2)
-            ->paginate(5, array('users.id AS id',
+            ->paginate(10, array('users.id AS id',
                 'users.first_name AS first_name',
                 'users.last_name AS last_name'))
         ;
@@ -118,7 +118,7 @@ class CandidateController extends Controller
         $name = Auth::user()->first_name.' '.Auth::user()->last_name; //or "RecruiterHub"
         if (env('APP_ENV') == "local")
         {
-          $email = 'umar.mw@gmail.com';
+          $email = 'tofy.zubair@gmail.com';
         } else {
           $email = $user->email;
         }
@@ -138,8 +138,8 @@ class CandidateController extends Controller
 
 
 
-
-        return back()->with('success','Email Sent!');
+        return redirect('candidate')->with('success', 'Candidate Recruited Successfully');
+        // return back()->with('success','Email Sent!');
     }
 
     //Data from the form in the Edit view uses the update function to update data in the database
