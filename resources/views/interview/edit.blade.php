@@ -20,7 +20,7 @@
                         <a href="/interview/{{ $interview->id }}">Interview # {{ $interview->id }} </a>
                         <span class="fa fa-chevron-right"></span>
                         Edit Interview
-                    </div>                    
+                    </div>
                 @endif
                 <div class="panel-body">
                     {!! Form::open([
@@ -67,7 +67,8 @@
                     @else
 
                       <!-- Application id   -->
-                      <div class="form-group{{ $errors->has('application_id') ? ' has-error' : '' }}">
+                      <input type="hidden" name="application_id" value="{{$interview->application_id}}">
+                      <!-- <div class="form-group{{ $errors->has('application_id') ? ' has-error' : '' }}">
                           <div class="container-fluid">
                               {!! Form::label(
                                   'application_id',
@@ -98,7 +99,7 @@
                               </div>
                           </div>
                           @endif
-                      </div>
+                      </div> -->
 
                       <!-- Interviewer id   -->
                       <div class="form-group{{ $errors->has('interviewer_id') ? ' has-error' : '' }}">
