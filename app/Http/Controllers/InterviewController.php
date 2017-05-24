@@ -93,21 +93,37 @@ class InterviewController extends Controller
         $interviewerEmail = $interviewer->email;
       }
 
-      //send email to candidate
-      Mail::send('email.notifycandidate', ['title' => $title, 'scheduledOn' => $scheduledOn, 'candidateName' => $candidateName, 'interviewerName' => $interviewerName], function ($message) use ( $candidateEmail, $candidateName, $title)
-      {
-          $message->from('support@recruiterhub.io', 'RecruiterHub Team');
-          $message->to($candidateEmail, $candidateName);
-          $message->subject($title);
-      });
+      try {
 
-      //send email to interviewer
-      Mail::send('email.notifyinterviewer', ['title' => $title, 'scheduledOn' => $scheduledOn, 'candidateName' => $candidateName, 'interviewerName' => $interviewerName], function ($message) use ( $interviewerEmail, $interviewerName, $title)
-      {
-          $message->from('support@recruiterhub.io', 'RecruiterHub Team');
-          $message->to($interviewerEmail, $interviewerName);
-          $message->subject($title);
-      });
+        //send email to candidate
+        Mail::send('email.notifycandidate', ['title' => $title, 'scheduledOn' => $scheduledOn, 'candidateName' => $candidateName, 'interviewerName' => $interviewerName], function ($message) use ( $candidateEmail, $candidateName, $title)
+        {
+            $message->from('support@recruiterhub.io', 'RecruiterHub Team');
+            $message->to($candidateEmail, $candidateName);
+            $message->subject($title);
+        });
+
+      } catch (\Exception $e) {
+
+      }
+
+      try {
+
+        //send email to interviewer
+        Mail::send('email.notifyrecruiter', ['title' => $title, 'scheduledOn' => $scheduledOn, 'candidateName' => $candidateName, 'interviewerName' => $interviewerName], function ($message) use ( $interviewerEmail, $interviewerName, $title)
+        {
+            $message->from('support@recruiterhub.io', 'RecruiterHub Team');
+            $message->to($interviewerEmail, $interviewerName);
+            $message->subject($title);
+        });
+
+      } catch (\Exception $e) {
+
+      }
+
+
+
+
 
       return true;
     }

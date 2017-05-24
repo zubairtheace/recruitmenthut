@@ -5,7 +5,7 @@
 <div>
   <p>Hello <b>{!! $candidateName !!}</b></p>
   <p>&nbsp;</p>
-  <p> You have an interview schedule on  {!! $scheduledOn !!} and it will be carried out by <b> {!! $interviewerName !!}</b></p>
+  <p> You have an interview scheduled on  {!! $scheduledOn !!} and it will be carried out by <b> {!! $interviewerName !!}</b></p>
   <p>&nbsp;</p>
   <p> Kindly reply to this mail for the confirmation of date and time. </p>
 </div>
