@@ -136,7 +136,9 @@ class CandidateController extends Controller
 
         }
 
-
+        //set user type to 2
+        User::find($id)
+          ->update(['user_type_id' => 2]);
 
         return redirect('candidate')->with('success', 'Candidate Recruited Successfully');
         // return back()->with('success','Email Sent!');
