@@ -24,6 +24,7 @@
                                 <th>Interviewer</th>
                                 <th>Job Applied</th>
                                 <th>Interview Format</th>
+                                <th>Interview Status</th>
                                 <th>Interview Date / Time</th>
                                 <th><div class="pull-right">Actions</div></th>
                             </tr>
@@ -35,14 +36,15 @@
                                 <td>{{ $interview->interviewer->first_name }} {{ $interview->interviewer->last_name }}</td><!-- <td>Candidate first_name last_name</td> -->
                                 <td>{{ $interview->application->vacancy->name }}</td><!-- <td>Interviewer first_name last_name</td> -->
                                 <td>{{ $interview->interviewType->name }}</td><!-- <td>Vacancy name</td> -->
+                                <td>{{ $interview->status }}</td>
                                 <?php
                                     $scheduledOn = new DateTime($interview->scheduled_on);
                                  ?>
                                 <td>{{ $scheduledOn->format('Y-m-d') }} @ {{ $scheduledOn->format('H:i') }}</td>
                                 <td>
-                                    <div class="pull-right">
+                                    <div class="text-center">
                                     <a href="{{ route('interview.show', $interview->id) }}"><span class="fa fa-eye"></span></a>
-                                    &nbsp;
+                                    <!-- &nbsp;
                                     &nbsp;
                                     <?php
                                         if (Auth::guest() != true){
@@ -52,7 +54,7 @@
                                                 <?php
                                             }
                                         }
-                                     ?>
+                                     ?> -->
                                     </div>
                                 </td>
                             </tr>

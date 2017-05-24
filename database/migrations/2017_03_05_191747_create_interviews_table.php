@@ -19,6 +19,7 @@ class CreateInterviewsTable extends Migration
             $table->integer('interviewer_id')->unsigned();
             $table->integer('interview_type_id')->unsigned();
             $table->datetime('scheduled_on');
+            $table->string('status')->default('Pending');
             $table->text('notes')->nullable();
             $table->float('rating')->nullable();
             $table->foreign('application_id')->references('id')->on('applications');
@@ -30,138 +31,153 @@ class CreateInterviewsTable extends Migration
 
         //15 samples of interviews with some pointed towards the same application
         $data1 = array(
-            "application_id"=>"1", //id should be between id's in applicatoin table
-            "interviewer_id"=>"20", //id should be relative to the table users with user_types = 3 or 4
-            "interview_type_id"=>"1", // id should be between id's in interview_types table
-            "scheduled_on"=>"2017-04-20", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
+            "application_id"=>"1",
+            "interviewer_id"=>"20",
+            "interview_type_id"=>"1",
+            "scheduled_on"=>"2017-05-23 14:15:00",
             "notes"=>"Good knowledge on modern technologies.",
-            "rating"=>"6" //between 1 and 10
+            "rating"=>"7",
+            "status"=>"Done"
         );
 
         $data2 = array(
-            "application_id"=>"1", //id should be between id's in applicatoin table
-            "interviewer_id"=>"20", //id should be relative to the table users with user_types = 3 or 4
-            "interview_type_id"=>"2", // id should be between id's in interview_types table
-            "scheduled_on"=>"2017-05-20", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
+            "application_id"=>"1",
+            "interviewer_id"=>"20",
+            "interview_type_id"=>"2",
+            "scheduled_on"=>"2017-05-23 14:25:00",
             "notes"=>"Too underconfident.",
-            "rating"=>"4" //between 1 and 10
+            "rating"=>"3",
+            "status"=>"Done"
         );
 
         $data3 = array(
-            "application_id"=>"2", //id should be between id's in applicatoin table
-            "interviewer_id"=>"22", //id should be relative to the table users with user_types = 3 or 4
-            "interview_type_id"=>"1", // id should be between id's in interview_types table
-            "scheduled_on"=>"2017-04-20", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
+            "application_id"=>"2",
+            "interviewer_id"=>"22",
+            "interview_type_id"=>"1",
+            "scheduled_on"=>"2017-05-23 14:35:00",
             "notes"=>"Can do much better.",
-            "rating"=>"6" //between 1 and 10
+            "rating"=>"4",
+            "status"=>"Done"
         );
 
         $data4 = array(
-            "application_id"=>"2", //id should be between id's in applicatoin table
-            "interviewer_id"=>"22", //id should be relative to the table users with user_types = 3 or 4
-            "interview_type_id"=>"2", // id should be between id's in interview_types table
-            "scheduled_on"=>"2017-05-27", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
+            "application_id"=>"2",
+            "interviewer_id"=>"22",
+            "interview_type_id"=>"2",
+            "scheduled_on"=>"2017-05-23 14:45:00",
             "notes"=>"Has the potential.",
-            "rating"=>"8" //between 1 and 10
+            "rating"=>"8",
+            "status"=>"Done"
         );
 
         $data5 = array(
-            "application_id"=>"2", //id should be between id's in applicatoin table
-            "interviewer_id"=>"22", //id should be relative to the table users with user_types = 3 or 4
-            "interview_type_id"=>"3", // id should be between id's in interview_types table
-            "scheduled_on"=>"2017-03-31", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
+            "application_id"=>"2",
+            "interviewer_id"=>"22",
+            "interview_type_id"=>"3",
+            "scheduled_on"=>"2017-05-23 14:55:00",
             "notes"=>"Can be a good candidate for this post.",
-            "rating"=>"7" //between 1 and 10
+            "rating"=>"8",
+            "status"=>"Done"
         );
 
         $data6 = array(
-            "application_id"=>"3", //id should be between id's in applicatoin table
-            "interviewer_id"=>"32", //id should be relative to the table users with user_types = 3 or 4
-            "interview_type_id"=>"1", // id should be between id's in interview_types table
-            "scheduled_on"=>"2017-05-01", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
+            "application_id"=>"3",
+            "interviewer_id"=>"32",
+            "interview_type_id"=>"1",
+            "scheduled_on"=>"2017-05-23 15:05:00",
             "notes"=>"Has no work experice and studies does not match the field required.",
-            "rating"=>"2" //between 1 and 10
+            "rating"=>"2",
+            "status"=>"Done"
         );
 
         $data7 = array(
-            "application_id"=>"7", //id should be between id's in applicatoin table
-            "interviewer_id"=>"25", //id should be relative to the table users with user_types = 3 or 4
-            "interview_type_id"=>"1", // id should be between id's in interview_types table
-            "scheduled_on"=>"2016-10-20", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
+            "application_id"=>"7",
+            "interviewer_id"=>"25",
+            "interview_type_id"=>"1",
+            "scheduled_on"=>"2017-05-23 15:25:00",
             "notes"=>"Has good knowledge.",
-            "rating"=>"10" //between 1 and 10
+            "rating"=>"8",
+            "status"=>"Done"
         );
 
         $data8 = array(
-            "application_id"=>"7", //id should be between id's in applicatoin table
-            "interviewer_id"=>"25", //id should be relative to the table users with user_types = 3 or 4
-            "interview_type_id"=>"4", // id should be between id's in interview_types table
-            "scheduled_on"=>"2016-11-20", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
-            "notes"=>"Has the sskill required for this post.",
-            "rating"=>"10" //between 1 and 10
+            "application_id"=>"7",
+            "interviewer_id"=>"25",
+            "interview_type_id"=>"4",
+            "scheduled_on"=>"2017-05-23 15:35:00",
+            "notes"=>"Has the skills required for this post.",
+            "rating"=>"9",
+            "status"=>"Done"
         );
 
         $data9 = array(
-            "application_id"=>"7", //id should be between id's in applicatoin table
-            "interviewer_id"=>"25", //id should be relative to the table users with user_types = 3 or 4
-            "interview_type_id"=>"2", // id should be between id's in interview_types table
-            "scheduled_on"=>"2016-12-01", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
-            "notes"=>"Has good communication skils.",
-            "rating"=>"10" //between 1 and 10
+            "application_id"=>"7",
+            "interviewer_id"=>"25",
+            "interview_type_id"=>"2",
+            "scheduled_on"=>"2017-05-23 15:45:00",
+            "notes"=>"Has good communication skills.",
+            "rating"=>"8",
+            "status"=>"Done"
         );
 
         $data10 = array(
-            "application_id"=>"12", //id should be between id's in applicatoin table
-            "interviewer_id"=>"40", //id should be relative to the table users with user_types = 3 or 4
-            "interview_type_id"=>"1", // id should be between id's in interview_types table
-            "scheduled_on"=>"2017-01-30", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
+            "application_id"=>"12",
+            "interviewer_id"=>"40",
+            "interview_type_id"=>"1",
+            "scheduled_on"=>"2017-05-23 15:55:00",
             "notes"=>"Not too satisfied with the experince of work of candidate.",
-            "rating"=>"7" //between 1 and 10
+            "rating"=>"3",
+            "status"=>"Done"
         );
 
         $data11 = array(
-            "application_id"=>"2", //id should be between id's in applicatoin table
-            "interviewer_id"=>"22", //id should be relative to the table users with user_types = 3 or 4
-            "interview_type_id"=>"2", // id should be between id's in interview_types table
-            "scheduled_on"=>"2017-02-20", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
-            "notes"=>"Certificates are good.",
-            "rating"=>"7" //between 1 and 10
+            "application_id"=>"2",
+            "interviewer_id"=>"22",
+            "interview_type_id"=>"2",
+            "scheduled_on"=>"2017-06-23 15:45:00",
+            "notes"=>"",
+            "rating"=>"0",
+            "status"=>"Pending"
         );
 
         $data12 = array(
-            "application_id"=>"1", //id should be between id's in applicatoin table
-            "interviewer_id"=>"20", //id should be relative to the table users with user_types = 3 or 4
-            "interview_type_id"=>"4", // id should be between id's in interview_types table
-            "scheduled_on"=>"2017-03-20", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
-            "notes"=>"Skills is okay but can do much better.",
-            "rating"=>"7" //between 1 and 10
+            "application_id"=>"1",
+            "interviewer_id"=>"20",
+            "interview_type_id"=>"4",
+            "scheduled_on"=>"2017-06-24 15:45:00",
+            "notes"=>"",
+            "rating"=>"0",
+            "status"=>"Pending"
         );
 
         $data13 = array(
-            "application_id"=>"1", //id should be between id's in applicatoin table
-            "interviewer_id"=>"20", //id should be relative to the table users with user_types = 3 or 4
-            "interview_type_id"=>"1", // id should be between id's in interview_types table
-            "scheduled_on"=>"2016-11-20", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
-            "notes"=>"Too underconfident.",
-            "rating"=>"4" //between 1 and 10
+            "application_id"=>"1",
+            "interviewer_id"=>"20",
+            "interview_type_id"=>"1",
+            "scheduled_on"=>"2017-06-25 15:45:00",
+            "notes"=>"",
+            "rating"=>"0",
+            "status"=>"Pending"
         );
 
         $data14 = array(
-            "application_id"=>"2", //id should be between id's in applicatoin table
-            "interviewer_id"=>"22", //id should be relative to the table users with user_types = 3 or 4
-            "interview_type_id"=>"1", // id should be between id's in interview_types table
-            "scheduled_on"=>"2017-03-25", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
-            "notes"=>"Candidate has good education background but communication skills is not good enough.",
-            "rating"=>"7" //between 1 and 10
+            "application_id"=>"2",
+            "interviewer_id"=>"22",
+            "interview_type_id"=>"1",
+            "scheduled_on"=>"2017-06-23 15:26:00",
+            "notes"=>"",
+            "rating"=>"0",
+            "status"=>"Pending"
         );
 
         $data15 = array(
-            "application_id"=>"2", //id should be between id's in applicatoin table
-            "interviewer_id"=>"22", //id should be relative to the table users with user_types = 3 or 4
-            "interview_type_id"=>"1", // id should be between id's in interview_types table
-            "scheduled_on"=>"2017-03-31", // format is yyyy-mm-dd //Make sure date is after that particular application has been made
-            "notes"=>"Candidate was communicating better than on first interview.",
-            "rating"=>"9" //between 1 and 10
+            "application_id"=>"2",
+            "interviewer_id"=>"22",
+            "interview_type_id"=>"1",
+            "scheduled_on"=>"2017-06-29 15:45:00",
+            "notes"=>"",
+            "rating"=>"0",
+            "status"=>"Pending"
         );
 
 

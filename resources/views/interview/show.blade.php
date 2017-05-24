@@ -52,7 +52,7 @@
 
                                 <tr>
                                     <td><div class="text-right"><strong>Interview Format</strong></div></td>
-                                    <td>{{ $interview->interview_type_id }}</td>
+                                    <td>{{ $interview->interviewType->name }}</td>
                                 </tr>
 
                                 <tr>
@@ -61,6 +61,22 @@
                                         $scheduledOn = new DateTime($interview->scheduled_on);
                                      ?>
                                     <td>{{ $scheduledOn->format('g:ia \o\n l jS F Y') }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td><div class="text-right"><strong>Interview Status</strong></div></td>
+                                    <td>
+                                        {{ $interview->status }}
+                                        &nbsp;
+                                        &nbsp;
+                                        <?php
+                                            if ($interview->status == 'Pending'){
+                                                ?>
+                                                    <a href="{{ route('interview.edit', $interview->id) }}" class="btn btn-primary btn-sm">Conduct Interview</a>
+                                                <?php
+                                            }
+                                         ?>
+                                    </td>
                                 </tr>
 
                                 <tr>

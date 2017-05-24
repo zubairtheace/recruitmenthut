@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1 custom-padding">
             <div class="panel panel-default">
-                <div class="panel-heading">Add New Interview</div>
+                <div class="panel-heading">Add New Interview for {{ App\User::find($application_id)->first_name }} {{ App\User::find($application_id)->last_name }}</div>
                 <div class="panel-body">
 
                     {!! Form::open([
@@ -15,7 +15,7 @@
                       'method' => 'POST',
                       ]) !!}
 
-                        <h2>Appfication for <b> {{ App\User::find($application_id)->first_name }} {{ App\User::find($application_id)->last_name }} </b></h2>
+                        
                         <!-- Application id   -->
                         <input name="application_id" type="hidden" value="{{ $application_id }}">
 
