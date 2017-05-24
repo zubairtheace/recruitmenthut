@@ -160,12 +160,21 @@ class CandidateController extends Controller
           $email = $user->email;
         }
 
-        Mail::send('email.recruited', ['title' => $title, 'content' => $user], function ($message) use ( $email, $name, $title)
-        {
-            $message->from('support@recruiterhub.io', 'RecruiterHub Team');
-            $message->to($email, $name);
-            $message->subject($title);
-        });
+        try {
+
+          Mail::send('email.recruited', ['title' => $title, 'content' => $user], function ($message) use ( $email, $name, $title)
+          {
+              $message->from('support@recruiterhub.io', 'RecruiterHub Team');
+              $message->to($email, $name);
+              $message->subject($title);
+          });
+
+        } catch (\Exception $e) {
+
+        }
+
+
+
 
         return back()->with('success','Email Sent!');
     }
