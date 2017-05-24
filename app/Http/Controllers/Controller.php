@@ -1,4 +1,3 @@
-//Framework file
 <?php
 
 namespace App\Http\Controllers;
