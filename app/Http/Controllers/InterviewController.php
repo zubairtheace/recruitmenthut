@@ -24,6 +24,17 @@ class InterviewController extends Controller
     }
 
     /**
+     * Display a listing of the resource for a specific user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function candidateInterview($id)
+    {
+        $interviews = Interview::where('application_id', '=', $id)->orderBy('scheduled_on', 'desc')->paginate(10);
+        return view('interview.index', compact('interviews'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

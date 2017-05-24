@@ -54,7 +54,7 @@
                                                 <tr>
                                                     <td><div class="text-right"><strong>Interviews</strong></div></td>
                                                     <td>
-                                                        <a href="#">{{ DB::table('interviews')->where('application_id', $application->id)->count() }} Interviews</a>
+                                                        <a href="/candidate-interview/{{$application->id}}">{{ DB::table('interviews')->where('application_id', $application->id)->count() }} Interviews</a>
 
                                                         <a href="/interview/create/{{$application->id}}" class="btn btn-primary btn-sm ">Add Interview </a>
 
