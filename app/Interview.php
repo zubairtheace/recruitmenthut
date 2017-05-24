@@ -17,7 +17,8 @@ class Interview extends Model
         'interview_type_id',
         'scheduled_on',
         'notes',
-        'rating'
+        'rating',
+        'status'
     ];
 
     public function application(){

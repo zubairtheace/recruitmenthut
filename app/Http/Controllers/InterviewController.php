@@ -127,45 +127,7 @@ class InterviewController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    //  public function individualInterview($id)
-    //  {
-    //      $interview = collect( DB::select
-    //      ('
-    //          SELECT
-    //          applications.id AS applicaton_id,
-    //          vacancies.id AS vacancy_id,
-    //          vacancies.name AS vacancy_name,
-    //          interviews.id AS interview_id,
-    //          interviews.type AS interview_type,
-    //          interview_types.id AS interview_type_id,
-    //          interview_types.name AS interview_type_name,
-    //          users.id AS user_id,
-    //          users.first_name AS first_name,
-    //          users.last_name AS last_name
-    //
-    //          FROM
-    //          applications,
-    //          vacancies,
-    //          interviews,
-    //          interview_types,
-    //          users
-     //
-    //          WHERE
-    //
-     //
-     //
-    //
-    //          users.id = "'.$id.'"
-    //          AND
-    //          users.id = recruiter_infos.user_id
-    //          AND
-    //          recruiter_infos.position_id = positions.id
-    //          AND
-    //          users.user_type_id = user_types.id
-    //          AND
-    //          (user_types.id = 3 OR user_types.id = 4)
-    //      '))->first();
-    //  }
+    
 
     public function show($id)
     {

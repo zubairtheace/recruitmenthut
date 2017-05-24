@@ -19,6 +19,7 @@
                       <input type="hidden" name="interviewer_id" value="{{$interview->interviewer_id}}">
                       <input type="hidden" name="interview_type_id" value="{{$interview->interview_type_id}}">
                       <input type="hidden" name="scheduled_on" value="{{$interview->scheduled_on}}">
+                      <input type="hidden" name="status" value="Done">
 
                     @else
 

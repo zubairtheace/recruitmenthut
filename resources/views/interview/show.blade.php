@@ -11,7 +11,7 @@
                             if (Auth::user()->user_type_id == 4){
                                 ?>
                                     <a href="{{ route('interview.edit', $interview->id) }}" class="btn btn-primary btn-sm pull-right">Edit </a>
-                                    <a href="{{ route('interview.conduct', $interview->id) }}" class="btn btn-secondary btn-sm pull-right">Conduct Interview </a>
+                                    <!-- <a href="{{ route('interview.conduct', $interview->id) }}" class="btn btn-secondary btn-sm pull-right">Conduct Interview </a> -->
                                 <?php
                             }
                         }
@@ -73,7 +73,7 @@
                                         <?php
                                             if ($interview->status == 'Pending'){
                                                 ?>
-                                                    <a href="{{ route('interview.edit', $interview->id) }}" class="btn btn-primary btn-sm">Conduct Interview</a>
+                                                    <a href="{{ route('interview.conduct', $interview->id) }}" class="btn btn-primary btn-sm">Conduct Interview</a>
                                                 <?php
                                             }
                                          ?>
