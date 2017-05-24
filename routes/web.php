@@ -44,4 +44,5 @@ Route::resource('/interview', 'InterviewController');
 Route::get('/interview/create/{id?}', 'InterviewController@create');
 
 Route::post('candidate/{id}/email', 'CandidateController@email')->name('candidate.email');
+Route::get('interview/{id}/conduct', 'InterviewController@conduct')->name('interview.conduct');
 Route::get('candidate-interview/{id}', 'InterviewController@candidateInterview');

@@ -186,6 +186,17 @@ class InterviewController extends Controller
     }
 
     /**
+     * Display a listing of the resource for a specific user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function conduct($id)
+    {
+      $interview = Interview::findOrFail($id);
+      return view('interview.edit', compact('interview'));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
