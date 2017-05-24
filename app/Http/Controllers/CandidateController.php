@@ -14,13 +14,10 @@ use Mail;
 
 class CandidateController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Returns index View for new candidates
     public function index()
     {
+        //SELECT only new candidates
         $candidates = User::
         join('user_types', 'users.user_type_id', '=', 'user_types.id')
             ->where('user_types.id', 1)
@@ -32,6 +29,7 @@ class CandidateController extends Controller
         return view('candidate.index', compact('candidates', 'type'));
     }
 
+    // Returns Search View for candidates
     public function search(Request $request)
     {
         $searchTerm = $request->search;
@@ -49,6 +47,7 @@ class CandidateController extends Controller
         return view('candidate.search', compact('candidates', 'searchTerm'));
     }
 
+    // Returns index View for recruited candidates
     public function recruitedCandidate()
     {
         $candidates = User::
@@ -61,33 +60,8 @@ class CandidateController extends Controller
         $type = 2;
         return view('candidate.index', compact('candidates', 'type'));
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //Returns the show view of the appropriate Candidate
     public function show($id)
     {
         $candidate = collect( DB::select
@@ -122,16 +96,10 @@ class CandidateController extends Controller
             AND
             (user_types.id = 1 OR user_types.id = 2)
         '))->first();
-        // dd($candidate);
         return view('candidate.show', compact('candidate'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //Returns the Edit view of the appropriate Candidate
     public function edit($id)
     {
         $user = User::findOrFail($id);
@@ -139,12 +107,7 @@ class CandidateController extends Controller
         return view('candidate.edit', compact('user', 'candidateInfo'));
     }
 
-    /**
-     * Send the email
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //When button RECRUIT is pressed, send email to apropriate candidate
     public function email($id)
     {
         $user = User::findOrFail($id);
@@ -170,13 +133,7 @@ class CandidateController extends Controller
         return back()->with('success','Email Sent!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //Data from the form in the Edit view uses the update function to update data in the database
     public function update(Request $data, $id)
     {
         $user = User::find($id);
@@ -199,17 +156,21 @@ class CandidateController extends Controller
         $info->save();
 
         if (Auth::user()->user_type_id == 4){
+            //If submission of data is successful return to candidates index page with successful message
             if ($result){
                 return redirect('candidate')->with('success', 'Candidate Updated');
             }
+            //else display fail
             else{
                 return back()->with('error','Failed to save!');
             }
         }
         else{
+            //If submission of data is successful return to candidate show page with successful message
             if ($result){
                 return redirect()->route('candidate.show', Auth::user()->id)->with('success', 'Candidate Updated');
             }
+            //else display fail
             else{
                 return back()->with('error','Failed to update profile!');
             }
@@ -217,20 +178,18 @@ class CandidateController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //Function to delete an application
     public function destroy($id)
     {
         $candidate = User::findOrFail($id);
         $result = $candidate->delete();
         $info = CandidateInfo::where('user_id', $id)->first()->delete();
+
+        //If deletion of data is successful return to previous page with successful message
         if ($result){
             return redirect('candidate')->with('success', 'Candidate deleted');
         }
+        //else display fail
         else{
             return back()->with('error','Failed to delete!');
         }
