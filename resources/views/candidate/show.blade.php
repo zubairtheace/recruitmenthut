@@ -61,6 +61,7 @@
                                 <tr>
                             </thead>
                             <tbody>
+                                                                
                                 <tr>
                                     <td><div class="text-right"><strong>First Name</strong></div></td>
                                     <td>{{ $candidate->first_name }}</td>

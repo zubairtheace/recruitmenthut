@@ -12,22 +12,14 @@ use App\User;
 
 class InterviewController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Returns index View sorting data by Scheduled time in descenting order
     public function index()
     {
         $interviews = Interview::orderBy('scheduled_on', 'desc')->paginate(10);
         return view('interview.index', compact('interviews'));
     }
 
-    /**
-     * Display a listing of the resource for a specific user.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //
     public function candidateInterview($id)
     {
         $interviews = Interview::where('application_id', '=', $id)->orderBy('scheduled_on', 'desc')->paginate(10);
