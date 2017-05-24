@@ -153,7 +153,12 @@ class CandidateController extends Controller
 
         $title = "Congratulation!"; // can also appen car name here
         $name = Auth::user()->first_name.' '.Auth::user()->last_name; //or "RecruiterHub"
-        $email = 'umar.mw@gmail.com'; //'tofy.zubair@gmail.com'; // on prod use this->  $user->email;
+        if (env('APP_ENV') == "local")
+        {
+          $email = 'umar.mw@gmail.com';
+        } else {
+          $email = $user->email;
+        }
 
         Mail::send('email.recruited', ['title' => $title, 'content' => $user], function ($message) use ( $email, $name, $title)
         {

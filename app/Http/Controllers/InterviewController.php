@@ -81,8 +81,14 @@ class InterviewController extends Controller
       $candidateName = $candidate->first_name." ".$candidate->last_name;
       $interviewerName = $interviewer->first_name." ".$interviewer->last_name;
 
-      $candidateEmail = $candidate->email;
-      $interviewerEmail = $interviewer->email;
+      //for debugging
+      if(env('APP_ENV') == "local"){
+        $candidateEmail = 'umar.mw@gmail.com';
+        $interviewerEmail = 'umar.mw@gmail.com';
+      } else {
+        $candidateEmail = $candidate->email;
+        $interviewerEmail = $interviewer->email;
+      }
 
       //send email to candidate
       Mail::send('email.notifycandidate', ['title' => $title, 'scheduledOn' => $scheduledOn, 'candidateName' => $candidateName, 'interviewerName' => $interviewerName], function ($message) use ( $candidateEmail, $candidateName, $title)
