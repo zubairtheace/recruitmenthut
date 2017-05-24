@@ -5,7 +5,23 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1 custom-padding">
             <div class="panel panel-default">
-                <div class="panel-heading">Edit Interview</div>
+                @if(Request::segment(3) == 'conduct')
+                    <div class="panel-heading">
+                        <a href="/interview">Interviews</a>
+                        <span class="fa fa-chevron-right"></span>
+                        <a href="/interview/{{ $interview->id }}">Interview # {{ $interview->id }} </a>
+                        <span class="fa fa-chevron-right"></span>
+                        Conduct Interview
+                    </div>
+                @else
+                    <div class="panel-heading">
+                        <a href="/interview">Interviews</a>
+                        <span class="fa fa-chevron-right"></span>
+                        <a href="/interview/{{ $interview->id }}">Interview # {{ $interview->id }} </a>
+                        <span class="fa fa-chevron-right"></span>
+                        Edit Interview
+                    </div>                    
+                @endif
                 <div class="panel-body">
                     {!! Form::open([
                         'route' => ['interview.update', $interview->id],
@@ -20,6 +36,33 @@
                       <input type="hidden" name="interview_type_id" value="{{$interview->interview_type_id}}">
                       <input type="hidden" name="scheduled_on" value="{{$interview->scheduled_on}}">
                       <input type="hidden" name="status" value="Done">
+                      <div>
+                          <table class="table">
+                              <thead>
+                                  <tr>
+                                      <th><div class="text-right">Interview</div></th>
+                                      <th>#{{ $interview->id }}</th>
+                                  <tr>
+                              </thead>
+
+                              <tbody>
+                                  <tr>
+                                      <td><div class="text-right"><strong>Candidate Name</strong></div></td>
+                                      <td>{{ $interview->application->candidate->first_name }} {{ $interview->application->candidate->last_name }}</td>
+                                  </tr>
+
+                                  <tr>
+                                      <td><div class="text-right"><strong>Interviewer Name</strong></div></td>
+                                      <td>{{ $interview->interviewer->first_name }} {{ $interview->interviewer->last_name }}</td>
+                                  </tr>
+
+                                  <tr>
+                                      <td><div class="text-right"><strong>Job Title</strong></div></td>
+                                      <td><a href="{{ route('vacancy.show', $interview->application->vacancy->id) }}">{{ $interview->application->vacancy->name }}</a></td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
 
                     @else
 

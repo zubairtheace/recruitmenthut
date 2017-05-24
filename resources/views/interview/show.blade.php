@@ -22,7 +22,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th><div class="text-right">Interview</th>
+                                    <th><div class="text-right">Interview</div></th>
                                     <th>#{{ $interview->id }}</th>
                                 <tr>
                             </thead>
