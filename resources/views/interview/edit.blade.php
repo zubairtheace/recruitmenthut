@@ -14,110 +14,118 @@
                         'method' => 'put'
                     ]) !!}
 
-                    <!-- Application id   -->
-                    <div class="form-group{{ $errors->has('application_id') ? ' has-error' : '' }}">
-                        <div class="container-fluid">
-                            {!! Form::label(
-                                'application_id',
-                                'Application',
-                                [
-                                    'class' => 'col-md-4 control-label'
-                                ]
-                            ); !!}
+                    @if(Request::segment(3) == 'conduct')
+                      <input type="hidden" name="application_id" value="{{$interview->application_id}}">
+                      <input type="hidden" name="interviewer_id" value="{{$interview->interviewer_id}}">
+                      <input type="hidden" name="interview_type_id" value="{{$interview->interview_type_id}}">
+                      <input type="hidden" name="scheduled_on" value="{{$interview->scheduled_on}}">
 
-                            <div class="col-md-6">
-                                {!! Form::select(
-                                    'application_id',
-                                    App\Application::pluck('candidate_id', 'id'),
-                                    $interview->application_id,
-                                    [
-                                        'placeholder' => 'Select Application...',
-                                        'class' => 'form-control'
-                                    ]
-                                ); !!}
-                            </div>
-                        </div>
-                        @if ($errors->has('application_id'))
-                        <div class="container-fluid">
-                            <div class="col-md-8 col-md-offset-4">
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('application_id') }}</strong>
-                                </span>
-                            </div>
-                        </div>
-                        @endif
-                    </div>
+                    @else
 
-                    <!-- Interviewer id   -->
-                    <div class="form-group{{ $errors->has('interviewer_id') ? ' has-error' : '' }}">
-                        <div class="container-fluid">
-                            {!! Form::label(
-                                'interviewer_id',
-                                'Interviewer',
-                                [
-                                    'class' => 'col-md-4 control-label'
-                                ]
-                            ); !!}
+                      <!-- Application id   -->
+                      <div class="form-group{{ $errors->has('application_id') ? ' has-error' : '' }}">
+                          <div class="container-fluid">
+                              {!! Form::label(
+                                  'application_id',
+                                  'Application',
+                                  [
+                                      'class' => 'col-md-4 control-label'
+                                  ]
+                              ); !!}
 
-                            <div class="col-md-6">
-                                {!! Form::select(
-                                    'interviewer_id',
-                                    App\User::select(DB::raw("CONCAT(first_name,' ',last_name) AS name"),'id')->pluck('name', 'id'),
-                                    $interview->interviewer_id,
-                                    [
-                                        'placeholder' => 'Select Interviewer...',
-                                        'class' => 'form-control'
-                                    ]
-                                ); !!}
-                            </div>
-                        </div>
-                        @if ($errors->has('interviewer_id'))
-                        <div class="container-fluid">
-                            <div class="col-md-8 col-md-offset-4">
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('interviewer_id') }}</strong>
-                                </span>
-                            </div>
-                        </div>
-                        @endif
-                    </div>
+                              <div class="col-md-6">
+                                  {!! Form::select(
+                                      'application_id',
+                                      App\Application::pluck('candidate_id', 'id'),
+                                      $interview->application_id,
+                                      [
+                                          'placeholder' => 'Select Application...',
+                                          'class' => 'form-control'
+                                      ]
+                                  ); !!}
+                              </div>
+                          </div>
+                          @if ($errors->has('application_id'))
+                          <div class="container-fluid">
+                              <div class="col-md-8 col-md-offset-4">
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('application_id') }}</strong>
+                                  </span>
+                              </div>
+                          </div>
+                          @endif
+                      </div>
 
-                    <!-- Interview Type id   -->
-                    <div class="form-group{{ $errors->has('interview_type_id') ? ' has-error' : '' }}">
-                        <div class="container-fluid">
-                            {!! Form::label(
-                                'interview_type_id',
-                                'Interview Type',
-                                [
-                                    'class' => 'col-md-4 control-label'
-                                ]
-                            ); !!}
+                      <!-- Interviewer id   -->
+                      <div class="form-group{{ $errors->has('interviewer_id') ? ' has-error' : '' }}">
+                          <div class="container-fluid">
+                              {!! Form::label(
+                                  'interviewer_id',
+                                  'Interviewer',
+                                  [
+                                      'class' => 'col-md-4 control-label'
+                                  ]
+                              ); !!}
 
-                            <div class="col-md-6">
-                                {!! Form::select(
-                                    'interview_type_id',
-                                    App\InterviewType::pluck('name', 'id'),
-                                    $interview->interview_type_id,
-                                    [
-                                        'placeholder' => 'Select Interview Type...',
-                                        'class' => 'form-control'
-                                    ]
-                                ); !!}
-                            </div>
-                        </div>
-                        @if ($errors->has('interview_type_id'))
-                        <div class="container-fluid">
-                            <div class="col-md-8 col-md-offset-4">
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('interview_type_id') }}</strong>
-                                </span>
-                            </div>
-                        </div>
-                        @endif
-                    </div>
+                              <div class="col-md-6">
+                                  {!! Form::select(
+                                      'interviewer_id',
+                                      App\User::select(DB::raw("CONCAT(first_name,' ',last_name) AS name"),'id')->pluck('name', 'id'),
+                                      $interview->interviewer_id,
+                                      [
+                                          'placeholder' => 'Select Interviewer...',
+                                          'class' => 'form-control'
+                                      ]
+                                  ); !!}
+                              </div>
+                          </div>
+                          @if ($errors->has('interviewer_id'))
+                          <div class="container-fluid">
+                              <div class="col-md-8 col-md-offset-4">
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('interviewer_id') }}</strong>
+                                  </span>
+                              </div>
+                          </div>
+                          @endif
+                      </div>
 
-                    <!--Scheduled on-->
-                    <div class="form-group{{ $errors->has('scheduled_on') ? ' has-error' : '' }}">
+                      <!-- Interview Type id   -->
+                      <div class="form-group{{ $errors->has('interview_type_id') ? ' has-error' : '' }}">
+                          <div class="container-fluid">
+                              {!! Form::label(
+                                  'interview_type_id',
+                                  'Interview Type',
+                                  [
+                                      'class' => 'col-md-4 control-label'
+                                  ]
+                              ); !!}
+
+                              <div class="col-md-6">
+                                  {!! Form::select(
+                                      'interview_type_id',
+                                      App\InterviewType::pluck('name', 'id'),
+                                      $interview->interview_type_id,
+                                      [
+                                          'placeholder' => 'Select Interview Type...',
+                                          'class' => 'form-control'
+                                      ]
+                                  ); !!}
+                              </div>
+                          </div>
+                          @if ($errors->has('interview_type_id'))
+                          <div class="container-fluid">
+                              <div class="col-md-8 col-md-offset-4">
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('interview_type_id') }}</strong>
+                                  </span>
+                              </div>
+                          </div>
+                          @endif
+                      </div>
+
+                      <!--Scheduled on-->
+                      <div class="form-group{{ $errors->has('scheduled_on') ? ' has-error' : '' }}">
                       <div class="container-fluid">
                           {!! Form::label(
                               'scheduled_on',
@@ -159,6 +167,7 @@
                       @endif
                     </div>
 
+                    @endif
                     <!--Notes-->
                     <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
                         <div class="container-fluid">
